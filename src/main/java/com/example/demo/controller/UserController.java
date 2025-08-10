@@ -1,15 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.ApiResponse;
+import com.example.demo.common.ResourceNotFoundException;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 用户控制器
@@ -31,22 +30,25 @@ public class UserController {
      * 获取所有用户
      */
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ApiResponse<List<User>> getAllUsers() {
         log.info("获取所有用户");
-        return ResponseEntity.ok(userService.findAllUsers());
+        List<User> users = userService.findAllUsers();
+        
+        return ApiResponse.success(users);
     }
     
     /**
      * 根据ID获取用户
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public ApiResponse<User> getUserById(@PathVariable Long id) {
+        log.info("获取用户接口获取用户接口获取用户接口获取用户接口获取用户接口获取用户接口");
         log.info("获取用户ID: {}", id);
         User user = userService.findUserById(id);
         if (user != null) {
-            return ResponseEntity.ok(user);
+            return ApiResponse.success(user);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("用户");
         }
     }
     
@@ -54,36 +56,43 @@ public class UserController {
      * 创建用户
      */
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    @ResponseStatus(org.springframework.http.HttpStatus.CREATED)
+    public ApiResponse<User> createUser(@RequestBody User user) {
         log.info("创建用户: {}", user);
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+        System.out.println(user);
+        User savedUser = userService.saveUser(user);
+        return ApiResponse.created(savedUser);
     }
     
     /**
      * 更新用户
      */
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ApiResponse<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+        log.info("更新用户接口更新用户接口更新用户接口更新用户接口更新用户接口");
         log.info("更新用户ID: {}, 用户信息: {}", id, user);
+        System.out.println(user);
         User existingUser = userService.findUserById(id);
         if (existingUser == null) {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("用户");
         }
         user.setId(id);
-        return ResponseEntity.ok(userService.updateUser(user));
+        User updatedUser = userService.updateUser(user);
+        return ApiResponse.success("用户更新成功", updatedUser);
     }
     
     /**
      * 删除用户
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable Long id) {
+    public ApiResponse<Void> deleteUser(@PathVariable Long id) {
+        log.info("删除用户删除用户删除用户删除用户删除用户删除用户");
         log.info("删除用户ID: {}", id);
         User existingUser = userService.findUserById(id);
         if (existingUser == null) {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("用户");
         }
-        boolean deleted = userService.deleteUserById(id);
-        return ResponseEntity.ok(Map.of("deleted", deleted));
+        userService.deleteUserById(id);
+        return ApiResponse.success("用户删除成功", null);
     }
 }

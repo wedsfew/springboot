@@ -4,12 +4,6 @@ globs:
 alwaysApply: true
 ---
 # 数据表结构
-## mysql数据库配置连接
-- host: localhost
-- port: 3306
-- username: root
-- password: 22222hua
-
 ## mysql 数据库demo 的表结构
 ### user表
 ```sql

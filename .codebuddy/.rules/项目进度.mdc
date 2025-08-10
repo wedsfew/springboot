@@ -11,5 +11,12 @@ alwaysApply: true
 - username: root
 - password: 22222hua
 - database: demo
-### 实现统一响应接口【✅】
-###下一步 实现 所有接口的响应交给统一响应接口 代理
+
+### api接口开发进度【进行中】
+- 获取所有用户接口  GET /api/users【✅】
+- 根据ID获取用户    GET /api/users/{id}【✅】
+
+### 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】
+
+###  所有API接口都使用ApiResponse统一的响应格式【】
+
