@@ -15,8 +15,21 @@ alwaysApply: true
 ### api接口开发进度【进行中】
 - 获取所有用户接口  GET /api/users【✅】
 - 根据ID获取用户    GET /api/users/{id}【✅】
+- 更新用户  PUT /api/users/{id} 【✅】
+- 邮箱发送验证码 POST /api/verification/send-code【✅】
+- 验证邮箱验证码 POST /api/verification/verify-code【✅】
 
-### 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】
 
+### 全局类【进行中】
+- 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】
+- 实现全局异常处理类src/main/java/com/example/demo/common/GlobalExceptionHandler.java
 ###  所有API接口都使用ApiResponse统一的响应格式【】
+以下接口实现统一响应格式
+- 获取所有用户接口  GET /api/users【✅】
+- 根据ID获取用户    GET /api/users/{id}【✅】
+- 更新用户  PUT /api/users/{id} 【✅】
+- 邮箱发送验证码 POST /api/verification/send-code【✅】
+- 验证邮箱验证码 POST /api/verification/verify-code【✅】
 
+
+### 下一步 实现用户注册接口
