@@ -30,12 +30,13 @@ public class JwtUtil {
     private static final long JWT_TOKEN_VALIDITY = 24 * 60 * 60 * 1000; // 24小时
     
     /**
-     * 从令牌中获取用户名
+     * 从令牌中获取用户ID
      * @param token JWT令牌
-     * @return 用户名
+     * @return 用户ID
      */
-    public String getUsernameFromToken(String token) {
-        return getClaimFromToken(token, Claims::getSubject);
+    public Long getUserIdFromToken(String token) {
+        String subject = getClaimFromToken(token, Claims::getSubject);
+        return Long.parseLong(subject);
     }
     
     /**
@@ -83,18 +84,18 @@ public class JwtUtil {
     
     /**
      * 为指定用户生成令牌
-     * @param username 用户名
+     * @param userId 用户ID
      * @return JWT令牌
      */
-    public String generateToken(String username) {
+    public String generateToken(Long userId) {
         Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, username);
+        return doGenerateToken(claims, userId.toString());
     }
     
     /**
      * 为指定用户生成令牌，可包含额外的声明
      * @param claims 额外的声明
-     * @param subject 用户名
+     * @param subject 用户ID（字符串形式）
      * @return JWT令牌
      */
     private String doGenerateToken(Map<String, Object> claims, String subject) {
@@ -110,11 +111,11 @@ public class JwtUtil {
     /**
      * 验证令牌
      * @param token JWT令牌
-     * @param username 用户名
+     * @param userId 用户ID
      * @return 是否有效
      */
-    public Boolean validateToken(String token, String username) {
-        final String tokenUsername = getUsernameFromToken(token);
-        return (tokenUsername.equals(username) && !isTokenExpired(token));
+    public Boolean validateToken(String token, Long userId) {
+        final Long tokenUserId = getUserIdFromToken(token);
+        return (tokenUserId.equals(userId) && !isTokenExpired(token));
     }
 }

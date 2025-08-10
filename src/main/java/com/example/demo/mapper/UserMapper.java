@@ -31,6 +31,12 @@ public interface UserMapper {
     User findByEmail(String email);
     
     /**
+     * 根据用户名查询用户
+     */
+    @Select("SELECT * FROM user WHERE username = #{username}")
+    User findByUsername(String username);
+    
+    /**
      * 创建新用户
      */
     @Insert("INSERT INTO user(username, password, email) VALUES(#{username}, #{password}, #{email})")

@@ -39,11 +39,12 @@ alwaysApply: true
 - 用户注册第二步（验证验证码并完成注册） POST /api/auth/register/step2【✅】
 - 用户登录 POST /api/auth/login【✅】
 
-### 下一步 实现JWT认证过滤器，验证请求中的令牌
+### JWT认证过滤器【✅】
+- 实现JWT认证过滤器，验证请求中的令牌【✅】
+- 更新WebSecurityConfig，保护需要认证的API端点【✅】
 
 ### 后续任务
 
-- 更新WebSecurityConfig，保护需要认证的API端点
 - 实现用户权限控制
 - 添加令牌刷新功能
 - 实现用户登出功能

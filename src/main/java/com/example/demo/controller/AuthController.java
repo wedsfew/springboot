@@ -125,7 +125,7 @@ public class AuthController {
         
         if (user != null) {
             // 生成JWT令牌
-            String token = jwtUtil.generateToken(user.getUsername());
+            String token = jwtUtil.generateToken(user.getId());
             
             // 创建登录响应
             UserLoginResponse response = new UserLoginResponse(user, token);
