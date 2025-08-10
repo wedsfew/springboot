@@ -1,3 +1,8 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
 # api开发规则
 api接口开发轻严格遵循以下要求
 ## 一、API 合约概述
