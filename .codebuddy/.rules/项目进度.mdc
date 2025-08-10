@@ -1,3 +1,8 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
 ### springboot配置自动注解【✅】
 
 ### 已经配置数据库连接【✅】
@@ -6,3 +11,5 @@
 - username: root
 - password: 22222hua
 - database: demo
+### 实现统一响应接口【✅】
+###下一步 实现 所有接口的响应交给统一响应接口 代理
