@@ -6,6 +6,7 @@ alwaysApply: true
 # 数据表结构
 ## mysql 数据库demo 的表结构
 ### user表
+ 
 ```sql
 CREATE TABLE `user` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -16,4 +17,5 @@ CREATE TABLE `user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
+#### 测试数据
 

@@ -1,7 +1,11 @@
 package com.example.demo.common;
 
+import com.example.demo.exception.JwtAuthenticationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -84,6 +88,54 @@ public class GlobalExceptionHandler {
         return ApiResponse.notFound(ex.getMessage());
     }
 
+    /**
+     * 处理JWT认证异常
+     * @param ex JWT认证异常
+     * @return 统一API响应
+     */
+    @ExceptionHandler(JwtAuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ApiResponse<Void> handleJwtAuthenticationException(JwtAuthenticationException ex) {
+        log.warn("JWT认证异常: {}", ex.getMessage());
+        return ApiResponse.error(401, "认证失败: " + ex.getMessage());
+    }
+    
+    /**
+     * 处理Spring Security认证异常
+     * @param ex 认证异常
+     * @return 统一API响应
+     */
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ApiResponse<Void> handleAuthenticationException(AuthenticationException ex) {
+        log.warn("认证异常: {}", ex.getMessage());
+        return ApiResponse.error(401, "认证失败");
+    }
+    
+    /**
+     * 处理Spring Security访问拒绝异常
+     * @param ex 访问拒绝异常
+     * @return 统一API响应
+     */
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ApiResponse<Void> handleAccessDeniedException(AccessDeniedException ex) {
+        log.warn("访问拒绝: {}", ex.getMessage());
+        return ApiResponse.error(403, "访问被拒绝");
+    }
+    
+    /**
+     * 处理Spring Security凭证异常
+     * @param ex 凭证异常
+     * @return 统一API响应
+     */
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ApiResponse<Void> handleBadCredentialsException(BadCredentialsException ex) {
+        log.warn("凭证错误: {}", ex.getMessage());
+        return ApiResponse.error(401, "用户名或密码错误");
+    }
+    
     /**
      * 处理所有未捕获的异常
      * @param ex 异常
