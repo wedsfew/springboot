@@ -32,6 +32,29 @@ public class UserServiceImpl implements UserService {
     private final VerificationCodeService verificationCodeService;
     private final PasswordEncoder passwordEncoder;
     
+    /**
+     * 用户登录
+     * @param email 邮箱
+     * @param password 密码
+     * @return 登录成功返回用户信息，失败返回null
+     */
+    @Override
+    public User login(String email, String password) {
+        log.info("用户登录: {}", email);
+        
+        // 根据邮箱查询用户
+        User user = userMapper.findByEmail(email);
+        
+        // 用户不存在或密码不匹配
+        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
+            log.warn("登录失败: 用户不存在或密码错误 - {}", email);
+            return null;
+        }
+        
+        log.info("用户登录成功: {}", email);
+        return user;
+    }
+    
     @Override
     public List<User> findAllUsers() {
         log.debug("查询所有用户");

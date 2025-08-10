@@ -12,6 +12,14 @@ import java.util.List;
 public interface UserService {
     
     /**
+     * 用户登录
+     * @param email 邮箱
+     * @param password 密码
+     * @return 登录成功返回用户信息，失败返回null
+     */
+    User login(String email, String password);
+    
+    /**
      * 查询所有用户
      */
     List<User> findAllUsers();
