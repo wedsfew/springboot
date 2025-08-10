@@ -18,4 +18,19 @@ public interface UserService {
      * 根据ID查询用户
      */
     User findUserById(Long id);
+    
+    /**
+     * 保存用户
+     */
+    User saveUser(User user);
+    
+    /**
+     * 更新用户
+     */
+    User updateUser(User user);
+    
+    /**
+     * 删除用户
+     */
+    boolean deleteUserById(Long id);
 }
