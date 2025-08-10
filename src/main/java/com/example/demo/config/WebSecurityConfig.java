@@ -42,9 +42,12 @@ public class WebSecurityConfig {
                 // 公开接口，无需认证
                 .requestMatchers("/api/auth/**").permitAll()  // 认证相关接口
                 .requestMatchers("/api/verification/**").permitAll()  // 验证码相关接口
+                .requestMatchers("/api/admin/register").permitAll()  // 管理员注册接口
+                .requestMatchers("/api/admin/login").permitAll()  // 管理员登录接口
                // .requestMatchers("/api/users/**").permitAll() 
                 // 需要认证的接口
                 .requestMatchers("/api/users/**").authenticated()  // 用户相关接口需要认证
+                .requestMatchers("/api/admin/**").authenticated()  // 管理员相关接口需要认证
                 .anyRequest().authenticated()  // 其他所有请求都需要认证
             )
             // 设置自定义认证入口点

@@ -40,6 +40,15 @@ public class JwtUtil {
     }
     
     /**
+     * 从令牌中获取用户角色
+     * @param token JWT令牌
+     * @return 用户角色
+     */
+    public String getRoleFromToken(String token) {
+        return getClaimFromToken(token, claims -> claims.get("role", String.class));
+    }
+    
+    /**
      * 从令牌中获取过期时间
      * @param token JWT令牌
      * @return 过期时间
@@ -90,6 +99,18 @@ public class JwtUtil {
     public String generateToken(Long userId) {
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userId.toString());
+    }
+    
+    /**
+     * 为指定用户生成令牌，包含角色信息
+     * @param userId 用户ID（字符串形式）
+     * @param role 用户角色
+     * @return JWT令牌
+     */
+    public String generateToken(String userId, String role) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
+        return doGenerateToken(claims, userId);
     }
     
     /**
