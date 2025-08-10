@@ -4,7 +4,9 @@ globs:
 alwaysApply: true
 ---
 ### springboot配置自动注解【✅】
+
 ### 实时更新项目文件映射文档 '项目文件映射.md'【进行中】
+
 ### 已经配置数据库连接【✅】
 - host: localhost
 - port: 3306
@@ -20,11 +22,12 @@ alwaysApply: true
 - 验证邮箱验证码 POST /api/verification/verify-code【✅】
 - 用户注册第一步（发送验证码） POST /api/auth/register/step1【✅】
 - 用户注册第二步（验证验证码并完成注册） POST /api/auth/register/step2【✅】
+- 用户登录 POST /api/auth/login【✅】
 
 
 ### 全局类【进行中】
 - 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】
-- 实现全局异常处理类src/main/java/com/example/demo/common/GlobalExceptionHandler.java
+- 实现全局异常处理类src/main/java/com/example/demo/common/GlobalExceptionHandler.java【✅】
 ###  所有API接口都使用ApiResponse统一的响应格式【进行中】
 以下接口实现统一响应格式
 - 获取所有用户接口  GET /api/users【✅】
@@ -34,6 +37,13 @@ alwaysApply: true
 - 验证邮箱验证码 POST /api/verification/verify-code【✅】
 - 用户注册第一步（发送验证码） POST /api/auth/register/step1【✅】
 - 用户注册第二步（验证验证码并完成注册） POST /api/auth/register/step2【✅】
+- 用户登录 POST /api/auth/login【✅】
 
+### 下一步 实现JWT认证过滤器，验证请求中的令牌
 
-### 下一步 实现全局异常处理类src/main/java/com/example/demo/common/GlobalExceptionHandler.java 【进行中】
+### 后续任务
+
+- 更新WebSecurityConfig，保护需要认证的API端点
+- 实现用户权限控制
+- 添加令牌刷新功能
+- 实现用户登出功能

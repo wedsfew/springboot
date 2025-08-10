@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
+import com.example.demo.dto.UserLoginRequest;
+import com.example.demo.dto.UserLoginResponse;
 import com.example.demo.dto.UserRegisterRequest;
 import com.example.demo.dto.UserRegisterVerifyRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
+import com.example.demo.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     
     private final UserService userService;
+    private final JwtUtil jwtUtil;
     
     /**
      * 用户注册第一步：发送验证码
@@ -95,6 +99,42 @@ public class AuthController {
             return ApiResponse.success("注册成功", newUser);
         } else {
             return ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "注册失败，验证码无效或已过期");
+        }
+    }
+    
+    /**
+     * 用户登录
+     * @param request 包含邮箱和密码的登录请求
+     * @return 统一响应格式，包含登录成功的用户信息和JWT令牌
+     */
+    @PostMapping("/login")
+    public ApiResponse<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
+        log.info("收到用户登录请求: {}", request);
+        
+        // 参数校验
+        if (request.getEmail() == null || request.getEmail().isEmpty()) {
+            return ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "邮箱不能为空");
+        }
+        
+        if (request.getPassword() == null || request.getPassword().isEmpty()) {
+            return ApiResponse.error(HttpStatus.BAD_REQUEST.value(), "密码不能为空");
+        }
+        
+        // 验证用户凭据
+        User user = userService.login(request.getEmail(), request.getPassword());
+        
+        if (user != null) {
+            // 生成JWT令牌
+            String token = jwtUtil.generateToken(user.getUsername());
+            
+            // 创建登录响应
+            UserLoginResponse response = new UserLoginResponse(user, token);
+            
+            log.info("用户登录成功: {}", user.getUsername());
+            return ApiResponse.success("登录成功", response);
+        } else {
+            log.warn("用户登录失败: {}", request.getEmail());
+            return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "邮箱或密码错误");
         }
     }
 }
