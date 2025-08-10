@@ -41,6 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         
         Long userId = null;
         String jwt = null;
+        String role = null;
         
         // 检查Authorization头是否存在且以"Bearer "开头
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
@@ -49,6 +50,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 // 从JWT令牌中提取用户ID
                 userId = jwtUtil.getUserIdFromToken(jwt);
+                // 从JWT令牌中提取用户角色
+                role = jwtUtil.getRoleFromToken(jwt);
+                log.info("JWT令牌解析成功: 用户ID {}, 角色 {}", userId, role);
             } catch (Exception e) {
                 log.error("JWT令牌解析失败: {}", e.getMessage());
             }

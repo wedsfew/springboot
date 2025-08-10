@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Admin;
 import com.example.demo.entity.User;
+import com.example.demo.mapper.AdminMapper;
 import com.example.demo.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +25,7 @@ import java.util.Collections;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserMapper userMapper;
+    private final AdminMapper adminMapper;
 
     /**
      * 根据用户名、邮箱或ID加载用户信息
@@ -33,31 +36,71 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String principal) throws UsernameNotFoundException {
-        User user = null;
-        
         // 尝试将principal解析为用户ID
         try {
             Long userId = Long.parseLong(principal);
-            user = userMapper.findById(userId);
-        } catch (NumberFormatException e) {
-            // 如果不是数字，则尝试通过邮箱查找
-            user = userMapper.findByEmail(principal);
             
-            // 如果通过邮箱没找到，再尝试通过用户名查找
+            // 先尝试查找普通用户
+            User user = userMapper.findById(userId);
+            if (user != null) {
+                // 创建UserDetails对象，设置用户角色
+                String role = user.getRole() != null ? user.getRole() : "ROLE_USER";
+                return new org.springframework.security.core.userdetails.User(
+                        user.getId().toString(), // 使用用户ID作为Spring Security的用户标识
+                        user.getPassword(),
+                        Collections.singletonList(new SimpleGrantedAuthority(role.startsWith("ROLE_") ? role : "ROLE_" + role))
+                );
+            }
+            
+            // 如果不是普通用户，尝试查找管理员
+            Admin admin = adminMapper.findById(userId);
+            if (admin != null) {
+                // 创建UserDetails对象，设置管理员角色
+                String role = admin.getRole() != null ? admin.getRole() : "ROLE_ADMIN";
+                return new org.springframework.security.core.userdetails.User(
+                        admin.getId().toString(), // 使用管理员ID作为Spring Security的用户标识
+                        admin.getPassword(),
+                        Collections.singletonList(new SimpleGrantedAuthority(role.startsWith("ROLE_") ? role : "ROLE_" + role))
+                );
+            }
+            
+            throw new UsernameNotFoundException("用户不存在: " + principal);
+        } catch (NumberFormatException e) {
+            // 如果不是数字，则尝试通过用户名或邮箱查找
+            
+            // 先尝试查找普通用户
+            User user = userMapper.findByEmail(principal);
             if (user == null) {
                 user = userMapper.findByUsername(principal);
             }
-        }
-        
-        if (user == null) {
+            
+            if (user != null) {
+                // 创建UserDetails对象，设置用户角色
+                String role = user.getRole() != null ? user.getRole() : "ROLE_USER";
+                return new org.springframework.security.core.userdetails.User(
+                        user.getId().toString(), // 使用用户ID作为Spring Security的用户标识
+                        user.getPassword(),
+                        Collections.singletonList(new SimpleGrantedAuthority(role.startsWith("ROLE_") ? role : "ROLE_" + role))
+                );
+            }
+            
+            // 如果不是普通用户，尝试查找管理员
+            Admin admin = adminMapper.findByEmail(principal);
+            if (admin == null) {
+                admin = adminMapper.findByUsername(principal);
+            }
+            
+            if (admin != null) {
+                // 创建UserDetails对象，设置管理员角色
+                String role = admin.getRole() != null ? admin.getRole() : "ROLE_ADMIN";
+                return new org.springframework.security.core.userdetails.User(
+                        admin.getId().toString(), // 使用管理员ID作为Spring Security的用户标识
+                        admin.getPassword(),
+                        Collections.singletonList(new SimpleGrantedAuthority(role.startsWith("ROLE_") ? role : "ROLE_" + role))
+                );
+            }
+            
             throw new UsernameNotFoundException("用户不存在: " + principal);
         }
-        
-        // 创建UserDetails对象，暂时只设置基本角色ROLE_USER
-        return new org.springframework.security.core.userdetails.User(
-                user.getId().toString(), // 使用用户ID作为Spring Security的用户标识
-                user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
-        );
     }
 }
