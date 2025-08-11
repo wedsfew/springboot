@@ -1,5 +1,6 @@
 package com.example.demo.filter;
 
+import com.example.demo.service.TokenBlacklistService;
 import com.example.demo.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,6 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
+    private final TokenBlacklistService tokenBlacklistService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -47,6 +49,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             // 提取JWT令牌
             jwt = authorizationHeader.substring(7);
+            
+            // 检查token是否在黑名单中
+            if (tokenBlacklistService.isBlacklisted(jwt)) {
+                log.warn("JWT令牌已在黑名单中，拒绝访问");
+                filterChain.doFilter(request, response);
+                return;
+            }
+            
             try {
                 // 从JWT令牌中提取用户ID
                 userId = jwtUtil.getUserIdFromToken(jwt);

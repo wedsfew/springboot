@@ -6,12 +6,15 @@ import com.example.demo.dto.UserLoginResponse;
 import com.example.demo.dto.UserRegisterRequest;
 import com.example.demo.dto.UserRegisterVerifyRequest;
 import com.example.demo.entity.User;
+import com.example.demo.service.TokenBlacklistService;
 import com.example.demo.service.UserService;
 import com.example.demo.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * 文件名：AuthController.java
@@ -28,6 +31,7 @@ public class AuthController {
     
     private final UserService userService;
     private final JwtUtil jwtUtil;
+    private final TokenBlacklistService tokenBlacklistService;
     
     /**
      * 用户注册第一步：发送验证码
@@ -135,6 +139,47 @@ public class AuthController {
         } else {
             log.warn("用户登录失败: {}", request.getEmail());
             return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "邮箱或密码错误");
+        }
+    }
+    
+    /**
+     * 用户登出
+     * @param authHeader 请求头中的Authorization值，包含JWT令牌
+     * @return 统一响应格式
+     */
+    @PostMapping("/logout")
+    public ApiResponse<Void> logout(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        log.info("收到用户登出请求");
+        
+        // 检查Authorization头是否存在
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "未授权");
+        }
+        
+        // 提取JWT令牌
+        String token = authHeader.substring(7);
+        
+        try {
+            // 从令牌中获取用户ID
+            Long userId = jwtUtil.getUserIdFromToken(token);
+            
+            // 验证令牌有效性
+            if (!jwtUtil.validateToken(token, userId)) {
+                return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "无效的令牌");
+            }
+            
+            // 获取令牌过期时间
+            Date expirationDate = jwtUtil.getExpirationDateFromToken(token);
+            long expirationTime = expirationDate.getTime();
+            
+            // 将令牌添加到黑名单
+            tokenBlacklistService.addToBlacklist(token, expirationTime);
+            
+            log.info("用户登出成功");
+            return ApiResponse.success("登出成功", null);
+        } catch (Exception e) {
+            log.error("登出过程中发生错误", e);
+            return ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "登出失败");
         }
     }
 }

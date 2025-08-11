@@ -1,0 +1,657 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.example:demo >--------------------------
+[INFO] Building demo 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.4:run (default-cli) > test-compile @ demo >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 42 source files with javac [debug parameters release 17] to target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[46,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,T,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[57,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,T,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[67,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,T,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[77,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[89,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,T,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[98,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[106,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[114,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[123,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[132,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[140,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+  required: no arguments
+  found:    int,java.lang.String,<nulltype>,java.lang.String
+  reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[43,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[63,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[75,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[76,36] cannot find symbol
+  symbol:   method getCode()
+  location: variable ex of type com.example.demo.common.BusinessException
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[87,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[99,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[111,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[123,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[135,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[147,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[57,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[59,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[67,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[87,21] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[89,21] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[92,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,43] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,20] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,53] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,20] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,53] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,20] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,50] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[64,38] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[65,38] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[66,35] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[67,34] cannot find symbol
+  symbol:   method getRole()
+  location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[74,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,43] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,20] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,53] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,20] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,53] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,53] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,76] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,55] cannot find symbol
+  symbol:   method getId()
+  location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,81] cannot find symbol
+  symbol:   method getRole()
+  location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[105,21] cannot find symbol
+  symbol:   method setAdmin(com.example.demo.entity.Admin)
+  location: variable response of type com.example.demo.dto.AdminLoginResponse
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[106,21] cannot find symbol
+  symbol:   method setToken(java.lang.String)
+  location: variable response of type com.example.demo.dto.AdminLoginResponse
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[110,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[122,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[131,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[144,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[155,18] cannot find symbol
+  symbol:   method setId(java.lang.Long)
+  location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[156,38] cannot find symbol
+  symbol:   method getUsername()
+  location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[157,35] cannot find symbol
+  symbol:   method getEmail()
+  location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[158,38] cannot find symbol
+  symbol:   method getPassword()
+  location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[159,34] cannot find symbol
+  symbol:   method getRole()
+  location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[166,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[32,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[42,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[56,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[58,13] cannot find symbol
+  symbol:   method setId(long)
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[59,13] cannot find symbol
+  symbol:   method setUsername(java.lang.String)
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[60,13] cannot find symbol
+  symbol:   method setPassword(java.lang.String)
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[61,13] cannot find symbol
+  symbol:   method setEmail(java.lang.String)
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[71,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[82,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[93,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[103,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[44,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[83,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[103,20] cannot find symbol
+  symbol:   method setPassword(<nulltype>)
+  location: variable newUser of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[117,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[133,54] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,40] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[141,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[153,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[171,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[174,17] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[178,13] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[23,23] cannot find symbol
+  symbol:   method getId()
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[24,29] cannot find symbol
+  symbol:   method getUsername()
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[25,26] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/TestController.java:[26,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.TestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[35,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[46,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[47,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[62,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[73,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[74,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[80,13] cannot find symbol
+  symbol:   method setId(java.lang.Long)
+  location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[90,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[91,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[106,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/service/impl/AdminServiceImpl.java:[33,9] cannot find symbol
+  symbol:   variable log
+  location: class com.example.demo.service.impl.AdminServiceImpl
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.820 s
+[INFO] Finished at: 2025-08-11T06:08:15+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:compile (default-compile) on project demo: Compilation failure: Compilation failure: 
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[46,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,T,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[57,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,T,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[67,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,T,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[77,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[89,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,T,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[98,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[106,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[114,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[123,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[132,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[140,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
+[ERROR]   required: no arguments
+[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
+[ERROR]   reason: actual and formal argument lists differ in length
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[43,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[63,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[75,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[76,36] cannot find symbol
+[ERROR]   symbol:   method getCode()
+[ERROR]   location: variable ex of type com.example.demo.common.BusinessException
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[87,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[99,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[111,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[123,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[135,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[147,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[57,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[59,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[67,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[87,21] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[89,21] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[92,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,43] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,20] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,53] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,20] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,53] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,20] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,50] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[64,38] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[65,38] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[66,35] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[67,34] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[74,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,43] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,20] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,53] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,20] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,53] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,53] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,76] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,55] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,81] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[105,21] cannot find symbol
+[ERROR]   symbol:   method setAdmin(com.example.demo.entity.Admin)
+[ERROR]   location: variable response of type com.example.demo.dto.AdminLoginResponse
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[106,21] cannot find symbol
+[ERROR]   symbol:   method setToken(java.lang.String)
+[ERROR]   location: variable response of type com.example.demo.dto.AdminLoginResponse
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[110,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[122,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[131,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[144,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[155,18] cannot find symbol
+[ERROR]   symbol:   method setId(java.lang.Long)
+[ERROR]   location: variable admin of type com.example.demo.entity.Admin
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[156,38] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[157,35] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[158,38] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[159,34] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[166,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AdminController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[32,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[42,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[56,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[58,13] cannot find symbol
+[ERROR]   symbol:   method setId(long)
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[59,13] cannot find symbol
+[ERROR]   symbol:   method setUsername(java.lang.String)
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[60,13] cannot find symbol
+[ERROR]   symbol:   method setPassword(java.lang.String)
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[61,13] cannot find symbol
+[ERROR]   symbol:   method setEmail(java.lang.String)
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[71,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[82,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[93,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[103,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.ApiTestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[44,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[83,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[103,20] cannot find symbol
+[ERROR]   symbol:   method setPassword(<nulltype>)
+[ERROR]   location: variable newUser of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[117,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[133,54] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,40] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[141,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[153,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[171,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[174,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[178,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.AuthController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[23,23] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[24,29] cannot find symbol
+[ERROR]   symbol:   method getUsername()
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[25,26] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/TestController.java:[26,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.TestController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[35,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[46,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[47,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[62,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[73,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[74,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[80,13] cannot find symbol
+[ERROR]   symbol:   method setId(java.lang.Long)
+[ERROR]   location: variable user of type com.example.demo.entity.User
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[90,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[91,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[106,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.controller.UserController
+[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/service/impl/AdminServiceImpl.java:[33,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.example.demo.service.impl.AdminServiceImpl
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -39,21 +39,21 @@ public interface UserMapper {
     /**
      * 创建新用户
      */
-    @Insert("INSERT INTO user(username, password, email) VALUES(#{username}, #{password}, #{email})")
+    @Insert("INSERT INTO user(username, password, email, role) VALUES(#{username}, #{password}, #{email}, #{role})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(User user);
     
     /**
      * 保存用户（与insert方法相同，为了与Service层方法名一致）
      */
-    @Insert("INSERT INTO user(username, password, email) VALUES(#{username}, #{password}, #{email})")
+    @Insert("INSERT INTO user(username, password, email, role) VALUES(#{username}, #{password}, #{email}, #{role})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int save(User user);
     
     /**
      * 更新用户信息
      */
-    @Update("UPDATE user SET username = #{username}, password = #{password}, email = #{email} WHERE id = #{id}")
+    @Update("UPDATE user SET username = #{username}, password = #{password}, email = #{email}, role = #{role} WHERE id = #{id}")
     int update(User user);
     
     /**
