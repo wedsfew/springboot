@@ -1,0 +1,117 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
+### springboot配置自动注解【✅】
+
+### 实时更新项目文件映射文档 '项目文件映射.md'【进行中】
+
+### 腾讯云SecretKey配置【✅】
+- SecretId: [已配置，使用环境变量]
+- SecretKey: [已配置，使用环境变量]
+
+### 已经配置数据库连接【✅】
+- host: localhost
+- port: 3306
+- username: root
+- password: 22222hua
+- database: demo
+
+### api接口开发进度【✅】
+- 获取所有用户接口  GET /api/users【✅】
+- 根据ID获取用户    GET /api/users/{id}【✅】
+- 更新用户  PUT /api/users/{id} 【✅】
+- 邮箱发送验证码 POST /api/verification/send-code【✅】
+- 验证邮箱验证码 POST /api/verification/verify-code【✅】
+- 用户注册第一步（发送验证码） POST /api/auth/register/step1【✅】
+- 用户注册第二步（验证验证码并完成注册） POST /api/auth/register/step2【✅】
+- 用户登录 POST /api/auth/login【✅】
+- 实现管理员注册接口 POST /api/admin/register【✅】
+- 实现管理员登录接口 POST /api/admin/login【✅】
+- 实现获取管理员信息接口 GET /api/admin/{id}【✅】
+- 实现更新管理员信息接口 PUT /api/admin/{id}【✅】
+- 实现用户登出接口 POST /api/auth/logout【✅】
+- 实现管理员对用户增删改查接口【✅】
+  - 获取所有用户 GET /api/admin/users/【✅】
+  - 根据ID获取用户 GET /api/admin/users/{id}【✅】
+  - 创建用户 POST /api/admin/users【✅】
+  - 更新用户 PUT /api/admin/users/{id}【✅】
+  - 删除用户 DELETE /api/admin/users/{id}【✅】
+  - 根据邮箱查询用户 GET /api/admin/users/email/{email}【✅】
+
+### 全局类【✅】
+- 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】
+- 实现全局异常处理类src/main/java/com/example/demo/common/GlobalExceptionHandler.java【✅】
+
+### 所有API接口都使用ApiResponse统一的响应格式【✅】
+以下接口实现统一响应格式
+- 获取所有用户接口  GET /api/users【✅】
+- 根据ID获取用户    GET /api/users/{id}【✅】
+- 更新用户  PUT /api/users/{id} 【✅】
+- 邮箱发送验证码 POST /api/verification/send-code【✅】
+- 验证邮箱验证码 POST /api/verification/verify-code【✅】
+- 用户注册第一步（发送验证码） POST /api/auth/register/step1【✅】
+- 用户注册第二步（验证验证码并完成注册） POST /api/auth/register/step2【✅】
+- 用户登录 POST /api/auth/login【✅】
+- 实现管理员注册接口 POST /api/admin/register【✅】
+- 实现管理员登录接口 POST /api/admin/login【✅】
+- 实现获取管理员信息接口 GET /api/admin/{id}【✅】
+- 实现更新管理员信息接口 PUT /api/admin/{id}【✅】
+- 实现用户登出接口 POST /api/auth/logout【✅】
+- 实现管理员对用户增删改查接口【✅】
+
+### JWT认证过滤器【✅】
+- 实现JWT认证过滤器，验证请求中的令牌【✅】
+- 更新WebSecurityConfig，保护需要认证的API端点【✅】
+
+### 用户登出功能【✅】
+- 实现用户登出接口 POST /api/auth/logout【✅】
+- 实现TokenBlacklistService令牌黑名单服务【✅】
+- 集成JWT认证过滤器与令牌黑名单检查【✅】
+- 测试验证：登出后旧token无法访问受保护接口【✅】
+
+### 数据表结构同步【✅】
+
+### 密码安全处理【✅】
+- 创建用户时对密码进行加密【✅】
+- 更新用户时对新密码进行加密【✅】
+- API响应中隐藏密码字段【✅】
+
+### API接口文档【✅】
+- 用户登录接口文档【✅】
+- 用户注册接口文档【✅】
+- 邮箱验证码API接口文档【✅】
+- 用户登出接口文档【✅】
+- 管理员接口文档【✅】
+- 管理员用户管理接口文档【✅】
+- 统一响应接口文档【✅】
+- JWT认证过滤器文档【✅】
+
+### 腾讯云DNSPod API接入【✅】
+- 创建域名数据库表结构(domain_info)【✅】
+- 实现Domain实体类【✅】
+- 实现DomainMapper接口【✅】
+- 实现DomainService服务类【✅】
+- 创建DNSPodConfig配置类【✅】
+- 实现DomainController REST API【✅】
+- 腾讯云DNSPod API集成【✅】
+  - 获取域名列表 GET /api/v1/domains【✅】
+  - 从腾讯云获取域名列表 GET /api/v1/domains/cloud【✅】
+  - 同步域名数据 POST /api/v1/domains/sync【✅】
+  - 根据域名ID获取域名信息 GET /api/v1/domains/{domainId}【✅】
+  - 根据域名名称获取域名信息 GET /api/v1/domains/name/{domainName}【✅】
+  - 删除域名信息 DELETE /api/v1/domains/{domainId}【✅】
+- 编写域名管理API测试类【✅】
+- 创建腾讯云DNSPod域名管理API接口文档【✅】
+
+
+
+
+### 下一步  测试腾讯云DNSPod域名管理API接口
+
+
+### 后续任务
+- 实现用户权限控制
+- 添加令牌刷新功能
+- 实现域名解析记录管理功能
