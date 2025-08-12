@@ -184,3 +184,4 @@ interface RegisterSuccessResponse {
 ### 每完成一个api接口的实现，同时生成对应的api测试类，取名以xxx_test.java(比如UserRegisterTest.java)，方便在后续开发复测api接口
 ### api测试类文件保存在文件夹‘src/test/java/com/example/demo/test/’目录中
 ### 后续根据业务要求随时修改代码
+### 每完成一个api接口的实现都要测试一遍api接口，api测试报告保存在文件夹‘api测试报告’中

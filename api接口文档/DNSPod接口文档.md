@@ -31,31 +31,76 @@
 }
 ```
 
+### 获取域名列表（带分页）
+
+- **接口路径**: `GET /domains/search`
+- **描述**: 获取用户的域名列表，支持分页、关键字搜索和分组过滤
+- **请求参数**:
+  - `offset`: (可选) 偏移量，默认0
+  - `limit`: (可选) 限制数量，默认20
+  - `keyword`: (可选) 关键字，用于搜索域名
+  - `groupId`: (可选) 分组ID，用于过滤特定分组的域名
+- **响应示例**:
+
+```json
+{
+  "code": 200,
+  "message": "获取域名列表成功",
+  "data": {
+    "domains": [
+      {
+        "domainId": 12345,
+        "name": "example.com",
+        "status": "ENABLE",
+        "grade": "DP_Free",
+        "recordCount": 5
+      }
+    ],
+    "info": {
+      "domain_total": 10,
+      "all_total": 10,
+      "mine_total": 10
+    },
+    "success": true,
+    "message": "获取域名列表成功",
+    "requestId": "7b7d13c4-5924-4e2a-b892-04f76a9f5239"
+  },
+  "timestamp": "2025-08-12T10:30:00Z"
+}
+```
+
 ## 记录管理接口
 
 ### 获取记录列表
 
 - **接口路径**: `GET /domains/{domain}/records`
-- **描述**: 获取指定域名下的所有记录
+- **描述**: 获取指定域名下的所有记录，支持分页查询
 - **请求参数**:
   - `domain`: 域名，如 example.com
+  - `offset`: (可选) 偏移量，默认0
+  - `limit`: (可选) 限制数量，默认20，最大3000
 - **响应示例**:
 
 ```json
 {
   "code": 200,
   "message": "获取记录列表成功",
-  "data": [
-    {
-      "recordId": 12345,
-      "subDomain": "www",
-      "recordType": "A",
-      "recordLine": "默认",
-      "value": "192.168.1.1",
-      "ttl": 600,
-      "status": "ENABLE"
-    }
-  ],
+  "data": {
+    "records": [
+      {
+        "recordId": 12345,
+        "subDomain": "www",
+        "recordType": "A",
+        "recordLine": "默认",
+        "value": "192.168.1.1",
+        "ttl": 600,
+        "status": "ENABLE"
+      }
+    ],
+    "totalCount": 1,
+    "success": true,
+    "message": "获取记录列表成功"
+  },
   "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
@@ -76,7 +121,7 @@
   - `sortField`: (可选) 排序字段，支持name,line,type,value,weight,mx,ttl,updated_on
   - `sortType`: (可选) 排序方式，ASC(正序)或DESC(逆序)，默认ASC
   - `offset`: (可选) 偏移量，默认0
-  - `limit`: (可选) 限制数量，默认100，最大3000
+  - `limit`: (可选) 限制数量，默认20，最大3000
 - **响应示例**:
 
 ```json
@@ -131,6 +176,12 @@
       "ttl": 600
     }
     ```
+  - **参数说明**:
+    - `subDomain`: 主机记录，如 www、@、* 等
+    - `recordType`: 记录类型，如 A、CNAME、MX、TXT 等
+    - `recordLine`: 解析线路，默认为"默认"
+    - `value`: 记录值，根据记录类型填写相应的值
+    - `ttl`: TTL值，范围600-86400秒，默认600秒
 - **响应示例**:
 
 ```json
@@ -163,6 +214,12 @@
       "ttl": 600
     }
     ```
+  - **参数说明**:
+    - `subDomain`: 主机记录，如 www、@、* 等
+    - `recordType`: 记录类型，如 A、CNAME、MX、TXT 等
+    - `recordLine`: 解析线路，默认为"默认"
+    - `value`: 记录值，根据记录类型填写相应的值
+    - `ttl`: TTL值，范围600-86400秒，默认600秒
 - **响应示例**:
 
 ```json
@@ -254,4 +311,11 @@ curl -X POST "http://localhost:8084/api/dnspod/domains/example.com/groups" \
 
 ```bash
 curl -X GET "http://localhost:8084/api/dnspod/domains/example.com/records/search?keyword=test&recordType=A&limit=10" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### 获取域名列表（带分页）
+
+```bash
+curl -X GET "http://localhost:8084/api/dnspod/domains/search?offset=0&limit=10&keyword=example" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"

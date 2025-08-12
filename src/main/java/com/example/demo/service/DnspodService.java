@@ -20,6 +20,16 @@ public interface DnspodService {
     List<Map<String, Object>> getDomainList();
     
     /**
+     * 获取域名列表（带分页）
+     * @param offset 偏移量（可选，默认0）
+     * @param limit 限制数量（可选，默认20）
+     * @param keyword 关键字（可选，用于搜索域名）
+     * @param groupId 分组ID（可选）
+     * @return 域名列表及分页信息
+     */
+    Map<String, Object> getDomainListWithPagination(Integer offset, Integer limit, String keyword, Integer groupId);
+    
+    /**
      * 获取域名记录列表
      * @param domain 域名
      * @return 记录列表

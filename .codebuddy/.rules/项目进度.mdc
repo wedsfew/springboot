@@ -75,6 +75,27 @@ alwaysApply: true
 
 
 
+### DNSPod API接口开发进度【✅】
+#### 域名管理接口
+- 获取域名列表 GET /api/dnspod/domains【✅】
+- 获取域名列表（带分页） GET /api/dnspod/domains/search【✅】
+  - 支持分页参数：offset(默认0), limit(默认20)
+  - 支持关键字搜索和分组过滤
+
+#### DNS记录管理接口
+- 获取记录列表（支持分页） GET /api/dnspod/domains/{domain}/records【✅】
+  - 支持分页参数：offset(默认0), limit(默认20)
+- 获取记录列表（高级查询） GET /api/dnspod/domains/{domain}/records/search【✅】
+  - 支持多种查询条件：子域名、记录类型、线路等
+  - 支持分页和排序功能
+- 创建记录 POST /api/dnspod/domains/{domain}/records【✅】
+  - 支持TTL范围验证(600-86400秒)
+- 修改记录 PUT /api/dnspod/domains/{domain}/records/{recordId}【✅】
+  - 支持TTL范围验证(600-86400秒)
+- 删除记录 DELETE /api/dnspod/domains/{domain}/records/{recordId}【✅】
+
+
+
 ### 后续任务
 - 实现用户权限控制
 - 添加令牌刷新功能
