@@ -14,6 +14,7 @@ import java.util.Map;
  * 作者：CodeBuddy
  * 创建时间：2025-08-12
  * 版本：v1.0.0
+ * 更新时间：2025-08-12
  */
 @RestController
 @RequestMapping("/api/dnspod")
@@ -41,6 +42,39 @@ public class DnspodController {
     public ApiResponse<List<Map<String, Object>>> getRecordList(@PathVariable String domain) {
         List<Map<String, Object>> records = dnspodService.getRecordList(domain);
         return ApiResponse.success("获取记录列表成功", records);
+    }
+    
+    /**
+     * 获取域名解析记录列表（高级查询）
+     * @param domain 域名
+     * @param params 查询参数
+     * @return 记录列表及统计信息
+     */
+    @RequestMapping(value = "/domains/{domain}/records/search", method = RequestMethod.GET)
+    public ApiResponse<Map<String, Object>> searchRecordList(
+            @PathVariable String domain,
+            @RequestParam(required = false) Long domainId,
+            @RequestParam(required = false) String subdomain,
+            @RequestParam(required = false) String recordType,
+            @RequestParam(required = false) String recordLine,
+            @RequestParam(required = false) String recordLineId,
+            @RequestParam(required = false) Integer groupId,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String sortField,
+            @RequestParam(required = false) String sortType,
+            @RequestParam(required = false) Integer offset,
+            @RequestParam(required = false) Integer limit) {
+        
+        Map<String, Object> result = dnspodService.getRecordList(
+            domain, domainId, subdomain, recordType, recordLine, recordLineId,
+            groupId, keyword, sortField, sortType, offset, limit
+        );
+        
+        if ((Boolean) result.get("success")) {
+            return ApiResponse.success((String) result.get("message"), result);
+        } else {
+            return ApiResponse.badRequest((String) result.get("message"));
+        }
     }
 
     /**
@@ -103,6 +137,26 @@ public class DnspodController {
         
         if ((Boolean) result.get("success")) {
             return ApiResponse.success((String) result.get("message"), null);
+        } else {
+            return ApiResponse.badRequest((String) result.get("message"));
+        }
+    }
+    
+    /**
+     * 创建记录分组
+     * @param domain 域名
+     * @param params 请求参数
+     * @return 创建结果
+     */
+    @PostMapping("/domains/{domain}/groups")
+    public ApiResponse<Map<String, Object>> createRecordGroup(@PathVariable String domain, @RequestBody Map<String, Object> params) {
+        String groupName = (String) params.get("groupName");
+        Long domainId = params.get("domainId") != null ? Long.valueOf(params.get("domainId").toString()) : null;
+        
+        Map<String, Object> result = dnspodService.createRecordGroup(domain, groupName, domainId);
+        
+        if ((Boolean) result.get("success")) {
+            return ApiResponse.created(result);
         } else {
             return ApiResponse.badRequest((String) result.get("message"));
         }

@@ -1,35 +1,19 @@
-# DNSPod接口文档
+# DNSPod API接口文档
 
-## 一、接口概述
+## 基本信息
 
-本文档描述了DNSPod相关的API接口，用于管理域名和域名记录。
+- **基础路径**: `/api/dnspod`
+- **认证要求**: 需要JWT认证
+- **数据格式**: JSON
 
-### 基本信息
+## 域名管理接口
 
-| 项目             | 内容                           |
-| ---------------- | ------------------------------ |
-| **Base URL**     | `http://localhost:8084/api/dnspod` |
-| **Content-Type** | `application/json`             |
-| **字符编码**     | `UTF-8`                        |
+### 获取域名列表
 
-## 二、接口详情
-
-### 2.1 获取域名列表
-
-#### 基本信息
-
-- **接口标识**：`DNSPOD_GET_DOMAINS`
-- **请求路径**：`GET /domains`
-- **接口描述**：获取用户的域名列表
-- **认证要求**：需要认证（JWT令牌）
-
-#### 请求参数
-
-无
-
-#### 响应示例
-
-##### 成功响应（状态码 200）
+- **接口路径**: `GET /domains`
+- **描述**: 获取用户的所有域名列表
+- **请求参数**: 无
+- **响应示例**:
 
 ```json
 {
@@ -41,36 +25,21 @@
       "name": "example.com",
       "status": "ENABLE",
       "recordCount": 5
-    },
-    {
-      "domainId": 67890,
-      "name": "test.com",
-      "status": "ENABLE",
-      "recordCount": 3
     }
   ],
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-### 2.2 获取域名记录列表
+## 记录管理接口
 
-#### 基本信息
+### 获取记录列表
 
-- **接口标识**：`DNSPOD_GET_RECORDS`
-- **请求路径**：`GET /domains/{domain}/records`
-- **接口描述**：获取指定域名的记录列表
-- **认证要求**：需要认证（JWT令牌）
-
-#### 路径参数
-
-| 参数名 | 类型   | 描述     | 是否必须 |
-| ------ | ------ | -------- | -------- |
-| domain | String | 域名     | 是       |
-
-#### 响应示例
-
-##### 成功响应（状态码 200）
+- **接口路径**: `GET /domains/{domain}/records`
+- **描述**: 获取指定域名下的所有记录
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+- **响应示例**:
 
 ```json
 {
@@ -85,121 +54,116 @@
       "value": "192.168.1.1",
       "ttl": 600,
       "status": "ENABLE"
-    },
-    {
-      "recordId": 67890,
-      "subDomain": "mail",
-      "recordType": "MX",
-      "recordLine": "默认",
-      "value": "mail.example.com.",
-      "ttl": 3600,
-      "status": "ENABLE"
     }
   ],
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-### 2.3 创建域名记录
+### 获取记录列表（高级查询）
 
-#### 基本信息
-
-- **接口标识**：`DNSPOD_CREATE_RECORD`
-- **请求路径**：`POST /domains/{domain}/records`
-- **接口描述**：创建域名记录
-- **认证要求**：需要认证（JWT令牌）
-
-#### 路径参数
-
-| 参数名 | 类型   | 描述     | 是否必须 |
-| ------ | ------ | -------- | -------- |
-| domain | String | 域名     | 是       |
-
-#### 请求参数
+- **接口路径**: `GET /domains/{domain}/records/search`
+- **描述**: 获取指定域名下的解析记录，支持多种查询条件
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+  - `domainId`: (可选) 域名ID，如果提供则优先使用
+  - `subdomain`: (可选) 主机头，如果提供则只返回此主机头对应的记录
+  - `recordType`: (可选) 记录类型，如A，CNAME，NS等
+  - `recordLine`: (可选) 线路名称
+  - `recordLineId`: (可选) 线路ID，优先于recordLine
+  - `groupId`: (可选) 分组ID
+  - `keyword`: (可选) 关键字，用于搜索主机头和记录值
+  - `sortField`: (可选) 排序字段，支持name,line,type,value,weight,mx,ttl,updated_on
+  - `sortType`: (可选) 排序方式，ASC(正序)或DESC(逆序)，默认ASC
+  - `offset`: (可选) 偏移量，默认0
+  - `limit`: (可选) 限制数量，默认100，最大3000
+- **响应示例**:
 
 ```json
 {
-  "subDomain": "www",
-  "recordType": "A",
-  "recordLine": "默认",
-  "value": "192.168.1.1",
-  "ttl": 600
+  "code": 200,
+  "message": "获取记录列表成功",
+  "data": {
+    "recordList": [
+      {
+        "recordId": 556507778,
+        "value": "f1g1ns1.dnspod.net.",
+        "status": "ENABLE",
+        "updatedOn": "2021-03-28 11:27:09",
+        "name": "@",
+        "line": "默认",
+        "lineId": "0",
+        "type": "NS",
+        "weight": null,
+        "monitorStatus": "",
+        "remark": "",
+        "ttl": 86400,
+        "mx": 0,
+        "defaultNS": true
+      }
+    ],
+    "recordCountInfo": {
+      "subdomainCount": 2,
+      "totalCount": 2,
+      "listCount": 2
+    },
+    "success": true,
+    "message": "获取记录列表成功",
+    "requestId": "561cdfcb-37a6-47de-b3c5-2b038e2c2276"
+  },
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-#### 参数说明
+### 创建记录
 
-| 参数名     | 类型   | 必填 | 说明                                     |
-| ---------- | ------ | ---- | ---------------------------------------- |
-| subDomain  | string | 是   | 子域名，如www                            |
-| recordType | string | 是   | 记录类型，如A, CNAME, MX, TXT等          |
-| recordLine | string | 是   | 记录线路，如默认, 电信, 联通等           |
-| value      | string | 是   | 记录值，如IP地址                         |
-| ttl        | int    | 是   | 生存时间，单位秒                         |
-
-#### 响应示例
-
-##### 成功响应（状态码 201）
+- **接口路径**: `POST /domains/{domain}/records`
+- **描述**: 在指定域名下创建新的记录
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+  - 请求体:
+    ```json
+    {
+      "subDomain": "www",
+      "recordType": "A",
+      "recordLine": "默认",
+      "value": "192.168.1.1",
+      "ttl": 600
+    }
+    ```
+- **响应示例**:
 
 ```json
 {
   "code": 201,
-  "message": "创建记录成功",
+  "message": "创建成功",
   "data": {
     "recordId": 12345,
     "success": true,
     "message": "创建记录成功"
   },
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-##### 失败响应（状态码 400）
+### 修改记录
 
-```json
-{
-  "code": 400,
-  "message": "创建记录失败: 参数错误",
-  "data": null,
-  "timestamp": "2025-08-12T06:30:00+08:00"
-}
-```
-
-### 2.4 修改域名记录
-
-#### 基本信息
-
-- **接口标识**：`DNSPOD_MODIFY_RECORD`
-- **请求路径**：`PUT /domains/{domain}/records/{recordId}`
-- **接口描述**：修改域名记录
-- **认证要求**：需要认证（JWT令牌）
-
-#### 路径参数
-
-| 参数名   | 类型   | 描述     | 是否必须 |
-| -------- | ------ | -------- | -------- |
-| domain   | String | 域名     | 是       |
-| recordId | String | 记录ID   | 是       |
-
-#### 请求参数
-
-```json
-{
-  "subDomain": "www",
-  "recordType": "A",
-  "recordLine": "默认",
-  "value": "192.168.1.2",
-  "ttl": 600
-}
-```
-
-#### 参数说明
-
-与创建域名记录接口相同
-
-#### 响应示例
-
-##### 成功响应（状态码 200）
+- **接口路径**: `PUT /domains/{domain}/records/{recordId}`
+- **描述**: 修改指定域名下的记录
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+  - `recordId`: 记录ID
+  - 请求体:
+    ```json
+    {
+      "subDomain": "www",
+      "recordType": "A",
+      "recordLine": "默认",
+      "value": "192.168.1.2",
+      "ttl": 600
+    }
+    ```
+- **响应示例**:
 
 ```json
 {
@@ -210,96 +174,84 @@
     "success": true,
     "message": "修改记录成功"
   },
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-##### 失败响应（状态码 400）
+### 删除记录
 
-```json
-{
-  "code": 400,
-  "message": "修改记录失败: 记录不存在",
-  "data": null,
-  "timestamp": "2025-08-12T06:30:00+08:00"
-}
-```
-
-### 2.5 删除域名记录
-
-#### 基本信息
-
-- **接口标识**：`DNSPOD_DELETE_RECORD`
-- **请求路径**：`DELETE /domains/{domain}/records/{recordId}`
-- **接口描述**：删除域名记录
-- **认证要求**：需要认证（JWT令牌）
-
-#### 路径参数
-
-| 参数名   | 类型   | 描述     | 是否必须 |
-| -------- | ------ | -------- | -------- |
-| domain   | String | 域名     | 是       |
-| recordId | String | 记录ID   | 是       |
-
-#### 响应示例
-
-##### 成功响应（状态码 200）
+- **接口路径**: `DELETE /domains/{domain}/records/{recordId}`
+- **描述**: 删除指定域名下的记录
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+  - `recordId`: 记录ID
+- **响应示例**:
 
 ```json
 {
   "code": 200,
   "message": "删除记录成功",
   "data": null,
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-##### 失败响应（状态码 400）
+## 记录分组管理接口
+
+### 创建记录分组
+
+- **接口路径**: `POST /domains/{domain}/groups`
+- **描述**: 在指定域名下创建新的记录分组
+- **请求参数**:
+  - `domain`: 域名，如 example.com
+  - 请求体:
+    ```json
+    {
+      "groupName": "测试分组",
+      "domainId": 12345  // 可选，如果提供则优先使用
+    }
+    ```
+- **响应示例**:
 
 ```json
 {
-  "code": 400,
-  "message": "删除记录失败: 记录不存在",
-  "data": null,
-  "timestamp": "2025-08-12T06:30:00+08:00"
+  "code": 201,
+  "message": "创建成功",
+  "data": {
+    "groupId": 146,
+    "success": true,
+    "message": "创建记录分组成功",
+    "requestId": "ec8949ba-ec3c-446e-b9eb-5aeafa238f0a"
+  },
+  "timestamp": "2025-08-12T10:30:00Z"
 }
 ```
 
-## 三、测试用例
+## 错误码说明
 
-### 3.1 获取域名列表测试
+| 状态码 | 含义 | 说明 |
+| ------ | ---- | ---- |
+| 200 | 成功 | 请求处理成功 |
+| 201 | 创建成功 | 资源创建成功 |
+| 400 | 请求错误 | 参数格式错误或缺失 |
+| 401 | 未授权 | 未登录或token无效 |
+| 403 | 禁止访问 | 无权限执行操作 |
+| 404 | 资源不存在 | 请求的资源不存在 |
+| 500 | 服务器错误 | 服务器内部错误 |
 
-```bash
-curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" http://localhost:8084/api/dnspod/domains
-```
+## 测试示例
 
-### 3.2 获取域名记录列表测试
-
-```bash
-curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" http://localhost:8084/api/dnspod/domains/example.com/records
-```
-
-### 3.3 创建域名记录测试
-
-```bash
-curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" -H "Content-Type: application/json" -d '{"subDomain":"www","recordType":"A","recordLine":"默认","value":"192.168.1.1","ttl":600}' http://localhost:8084/api/dnspod/domains/example.com/records
-```
-
-### 3.4 修改域名记录测试
+### 创建记录分组
 
 ```bash
-curl -X PUT -H "Authorization: Bearer YOUR_JWT_TOKEN" -H "Content-Type: application/json" -d '{"subDomain":"www","recordType":"A","recordLine":"默认","value":"192.168.1.2","ttl":600}' http://localhost:8084/api/dnspod/domains/example.com/records/12345
+curl -X POST "http://localhost:8084/api/dnspod/domains/example.com/groups" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{"groupName": "测试分组"}'
 ```
 
-### 3.5 删除域名记录测试
+### 获取记录列表（高级查询）
 
 ```bash
-curl -X DELETE -H "Authorization: Bearer YOUR_JWT_TOKEN" http://localhost:8084/api/dnspod/domains/example.com/records/12345
-```
-
-## 四、注意事项
-
-1. 所有接口都需要JWT认证，请在请求头中添加`Authorization: Bearer YOUR_JWT_TOKEN`
-2. 创建和修改记录时，请确保提供的参数符合DNSPod的要求
-3. 在使用接口前，请确保已在application.properties中配置了正确的腾讯云SecretId和SecretKey
-4. 接口返回的状态码和消息可能会根据DNSPod API的响应而变化
+curl -X GET "http://localhost:8084/api/dnspod/domains/example.com/records/search?keyword=test&recordType=A&limit=10" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"

@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.service.DnspodService;
+import com.tencentcloudapi.common.AbstractModel;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.dnspod.v20210323.DnspodClient;
 import com.tencentcloudapi.dnspod.v20210323.models.*;
@@ -20,6 +21,7 @@ import java.util.Map;
  * 作者：CodeBuddy
  * 创建时间：2025-08-12
  * 版本：v1.0.0
+ * 更新时间：2025-08-12
  */
 @Service
 public class DnspodServiceImpl implements DnspodService {
@@ -166,6 +168,156 @@ public class DnspodServiceImpl implements DnspodService {
             result.put("success", false);
             result.put("message", "删除记录失败: " + e.getMessage());
         }
+        return result;
+    }
+    
+    @Override
+    public Map<String, Object> createRecordGroup(String domain, String groupName, Long domainId) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            // 实例化一个请求对象
+            CreateRecordGroupRequest req = new CreateRecordGroupRequest();
+            
+            // 设置域名，如果提供了domainId则优先使用
+            if (domainId != null) {
+                req.setDomainId(domainId);
+            } else {
+                req.setDomain(domain);
+            }
+            
+            // 设置分组名称
+            req.setGroupName(groupName);
+            
+            // 调用API创建记录分组
+            CreateRecordGroupResponse resp = dnspodClient.CreateRecordGroup(req);
+            
+            // 处理返回结果
+            result.put("groupId", resp.getGroupId());
+            result.put("success", true);
+            result.put("message", "创建记录分组成功");
+            result.put("requestId", resp.getRequestId());
+            
+            // 记录日志
+            logger.info("创建记录分组成功: domain={}, groupName={}, groupId={}", 
+                       domain, groupName, resp.getGroupId());
+        } catch (TencentCloudSDKException e) {
+            logger.error("创建记录分组失败: {}", e.getMessage());
+            result.put("success", false);
+            result.put("message", "创建记录分组失败: " + e.getMessage());
+        }
+        return result;
+    }
+    
+    @Override
+    public Map<String, Object> getRecordList(String domain, Long domainId, String subdomain, 
+                                           String recordType, String recordLine, String recordLineId,
+                                           Integer groupId, String keyword, String sortField, 
+                                           String sortType, Integer offset, Integer limit) {
+        Map<String, Object> result = new HashMap<>();
+        List<Map<String, Object>> recordList = new ArrayList<>();
+        
+        try {
+            // 实例化一个请求对象
+            DescribeRecordListRequest req = new DescribeRecordListRequest();
+            
+            // 设置域名，如果提供了domainId则优先使用
+            if (domainId != null) {
+                req.setDomainId(domainId);
+            } else {
+                req.setDomain(domain);
+            }
+            
+            // 设置可选参数
+            if (subdomain != null) {
+                req.setSubdomain(subdomain);
+            }
+            
+            if (recordType != null) {
+                req.setRecordType(recordType);
+            }
+            
+            if (recordLine != null) {
+                req.setRecordLine(recordLine);
+            }
+            
+            if (recordLineId != null) {
+                req.setRecordLineId(recordLineId);
+            }
+            
+            if (groupId != null) {
+                // 修复：将Integer类型的groupId转换为Long类型
+                req.setGroupId(groupId.longValue());
+            }
+            
+            if (keyword != null) {
+                req.setKeyword(keyword);
+            }
+            
+            if (sortField != null) {
+                req.setSortField(sortField);
+            }
+            
+            if (sortType != null) {
+                req.setSortType(sortType);
+            }
+            
+            if (offset != null) {
+                req.setOffset(offset.longValue());
+            }
+            
+            if (limit != null) {
+                req.setLimit(limit.longValue());
+            } else {
+                // 默认限制为100条
+                req.setLimit(100L);
+            }
+            
+            // 调用API获取记录列表
+            DescribeRecordListResponse resp = dnspodClient.DescribeRecordList(req);
+            
+            // 处理返回结果 - 记录列表
+            for (RecordListItem record : resp.getRecordList()) {
+                Map<String, Object> recordMap = new HashMap<>();
+                recordMap.put("recordId", record.getRecordId());
+                recordMap.put("value", record.getValue());
+                recordMap.put("status", record.getStatus());
+                recordMap.put("updatedOn", record.getUpdatedOn());
+                recordMap.put("name", record.getName());
+                recordMap.put("line", record.getLine());
+                recordMap.put("lineId", record.getLineId());
+                recordMap.put("type", record.getType());
+                recordMap.put("weight", record.getWeight());
+                recordMap.put("monitorStatus", record.getMonitorStatus());
+                recordMap.put("remark", record.getRemark());
+                recordMap.put("ttl", record.getTTL());
+                recordMap.put("mx", record.getMX());
+                recordMap.put("defaultNS", record.getDefaultNS());
+                
+                recordList.add(recordMap);
+            }
+            
+            // 处理返回结果 - 统计信息
+            Map<String, Object> countInfo = new HashMap<>();
+            countInfo.put("subdomainCount", resp.getRecordCountInfo().getSubdomainCount());
+            countInfo.put("totalCount", resp.getRecordCountInfo().getTotalCount());
+            countInfo.put("listCount", resp.getRecordCountInfo().getListCount());
+            
+            // 组装最终结果
+            result.put("recordList", recordList);
+            result.put("recordCountInfo", countInfo);
+            result.put("success", true);
+            result.put("message", "获取记录列表成功");
+            result.put("requestId", resp.getRequestId());
+            
+            // 记录日志
+            logger.info("获取记录列表成功: domain={}, totalCount={}", 
+                       domain, resp.getRecordCountInfo().getTotalCount());
+        } catch (TencentCloudSDKException e) {
+            logger.error("获取记录列表失败: {}", e.getMessage());
+            result.put("success", false);
+            result.put("message", "获取记录列表失败: " + e.getMessage());
+        }
+        
         return result;
     }
 }
