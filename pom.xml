@@ -30,6 +30,13 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- 腾讯云SDK依赖 -->
+		<dependency>
+			<groupId>com.tencentcloudapi</groupId>
+			<artifactId>tencentcloud-sdk-java</artifactId>
+			<version>3.1.815</version>
+		</dependency>
+		
 		<!-- Spring Boot Mail 依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
