@@ -1,54 +1,12 @@
----
-description: 
-globs:
-alwaysApply: true
----
-# 数据表结构
-## mysql 数据库demo 的表结构
-### user表
- 
-```sql
-CREATE TABLE `user` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'USER',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
-#### 测试数据
-- email: allnotice@qq.com
-- password: 12345678
-### admin表
+-- 免费3级域名服务数据库表结构
+-- 文件名：schema-domain-service.sql
+-- 功能：支持免费3级域名申请和DNS解析服务的数据库表
+-- 作者：CodeBuddy
+-- 创建时间：2025-08-12
+-- 版本：v1.0.0
 
-```sql
-CREATE TABLE `admin` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'ADMIN',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
-#### 测试数据
-- username: admin
-- password: admin
-
-## 免费3级域名服务表结构
-
-### domains表 (域名管理表)
-用于管理可分配的3级域名
-
-```sql
+-- 1. 域名管理表 (domains)
+-- 用于管理可分配的3级域名
 CREATE TABLE `domains` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `domain_name` varchar(100) NOT NULL COMMENT '域名名称，如 cblog.eu',
@@ -63,12 +21,9 @@ CREATE TABLE `domains` (
   UNIQUE KEY `domain_name` (`domain_name`),
   UNIQUE KEY `domain_id` (`domain_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='域名管理表';
-```
 
-### user_domains表 (用户域名表)
-用于管理用户申请的3级域名
-
-```sql
+-- 2. 用户域名表 (user_domains)
+-- 用于管理用户申请的3级域名
 CREATE TABLE `user_domains` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` bigint NOT NULL COMMENT '用户ID',
@@ -88,12 +43,9 @@ CREATE TABLE `user_domains` (
   CONSTRAINT `fk_user_domains_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_user_domains_domain` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户域名表';
-```
 
-### dns_records表 (DNS记录表)
-用于管理用户域名的DNS解析记录
-
-```sql
+-- 3. DNS记录表 (dns_records)
+-- 用于管理用户域名的DNS解析记录
 CREATE TABLE `dns_records` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_domain_id` bigint NOT NULL COMMENT '用户域名ID',
@@ -116,12 +68,9 @@ CREATE TABLE `dns_records` (
   CONSTRAINT `fk_dns_records_user_domain` FOREIGN KEY (`user_domain_id`) REFERENCES `user_domains` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_dns_records_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='DNS记录表';
-```
 
-### domain_applications表 (域名申请记录表)
-用于记录用户的域名申请历史
-
-```sql
+-- 4. 域名申请记录表 (domain_applications)
+-- 用于记录用户的域名申请历史
 CREATE TABLE `domain_applications` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` bigint NOT NULL COMMENT '用户ID',
@@ -143,12 +92,9 @@ CREATE TABLE `domain_applications` (
   CONSTRAINT `fk_domain_applications_domain` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_domain_applications_admin` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='域名申请记录表';
-```
 
-### user_quotas表 (用户配额表)
-用于管理用户的资源配额
-
-```sql
+-- 5. 用户配额表 (user_quotas)
+-- 用于管理用户的资源配额
 CREATE TABLE `user_quotas` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` bigint NOT NULL COMMENT '用户ID',
@@ -163,12 +109,9 @@ CREATE TABLE `user_quotas` (
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `fk_user_quotas_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户配额表';
-```
 
-### operation_logs表 (操作日志表)
-用于记录重要操作的审计日志
-
-```sql
+-- 6. 操作日志表 (operation_logs)
+-- 用于记录重要操作的审计日志
 CREATE TABLE `operation_logs` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` bigint COMMENT '操作用户ID',
@@ -190,32 +133,12 @@ CREATE TABLE `operation_logs` (
   CONSTRAINT `fk_operation_logs_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL,
   CONSTRAINT `fk_operation_logs_admin` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='操作日志表';
-```
 
-## 表关系说明
-
-### 核心业务流程
-1. **domains** ← **user_domains** ← **dns_records**: 主域名 → 用户子域名 → DNS记录
-2. **user** ← **user_domains**: 用户 → 用户域名
-3. **user** ← **user_quotas**: 用户 → 配额限制
-4. **user** ← **domain_applications**: 用户 → 域名申请记录
-5. **admin** ← **domain_applications**: 管理员 → 申请处理记录
-
-### 功能支持
-- 多主域名管理 (支持扩展更多免费域名)
-- 用户3级域名申请和管理
-- DNS记录的完整生命周期管理
-- 用户配额控制 (防止滥用)
-- 申请审核流程 (可选自动或手动审核)
-- 完整的操作审计日志
-
-### 初始化数据
-```sql
--- 插入主域名 cblog.eu
+-- 初始化数据
+-- 插入主域名 cblog.eu (需要替换为实际的DNSPod域名ID)
 INSERT INTO `domains` (`domain_name`, `domain_id`, `status`, `max_subdomains`, `description`) 
 VALUES ('cblog.eu', 'your_dnspod_domain_id_here', 'ACTIVE', 10000, '免费3级域名服务主域名');
 
 -- 为现有用户创建默认配额
 INSERT INTO `user_quotas` (`user_id`, `max_domains`, `max_dns_records`, `quota_type`) 
 SELECT `id`, 1, 10, 'FREE' FROM `user`;
-```

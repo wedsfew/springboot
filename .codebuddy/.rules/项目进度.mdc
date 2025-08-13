@@ -94,8 +94,18 @@ alwaysApply: true
   - 支持TTL范围验证(600-86400秒)
 - 删除记录 DELETE /api/dnspod/domains/{domain}/records/{recordId}【✅】
 
+### 下一步 我想给用户提供免费的3级域名（a.cblog.eu）和dns解析服务，dns解析使用腾讯云的dnspod的api接口，我应该创建什么表才能完善这个项目？这是数据库已有的表.codebuddy/.rules/数据表结构.mdc
+这是项目已经完成的api接口api接口文档
 
 
-### 后续任务
+
+### 后续任务业务流程
+
+
+-用户申请3级域名 → domain_applications表记录申请
+-管理员审核通过 → user_domains表创建域名记录
+-用户管理DNS记录 → dns_records表存储解析记录
+-配额控制 → user_quotas表限制用户资源使用
+-操作审计 → operation_logs表记录所有重要操作
 - 实现用户权限控制
 - 添加令牌刷新功能
