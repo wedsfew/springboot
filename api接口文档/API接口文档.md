@@ -20,7 +20,7 @@
 
 | 项目             | 内容                           | 说明                                                         |
 | ---------------- | ------------------------------ | ------------------------------------------------------------ |
-| **Base URL**     | `http://localhost:8083/api/v1` | 接口基础路径，版本号（v1）需随重大变更升级                   |
+| **Base URL**     | `http://localhost:8080/api/v1` | 接口基础路径，版本号（v1）需随重大变更升级                   |
 | **Content-Type** | `application/json`             | 统一采用 JSON 格式传输数据                                   |
 | **字符编码**     | `UTF-8`                        | 确保多语言字符兼容                                           |
 | **时间格式**     | `ISO 8601`                     | 示例：`2025-01-09T10:30:00Z`（UTC 时间）、`2025-01-09T18:30:00+08:00`（带时区） |
@@ -98,7 +98,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/users`
+  - 请求：`curl -X GET http://localhost:8080/api/users`
   - 预期响应：code=200，data包含用户列表
 
 ### 3.2 获取单个用户
@@ -149,10 +149,10 @@
 #### 调试说明
 
 - **测试用例 1（成功场景）**：
-  - 请求：`curl -X GET http://localhost:8083/api/users/1`
+  - 请求：`curl -X GET http://localhost:8080/api/users/1`
   - 预期响应：code=200，data包含用户信息
 - **测试用例 2（失败场景）**：
-  - 请求：`curl -X GET http://localhost:8083/api/users/999`
+  - 请求：`curl -X GET http://localhost:8080/api/users/999`
   - 预期响应：code=404，message="用户不存在"
 
 ### 3.3 创建用户
@@ -237,10 +237,10 @@
 #### 调试说明
 
 - **测试用例 1（成功场景）**：
-  - 请求：`curl -X POST -H "Content-Type: application/json" -d '{"username":"newuser","password":"Password123","email":"newuser@example.com"}' http://localhost:8083/api/users`
+  - 请求：`curl -X POST -H "Content-Type: application/json" -d '{"username":"newuser","password":"Password123","email":"newuser@example.com"}' http://localhost:8080/api/users`
   - 预期响应：code=201，data包含新创建的用户信息
 - **测试用例 2（失败场景 - 用户名重复）**：
-  - 请求：`curl -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"Password123","email":"another@example.com"}' http://localhost:8083/api/users`
+  - 请求：`curl -X POST -H "Content-Type: application/json" -d '{"username":"admin","password":"Password123","email":"another@example.com"}' http://localhost:8080/api/users`
   - 预期响应：code=409，message包含用户名已存在的提示
 
 ### 3.4 更新用户
@@ -305,10 +305,10 @@
 #### 调试说明
 
 - **测试用例 1（成功场景）**：
-  - 请求：`curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8083/api/users/1`
+  - 请求：`curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8080/api/users/1`
   - 预期响应：code=200，message="用户更新成功"，data包含更新后的用户信息
 - **测试用例 2（失败场景）**：
-  - 请求：`curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8083/api/users/999`
+  - 请求：`curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8080/api/users/999`
   - 预期响应：code=404，message="用户不存在"
 
 ### 3.5 删除用户
@@ -354,10 +354,10 @@
 #### 调试说明
 
 - **测试用例 1（成功场景）**：
-  - 请求：`curl -X DELETE http://localhost:8083/api/users/2`
+  - 请求：`curl -X DELETE http://localhost:8080/api/users/2`
   - 预期响应：code=200，message="用户删除成功"
 - **测试用例 2（失败场景）**：
-  - 请求：`curl -X DELETE http://localhost:8083/api/users/999`
+  - 请求：`curl -X DELETE http://localhost:8080/api/users/999`
   - 预期响应：code=404，message="用户不存在"
 
 ## 四、系统测试接口
@@ -395,7 +395,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/health`
+  - 请求：`curl -X GET http://localhost:8080/health`
   - 预期响应：code=200，data包含应用状态信息
 
 ## 五、API测试接口
@@ -430,7 +430,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/success`
+  - 请求：`curl -X GET http://localhost:8080/api/test/success`
   - 预期响应：code=200，data为字符串消息
 
 ### 5.2 带数据的成功响应测试
@@ -467,7 +467,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/data`
+  - 请求：`curl -X GET http://localhost:8080/api/test/data`
   - 预期响应：code=200，message="获取数据成功"，data包含用户信息
 
 ### 5.3 创建资源响应测试
@@ -505,7 +505,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X POST http://localhost:8083/api/test/create`
+  - 请求：`curl -X POST http://localhost:8080/api/test/create`
   - 预期响应：code=201，message="创建成功"，data包含新创建的用户信息
 
 ### 5.4 列表数据响应测试
@@ -538,7 +538,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/list`
+  - 请求：`curl -X GET http://localhost:8080/api/test/list`
   - 预期响应：code=200，data为字符串数组
 
 ### 5.5 业务异常测试
@@ -571,7 +571,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/business-error`
+  - 请求：`curl -X GET http://localhost:8080/api/test/business-error`
   - 预期响应：code=400，message包含业务错误信息
 
 ### 5.6 资源未找到异常测试
@@ -606,7 +606,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/not-found/123`
+  - 请求：`curl -X GET http://localhost:8080/api/test/not-found/123`
   - 预期响应：code=404，message包含资源不存在的提示
 
 ### 5.7 服务器错误测试
@@ -639,7 +639,7 @@
 #### 调试说明
 
 - **测试用例**：
-  - 请求：`curl -X GET http://localhost:8083/api/test/server-error`
+  - 请求：`curl -X GET http://localhost:8080/api/test/server-error`
   - 预期响应：code=500，message="服务器内部错误"
 
 ## 六、接口测试方法
@@ -650,25 +650,25 @@
 
 ```bash
 # 获取所有用户
-curl -X GET http://localhost:8083/api/users
+curl -X GET http://localhost:8080/api/users
 
 # 获取单个用户
-curl -X GET http://localhost:8083/api/users/1
+curl -X GET http://localhost:8080/api/users/1
 
 # 创建用户
-curl -X POST -H "Content-Type: application/json" -d '{"username":"newuser","password":"Password123","email":"newuser@example.com"}' http://localhost:8083/api/users
+curl -X POST -H "Content-Type: application/json" -d '{"username":"newuser","password":"Password123","email":"newuser@example.com"}' http://localhost:8080/api/users
 
 # 更新用户
-curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8083/api/users/1
+curl -X PUT -H "Content-Type: application/json" -d '{"username":"updateduser","password":"NewPassword123","email":"updated@example.com"}' http://localhost:8080/api/users/1
 
 # 删除用户
-curl -X DELETE http://localhost:8083/api/users/2
+curl -X DELETE http://localhost:8080/api/users/2
 
 # 健康检查
-curl -X GET http://localhost:8083/health
+curl -X GET http://localhost:8080/health
 
 # 测试成功响应
-curl -X GET http://localhost:8083/api/test/success
+curl -X GET http://localhost:8080/api/test/success
 ```
 
 ### 6.2 使用Postman等API测试工具
@@ -686,10 +686,10 @@ curl -X GET http://localhost:8083/api/test/success
 对于GET类型的接口，可以直接在浏览器地址栏中输入URL进行测试，例如：
 
 ```
-http://localhost:8083/health
-http://localhost:8083/api/users
-http://localhost:8083/api/users/1
-http://localhost:8083/api/test/success
+http://localhost:8080/health
+http://localhost:8080/api/users
+http://localhost:8080/api/users/1
+http://localhost:8080/api/test/success
 ```
 
 ## 七、错误处理

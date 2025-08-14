@@ -301,7 +301,7 @@
 ### 创建记录分组
 
 ```bash
-curl -X POST "http://localhost:8084/api/dnspod/domains/example.com/groups" \
+curl -X POST "http://localhost:8080/api/dnspod/domains/example.com/groups" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -d '{"groupName": "测试分组"}'
@@ -310,12 +310,12 @@ curl -X POST "http://localhost:8084/api/dnspod/domains/example.com/groups" \
 ### 获取记录列表（高级查询）
 
 ```bash
-curl -X GET "http://localhost:8084/api/dnspod/domains/example.com/records/search?keyword=test&recordType=A&limit=10" \
+curl -X GET "http://localhost:8080/api/dnspod/domains/example.com/records/search?keyword=test&recordType=A&limit=10" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ### 获取域名列表（带分页）
 
 ```bash
-curl -X GET "http://localhost:8084/api/dnspod/domains/search?offset=0&limit=10&keyword=example" \
+curl -X GET "http://localhost:8080/api/dnspod/domains/search?offset=0&limit=10&keyword=example" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"

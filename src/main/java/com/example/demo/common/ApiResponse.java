@@ -14,8 +14,14 @@ import java.time.format.DateTimeFormatter;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ApiResponse<T> {
+    
+    public ApiResponse(int code, String message, T data, String timestamp) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
+        this.timestamp = timestamp;
+    }
     /**
      * 业务状态码
      */

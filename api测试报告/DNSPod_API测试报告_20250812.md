@@ -1,7 +1,7 @@
 # DNSPod API接口测试报告
 
 **测试时间**: 2025年8月12日 20:45-20:46  
-**测试环境**: localhost:8084  
+**测试环境**: localhost:8080  
 **测试人员**: CodeBuddy  
 **Spring Boot版本**: 2.7.0  
 
@@ -11,7 +11,7 @@
 
 ## 测试环境配置
 
-- **服务器地址**: http://localhost:8084
+- **服务器地址**: http://localhost:8080
 - **认证方式**: JWT Bearer Token
 - **测试用户**: ID=2 (通过登录接口获取token)
 - **测试域名**: cblog.eu, vvvv.host

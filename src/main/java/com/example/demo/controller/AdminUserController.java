@@ -21,12 +21,17 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/api/admin/users")
-@RequiredArgsConstructor
-@Slf4j
 public class AdminUserController {
+    
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AdminUserController.class);
     
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    
+    public AdminUserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
     
     /**
      * 管理员获取所有用户

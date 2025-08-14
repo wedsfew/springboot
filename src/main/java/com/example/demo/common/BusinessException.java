@@ -6,13 +6,20 @@ import lombok.Getter;
  * 业务异常
  * @author CodeBuddy
  */
-@Getter
 public class BusinessException extends RuntimeException {
     
     /**
      * 错误码
      */
     private final int code;
+    
+    /**
+     * 获取错误码
+     * @return 错误码
+     */
+    public int getCode() {
+        return code;
+    }
     
     /**
      * 创建业务异常

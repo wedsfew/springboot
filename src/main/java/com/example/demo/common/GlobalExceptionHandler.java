@@ -22,9 +22,10 @@ import java.util.stream.Collectors;
  * 全局异常处理器
  * @author CodeBuddy
  */
-@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * 处理参数校验异常
