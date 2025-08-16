@@ -4,6 +4,6 @@ globs:
 alwaysApply: true
 ---
 # my-springboot
-这是一个springboot+mybatis项目的后端项目
+
 ## 静止手动实现的getter、setter和构造函数
 ## 使用Lombok会自动生成getter、setter和构造函数

@@ -1,657 +1,176 @@
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------------------< com.example:demo >--------------------------
-[INFO] Building demo 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.4:run (default-cli) > test-compile @ demo >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
-[INFO] Copying 1 resource from src/main/resources to target/classes
-[INFO] Copying 3 resources from src/main/resources to target/classes
-[INFO] 
-[INFO] --- compiler:3.14.0:compile (default-compile) @ demo ---
-[INFO] Recompiling the module because of changed source code.
-[INFO] Compiling 42 source files with javac [debug parameters release 17] to target/classes
-[INFO] -------------------------------------------------------------
-[ERROR] COMPILATION ERROR : 
-[INFO] -------------------------------------------------------------
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[46,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,T,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[57,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,T,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[67,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,T,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[77,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[89,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,T,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[98,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[106,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[114,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[123,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[132,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[140,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-  required: no arguments
-  found:    int,java.lang.String,<nulltype>,java.lang.String
-  reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[43,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[63,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[75,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[76,36] cannot find symbol
-  symbol:   method getCode()
-  location: variable ex of type com.example.demo.common.BusinessException
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[87,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[99,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[111,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[123,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[135,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[147,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[57,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[59,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[67,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[87,21] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[89,21] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[92,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,43] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,20] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,53] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,20] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,53] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,20] cannot find symbol
-  symbol:   method getEmail()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,50] cannot find symbol
-  symbol:   method getEmail()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[64,38] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[65,38] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[66,35] cannot find symbol
-  symbol:   method getEmail()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[67,34] cannot find symbol
-  symbol:   method getRole()
-  location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[74,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,43] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,20] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,53] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,20] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,53] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,53] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,76] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,55] cannot find symbol
-  symbol:   method getId()
-  location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,81] cannot find symbol
-  symbol:   method getRole()
-  location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[105,21] cannot find symbol
-  symbol:   method setAdmin(com.example.demo.entity.Admin)
-  location: variable response of type com.example.demo.dto.AdminLoginResponse
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[106,21] cannot find symbol
-  symbol:   method setToken(java.lang.String)
-  location: variable response of type com.example.demo.dto.AdminLoginResponse
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[110,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[122,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[131,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[144,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[155,18] cannot find symbol
-  symbol:   method setId(java.lang.Long)
-  location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[156,38] cannot find symbol
-  symbol:   method getUsername()
-  location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[157,35] cannot find symbol
-  symbol:   method getEmail()
-  location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[158,38] cannot find symbol
-  symbol:   method getPassword()
-  location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[159,34] cannot find symbol
-  symbol:   method getRole()
-  location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[166,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[32,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[42,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[56,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[58,13] cannot find symbol
-  symbol:   method setId(long)
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[59,13] cannot find symbol
-  symbol:   method setUsername(java.lang.String)
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[60,13] cannot find symbol
-  symbol:   method setPassword(java.lang.String)
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[61,13] cannot find symbol
-  symbol:   method setEmail(java.lang.String)
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[71,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[82,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[93,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[103,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[44,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[83,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[103,20] cannot find symbol
-  symbol:   method setPassword(<nulltype>)
-  location: variable newUser of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[117,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[133,54] cannot find symbol
-  symbol:   method getId()
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,40] cannot find symbol
-  symbol:   method getUsername()
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[141,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[153,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[171,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[174,17] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[178,13] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[23,23] cannot find symbol
-  symbol:   method getId()
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[24,29] cannot find symbol
-  symbol:   method getUsername()
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[25,26] cannot find symbol
-  symbol:   method getEmail()
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/TestController.java:[26,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.TestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[35,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[46,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[47,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[62,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[73,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[74,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[80,13] cannot find symbol
-  symbol:   method setId(java.lang.Long)
-  location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[90,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[91,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[106,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/service/impl/AdminServiceImpl.java:[33,9] cannot find symbol
-  symbol:   variable log
-  location: class com.example.demo.service.impl.AdminServiceImpl
-[INFO] 100 errors 
-[INFO] -------------------------------------------------------------
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.820 s
-[INFO] Finished at: 2025-08-11T06:08:15+08:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:compile (default-compile) on project demo: Compilation failure: Compilation failure: 
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[46,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,T,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[57,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,T,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[67,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,T,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[77,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[89,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,T,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[98,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[106,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[114,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[123,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[132,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/ApiResponse.java:[140,16] constructor ApiResponse in class com.example.demo.common.ApiResponse<T> cannot be applied to given types;
-[ERROR]   required: no arguments
-[ERROR]   found:    int,java.lang.String,<nulltype>,java.lang.String
-[ERROR]   reason: actual and formal argument lists differ in length
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[43,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[63,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[75,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[76,36] cannot find symbol
-[ERROR]   symbol:   method getCode()
-[ERROR]   location: variable ex of type com.example.demo.common.BusinessException
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[87,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[99,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[111,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[123,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[135,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/common/GlobalExceptionHandler.java:[147,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.common.GlobalExceptionHandler
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[57,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[59,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[67,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[87,21] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[89,21] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/filter/JwtAuthenticationFilter.java:[92,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.filter.JwtAuthenticationFilter
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[48,43] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,20] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[51,53] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,20] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[54,53] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,20] cannot find symbol
-[ERROR]   symbol:   method getEmail()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[57,50] cannot find symbol
-[ERROR]   symbol:   method getEmail()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[64,38] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[65,38] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[66,35] cannot find symbol
-[ERROR]   symbol:   method getEmail()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[67,34] cannot find symbol
-[ERROR]   symbol:   method getRole()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminRegisterRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[74,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[86,43] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,20] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[89,53] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,20] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[92,53] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,53] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[98,76] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminLoginRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,55] cannot find symbol
-[ERROR]   symbol:   method getId()
-[ERROR]   location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[101,81] cannot find symbol
-[ERROR]   symbol:   method getRole()
-[ERROR]   location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[105,21] cannot find symbol
-[ERROR]   symbol:   method setAdmin(com.example.demo.entity.Admin)
-[ERROR]   location: variable response of type com.example.demo.dto.AdminLoginResponse
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[106,21] cannot find symbol
-[ERROR]   symbol:   method setToken(java.lang.String)
-[ERROR]   location: variable response of type com.example.demo.dto.AdminLoginResponse
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[110,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[122,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[131,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[144,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[155,18] cannot find symbol
-[ERROR]   symbol:   method setId(java.lang.Long)
-[ERROR]   location: variable admin of type com.example.demo.entity.Admin
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[156,38] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[157,35] cannot find symbol
-[ERROR]   symbol:   method getEmail()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[158,38] cannot find symbol
-[ERROR]   symbol:   method getPassword()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[159,34] cannot find symbol
-[ERROR]   symbol:   method getRole()
-[ERROR]   location: variable request of type com.example.demo.dto.AdminUpdateRequest
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AdminController.java:[166,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AdminController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[32,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[42,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[56,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[58,13] cannot find symbol
-[ERROR]   symbol:   method setId(long)
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[59,13] cannot find symbol
-[ERROR]   symbol:   method setUsername(java.lang.String)
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[60,13] cannot find symbol
-[ERROR]   symbol:   method setPassword(java.lang.String)
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[61,13] cannot find symbol
-[ERROR]   symbol:   method setEmail(java.lang.String)
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[71,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[82,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[93,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/ApiTestController.java:[103,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.ApiTestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[44,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[83,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[103,20] cannot find symbol
-[ERROR]   symbol:   method setPassword(<nulltype>)
-[ERROR]   location: variable newUser of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[117,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[133,54] cannot find symbol
-[ERROR]   symbol:   method getId()
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[138,40] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[141,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[153,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[171,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[174,17] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/AuthController.java:[178,13] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.AuthController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[23,23] cannot find symbol
-[ERROR]   symbol:   method getId()
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[24,29] cannot find symbol
-[ERROR]   symbol:   method getUsername()
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/dto/UserLoginResponse.java:[25,26] cannot find symbol
-[ERROR]   symbol:   method getEmail()
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/TestController.java:[26,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.TestController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[35,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[46,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[47,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[62,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[73,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[74,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[80,13] cannot find symbol
-[ERROR]   symbol:   method setId(java.lang.Long)
-[ERROR]   location: variable user of type com.example.demo.entity.User
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[90,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[91,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/controller/UserController.java:[106,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.controller.UserController
-[ERROR] /Users/xxh/sping boot/springboot/src/main/java/com/example/demo/service/impl/AdminServiceImpl.java:[33,9] cannot find symbol
-[ERROR]   symbol:   variable log
-[ERROR]   location: class com.example.demo.service.impl.AdminServiceImpl
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+nohup: ignoring input
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------------< [0;36mcom.example:demo[0;1m >--------------------------[m
+[[1;34mINFO[m] [1mBuilding demo 0.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:3.5.4:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mdemo[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mdemo[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 4 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:compile[m [1m(default-compile)[m @ [36mdemo[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mdemo[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /root/codebuddy/springboot/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:testCompile[m [1m(default-testCompile)[m @ [36mdemo[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:3.5.4:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mdemo[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:3.5.4:run[m [1m(default-cli)[m @ [36mdemo[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+[32m :: Spring Boot :: [39m              [2m (v3.5.4)[0;39m
+
+[2m2025-08-16 09:40:13[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - Starting DemoApplication using Java 17.0.16 with PID 437514 (/root/codebuddy/springboot/target/classes started by root in /root/codebuddy/springboot)
+[2m2025-08-16 09:40:13[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mcom.example.demo.DemoApplication[0;39m - Running with Spring Boot v3.5.4, Spring v6.2.9
+[2m2025-08-16 09:40:13[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Identified candidate component class: file [/root/codebuddy/springboot/target/classes/com/example/demo/mapper/AdminMapper.class]
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Identified candidate component class: file [/root/codebuddy/springboot/target/classes/com/example/demo/mapper/UserMapper.class]
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Creating MapperFactoryBean with name 'adminMapper' and 'com.example.demo.mapper.AdminMapper' mapperInterface
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Enabling autowire by type for MapperFactoryBean with name 'adminMapper'.
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Creating MapperFactoryBean with name 'userMapper' and 'com.example.demo.mapper.UserMapper' mapperInterface
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8080 (http)
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.43]
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 560 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.spring.SqlSessionFactoryBean[0;39m - Property 'mapperLocations' was not specified.
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - Filter 'jwtAuthenticationFilter' configured for use
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8080 (http) with context path '/'
+[2m2025-08-16 09:40:14[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - Started DemoApplication in 1.25 seconds (process running for 1.387)
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 0 ms
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mc.e.demo.controller.AuthController[0;39m - 收到用户登录请求: UserLoginRequest{email='allnotice@qq.com', password='[PROTECTED]'}
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.UserServiceImpl[0;39m - 用户登录: allnotice@qq.com
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d99e73a] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5758f773
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@1633833124 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - ==>  Preparing: SELECT * FROM user WHERE email = ?
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - ==> Parameters: allnotice@qq.com(String)
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - <==      Total: 1
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d99e73a]
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.UserServiceImpl[0;39m - 用户登录成功: allnotice@qq.com
+[2m2025-08-16 09:40:22[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mc.e.demo.controller.AuthController[0;39m - 用户登录成功: allnotice_updated
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 2, 角色 null
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15fa99d3] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@486289278 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 2(Long)
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15fa99d3]
+[2m2025-08-16 09:40:36[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 2 认证成功
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 2, 角色 null
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52c8d44f] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@456093183 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 2(Long)
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52c8d44f]
+[2m2025-08-16 09:40:38[0;39m [35m[http-nio-8080-exec-3][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 2 认证成功
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.demo.controller.AuthController[0;39m - 收到用户登录请求: UserLoginRequest{email='12345678@example.com', password='[PROTECTED]'}
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.UserServiceImpl[0;39m - 用户登录: 12345678@example.com
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51719436] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@346200999 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - ==>  Preparing: SELECT * FROM user WHERE email = ?
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - ==> Parameters: 12345678@example.com(String)
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.d.mapper.UserMapper.findByEmail[0;39m - <==      Total: 1
+[2m2025-08-16 09:45:20[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@51719436]
+[2m2025-08-16 09:45:21[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.UserServiceImpl[0;39m - 用户登录成功: 12345678@example.com
+[2m2025-08-16 09:45:21[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.demo.controller.AuthController[0;39m - 用户登录成功: 12345678
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56d4cfa9] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@78259884 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56d4cfa9]
+[2m2025-08-16 09:46:35[0;39m [35m[http-nio-8080-exec-6][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7eaab83d] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@666407966 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7eaab83d]
+[2m2025-08-16 09:48:10[0;39m [35m[http-nio-8080-exec-8][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22667572] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@463418082 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22667572]
+[2m2025-08-16 09:48:32[0;39m [35m[http-nio-8080-exec-9][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bdd2195] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@1561633124 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bdd2195]
+[2m2025-08-16 09:48:52[0;39m [35m[http-nio-8080-exec-10][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@350a886e] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@940155422 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@350a886e]
+[2m2025-08-16 09:50:05[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@569d81cb] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@847870806 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@569d81cb]
+[2m2025-08-16 09:50:23[0;39m [35m[http-nio-8080-exec-3][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@67010f58] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@399175224 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@67010f58]
+[2m2025-08-16 09:53:06[0;39m [35m[http-nio-8080-exec-5][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 1, 角色 null
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23a9a277] was not registered for synchronization because synchronization is not active
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@957360211 wrapping com.mysql.cj.jdbc.ConnectionImpl@5758f773] will not be managed by Spring
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 1(Long)
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23a9a277]
+[2m2025-08-16 09:53:49[0;39m [35m[http-nio-8080-exec-6][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 1 认证成功

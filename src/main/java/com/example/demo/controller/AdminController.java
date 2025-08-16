@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.common.ApiResponse;
 import com.example.demo.dto.AdminLoginRequest;
+import com.example.demo.dto.AdminLoginResponse;
 import com.example.demo.dto.AdminRegisterRequest;
 import com.example.demo.dto.AdminUpdateRequest;
 import com.example.demo.entity.Admin;
