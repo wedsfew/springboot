@@ -44,6 +44,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/api/verification/**").permitAll()  // 验证码相关接口
                 .requestMatchers("/api/admin/register").permitAll()  // 管理员注册接口
                 .requestMatchers("/api/admin/login").permitAll()  // 管理员登录接口
+                .requestMatchers("/api/test/**").permitAll()  // 测试接口，允许不认证访问
                // .requestMatchers("/api/users/**").permitAll() 
                 // 需要认证的接口
                 .requestMatchers("/api/users/**").authenticated()  // 用户相关接口需要认证

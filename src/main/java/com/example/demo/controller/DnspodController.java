@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.common.ApiResponse;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -105,4 +106,27 @@ public class DnspodController {
             return ApiResponse.error(500, "创建域名解析记录失败: " + e.getMessage());
         }
     }
+    
+    /**
+     * 删除域名解析记录
+     * 
+     * @param domain 域名（必填）
+     * @param recordId 记录ID（必填）
+     * @param domainId 域名ID（可选）
+     * @return ApiResponse<DeleteRecordResponse> 统一响应格式
+     */
+    @DeleteMapping("/records")
+    public ApiResponse<DeleteRecordResponse> deleteRecord(
+            @RequestParam String domain,
+            @RequestParam Long recordId,
+            @RequestParam(required = false) Long domainId) {
+        
+        try {
+            DeleteRecordResponse response = dnspodService.deleteRecord(domain, recordId, domainId);
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
+        }
+    }
 }
+

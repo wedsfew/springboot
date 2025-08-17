@@ -8,6 +8,8 @@ import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.dnspod.v20210323.DnspodClient;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordRequest;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 文件名：DnspodServiceImpl.java
- * 功能：腾讯云DNSPod服务实现类，提供域名解析记录查询功能
+ * 功能：腾讯云DNSPod服务实现类，提供域名解析记录查询、添加和删除功能
  * 作者：CodeBuddy
  * 创建时间：2025-08-16
  * 版本：v1.0.0
@@ -161,6 +163,49 @@ public class DnspodServiceImpl implements DnspodService {
             
         } catch (TencentCloudSDKException e) {
             throw new RuntimeException("调用腾讯云DNSPod创建记录API失败: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * 删除域名解析记录
+     * 
+     * @param domain 域名，如 example.com
+     * @param recordId 记录ID
+     * @param domainId 域名ID（可选）
+     * @return 删除记录响应
+     */
+    @Override
+    public DeleteRecordResponse deleteRecord(String domain, Long recordId, Long domainId) {
+        try {
+            // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
+            Credential cred = new Credential(secretId, secretKey);
+            
+            // 实例化一个http选项
+            HttpProfile httpProfile = new HttpProfile();
+            httpProfile.setEndpoint("dnspod.tencentcloudapi.com");
+            
+            // 实例化一个client选项
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            
+            // 实例化要请求产品的client对象
+            DnspodClient client = new DnspodClient(cred, region, clientProfile);
+            
+            // 实例化一个请求对象
+            DeleteRecordRequest req = new DeleteRecordRequest();
+            req.setDomain(domain);
+            req.setRecordId(recordId);
+            
+            // 设置可选参数
+            if (domainId != null) {
+                req.setDomainId(domainId);
+            }
+            
+            // 返回的resp是一个DeleteRecordResponse的实例
+            return client.DeleteRecord(req);
+            
+        } catch (TencentCloudSDKException e) {
+            throw new RuntimeException("调用腾讯云DNSPod删除记录API失败: " + e.getMessage(), e);
         }
     }
 }

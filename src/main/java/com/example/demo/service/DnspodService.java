@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 
 /**
@@ -45,4 +46,15 @@ public interface DnspodService {
     CreateRecordResponse createRecord(String domain, String recordType, String recordLine, 
                                     String value, String subDomain, Long ttl, Long mx, 
                                     Long weight, String status, String remark);
+    
+    /**
+     * 删除域名解析记录
+     * 
+     * @param domain 域名，如 example.com
+     * @param recordId 记录ID
+     * @param domainId 域名ID（可选）
+     * @return 删除记录响应
+     */
+    DeleteRecordResponse deleteRecord(String domain, Long recordId, Long domainId);
 }
+

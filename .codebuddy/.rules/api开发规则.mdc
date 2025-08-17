@@ -4,7 +4,8 @@ globs:
 alwaysApply: true
 ---
 # api开发规则
-api接口开发轻严格遵循以下要求
+接口只使用get请求或post请求,不使用delete、put、patch请求。
+api接口开发严格遵循以下要求。
 ## 一、API 合约概述
 
 ### 1.1 合约目标
