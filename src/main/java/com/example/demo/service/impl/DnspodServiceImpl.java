@@ -8,6 +8,8 @@ import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.dnspod.v20210323.DnspodClient;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordRequest;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,13 +25,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class DnspodServiceImpl implements DnspodService {
 
-    @Value("${tencent.cloud.secret-id}")
+    @Value("${tencent.cloud.secret-id:your-secret-id}")
     private String secretId;
 
-    @Value("${tencent.cloud.secret-key}")
+    @Value("${tencent.cloud.secret-key:your-secret-key}")
     private String secretKey;
 
-    @Value("${tencent.cloud.region}")
+    @Value("${tencent.cloud.region:ap-beijing}")
     private String region;
 
     /**
@@ -161,6 +163,49 @@ public class DnspodServiceImpl implements DnspodService {
             
         } catch (TencentCloudSDKException e) {
             throw new RuntimeException("调用腾讯云DNSPod创建记录API失败: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * 删除域名解析记录
+     * 
+     * @param domain 域名，如 dnspod.cn
+     * @param recordId 记录 ID，可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+     * @param domainId 域名 ID（可选），参数 DomainId 优先级比参数 Domain 高
+     * @return 删除记录响应
+     */
+    @Override
+    public DeleteRecordResponse deleteRecord(String domain, Long recordId, Long domainId) {
+        try {
+            // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
+            Credential cred = new Credential(secretId, secretKey);
+            
+            // 实例化一个http选项
+            HttpProfile httpProfile = new HttpProfile();
+            httpProfile.setEndpoint("dnspod.tencentcloudapi.com");
+            
+            // 实例化一个client选项
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            
+            // 实例化要请求产品的client对象
+            DnspodClient client = new DnspodClient(cred, region, clientProfile);
+            
+            // 实例化一个请求对象
+            DeleteRecordRequest req = new DeleteRecordRequest();
+            req.setDomain(domain);
+            req.setRecordId(recordId);
+            
+            // 设置可选参数
+            if (domainId != null) {
+                req.setDomainId(domainId);
+            }
+            
+            // 返回的resp是一个DeleteRecordResponse的实例
+            return client.DeleteRecord(req);
+            
+        } catch (TencentCloudSDKException e) {
+            throw new RuntimeException("调用腾讯云DNSPod删除记录API失败: " + e.getMessage(), e);
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
+import com.example.demo.dto.DeleteRecordRequest;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -103,6 +105,45 @@ public class DnspodController {
             return ApiResponse.success(response);
         } catch (Exception e) {
             return ApiResponse.error(500, "创建域名解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 删除域名解析记录
+     * 
+     * @param request 删除记录请求参数
+     * @return 删除结果
+     */
+    @DeleteMapping("/record")
+    public ApiResponse<DeleteRecordResponse> deleteRecord(@RequestBody DeleteRecordRequest request) {
+        try {
+            DeleteRecordResponse response = dnspodService.deleteRecord(
+                request.getDomain(), 
+                request.getRecordId(), 
+                request.getDomainId()
+            );
+            return ApiResponse.success("删除域名解析记录成功", response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 删除域名解析记录（简化版）
+     * 
+     * @param domain 域名
+     * @param recordId 记录ID
+     * @return 删除结果
+     */
+    @DeleteMapping("/record/{domain}/{recordId}")
+    public ApiResponse<DeleteRecordResponse> deleteRecordSimple(
+            @PathVariable String domain,
+            @PathVariable Long recordId) {
+        try {
+            DeleteRecordResponse response = dnspodService.deleteRecord(domain, recordId, null);
+            return ApiResponse.success("删除域名解析记录成功", response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
         }
     }
 }
