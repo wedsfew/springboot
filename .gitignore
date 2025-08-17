@@ -34,3 +34,4 @@ build/
 ### test###
 test/
 api测试报告/
+src/main/resources/application.properties
