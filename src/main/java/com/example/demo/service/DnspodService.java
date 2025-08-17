@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 
 /**
  * 文件名：DnspodService.java
@@ -56,5 +57,25 @@ public interface DnspodService {
      * @return 删除记录响应
      */
     DeleteRecordResponse deleteRecord(String domain, Long recordId, Long domainId);
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param domain 域名，如 example.com
+     * @param recordId 记录ID
+     * @param recordType 记录类型，如 A、CNAME、MX等
+     * @param recordLine 记录线路，如 "默认"
+     * @param value 记录值，如 IP地址
+     * @param subDomain 主机记录，如 www（可选）
+     * @param domainId 域名ID（可选）
+     * @param ttl TTL值（可选）
+     * @param mx MX优先级（可选，MX记录时必填）
+     * @param weight 权重（可选，0-100）
+     * @param status 记录状态（可选，ENABLE或DISABLE）
+     * @return 修改记录响应
+     */
+    ModifyRecordResponse modifyRecord(String domain, Long recordId, String recordType, 
+                                     String recordLine, String value, String subDomain, 
+                                     Long domainId, Long ttl, Long mx, Long weight, 
+                                     String status);
 }
-

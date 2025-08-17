@@ -5,6 +5,7 @@ import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -128,5 +129,46 @@ public class DnspodController {
             return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
         }
     }
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param domain 域名（必填）
+     * @param recordId 记录ID（必填）
+     * @param recordType 记录类型（必填，如A、CNAME等）
+     * @param value 记录值（必填，如IP地址）
+     * @param recordLine 记录线路（可选，默认"默认"）
+     * @param subDomain 主机记录（可选，如www）
+     * @param domainId 域名ID（可选）
+     * @param ttl TTL值（可选）
+     * @param mx MX优先级（可选）
+     * @param weight 权重（可选）
+     * @param status 记录状态（可选）
+     * @param remark 备注（可选）
+     * @return ApiResponse<ModifyRecordResponse> 统一响应格式
+     */
+    @PostMapping("/records/modify")
+    public ApiResponse<ModifyRecordResponse> modifyRecord(
+            @RequestParam String domain,
+            @RequestParam Long recordId,
+            @RequestParam String recordType,
+            @RequestParam String value,
+            @RequestParam(required = false, defaultValue = "默认") String recordLine,
+            @RequestParam(required = false) String subDomain,
+            @RequestParam(required = false) Long domainId,
+            @RequestParam(required = false) Long ttl,
+            @RequestParam(required = false) Long mx,
+            @RequestParam(required = false) Long weight,
+            @RequestParam(required = false) String status) {
+        
+        try {
+            ModifyRecordResponse response = dnspodService.modifyRecord(
+                domain, recordId, recordType, recordLine, value, subDomain,
+                domainId, ttl, mx, weight, status
+            );
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "修改域名解析记录失败: " + e.getMessage());
+        }
+    }
 }
-

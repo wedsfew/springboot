@@ -6,6 +6,7 @@ import com.example.demo.common.ResourceNotFoundException;
 import com.example.demo.entity.User;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -131,6 +132,44 @@ public class ApiTestController {
         } catch (Exception e) {
             log.error("DNSPod删除记录失败", e);
             return ApiResponse.error(500, "删除记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 测试DNSPod修改记录接口
+     * 
+     * @param domain 域名
+     * @param recordId 记录ID
+     * @param recordType 记录类型
+     * @param value 记录值
+     * @param recordLine 记录线路（可选，默认"默认"）
+     * @param subDomain 主机记录（可选）
+     * @param domainId 域名ID（可选）
+     * @return 修改记录响应
+     */
+    @GetMapping("/dnspod/modify-record")
+    public ApiResponse<ModifyRecordResponse> testModifyDnspodRecord(
+            @RequestParam String domain,
+            @RequestParam Long recordId,
+            @RequestParam String recordType,
+            @RequestParam String value,
+            @RequestParam(required = false, defaultValue = "默认") String recordLine,
+            @RequestParam(required = false) String subDomain,
+            @RequestParam(required = false) Long domainId) {
+        
+        log.info("测试DNSPod修改记录接口 - 域名: {}, 记录ID: {}, 记录类型: {}, 记录值: {}, 记录线路: {}, 主机记录: {}, 域名ID: {}", 
+                domain, recordId, recordType, value, recordLine, subDomain, domainId);
+        
+        try {
+            ModifyRecordResponse response = dnspodService.modifyRecord(
+                domain, recordId, recordType, recordLine, value, subDomain,
+                domainId, null, null, null, null
+            );
+            log.info("DNSPod修改记录成功 - RequestId: {}", response.getRequestId());
+            return ApiResponse.success("修改记录成功", response);
+        } catch (Exception e) {
+            log.error("DNSPod修改记录失败", e);
+            return ApiResponse.error(500, "修改记录失败: " + e.getMessage());
         }
     }
 }

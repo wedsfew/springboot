@@ -12,12 +12,14 @@ import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordRequest;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
  * 文件名：DnspodServiceImpl.java
- * 功能：腾讯云DNSPod服务实现类，提供域名解析记录查询、添加和删除功能
+ * 功能：腾讯云DNSPod服务实现类，提供域名解析记录查询、添加、修改和删除功能
  * 作者：CodeBuddy
  * 创建时间：2025-08-16
  * 版本：v1.0.0
@@ -206,6 +208,78 @@ public class DnspodServiceImpl implements DnspodService {
             
         } catch (TencentCloudSDKException e) {
             throw new RuntimeException("调用腾讯云DNSPod删除记录API失败: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param domain 域名，如 example.com
+     * @param recordId 记录ID
+     * @param recordType 记录类型，如 A、CNAME、MX等
+     * @param recordLine 记录线路，如 "默认"
+     * @param value 记录值，如 IP地址
+     * @param subDomain 主机记录，如 www（可选）
+     * @param domainId 域名ID（可选）
+     * @param ttl TTL值（可选）
+     * @param mx MX优先级（可选，MX记录时必填）
+     * @param weight 权重（可选，0-100）
+     * @param status 记录状态（可选，ENABLE或DISABLE）
+     * @return 修改记录响应
+     */
+    @Override
+    public ModifyRecordResponse modifyRecord(String domain, Long recordId, String recordType, 
+                                           String recordLine, String value, String subDomain, 
+                                           Long domainId, Long ttl, Long mx, Long weight, 
+                                           String status) {
+        try {
+            // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
+            Credential cred = new Credential(secretId, secretKey);
+            
+            // 实例化一个http选项
+            HttpProfile httpProfile = new HttpProfile();
+            httpProfile.setEndpoint("dnspod.tencentcloudapi.com");
+            
+            // 实例化一个client选项
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            
+            // 实例化要请求产品的client对象
+            DnspodClient client = new DnspodClient(cred, region, clientProfile);
+            
+            // 实例化一个请求对象
+            ModifyRecordRequest req = new ModifyRecordRequest();
+            req.setDomain(domain);
+            req.setRecordId(recordId);
+            req.setRecordType(recordType);
+            req.setRecordLine(recordLine != null ? recordLine : "默认");
+            req.setValue(value);
+            
+            // 设置可选参数
+            if (subDomain != null && !subDomain.isEmpty()) {
+                req.setSubDomain(subDomain);
+            }
+            if (domainId != null) {
+                req.setDomainId(domainId);
+            }
+            if (ttl != null) {
+                req.setTTL(ttl);
+            }
+            if (mx != null) {
+                req.setMX(mx);
+            }
+            if (weight != null) {
+                req.setWeight(weight);
+            }
+            if (status != null && !status.isEmpty()) {
+                req.setStatus(status);
+            }
+            
+            // 返回的resp是一个ModifyRecordResponse的实例
+            return client.ModifyRecord(req);
+            
+        } catch (TencentCloudSDKException e) {
+            throw new RuntimeException("调用腾讯云DNSPod修改记录API失败: " + e.getMessage(), e);
         }
     }
 }
