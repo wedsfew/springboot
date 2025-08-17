@@ -12,6 +12,8 @@ import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordRequest;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -206,6 +208,79 @@ public class DnspodServiceImpl implements DnspodService {
             
         } catch (TencentCloudSDKException e) {
             throw new RuntimeException("调用腾讯云DNSPod删除记录API失败: " + e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param requestDto 修改记录请求参数
+     * @return 修改记录响应
+     */
+    @Override
+    public ModifyRecordResponse modifyRecord(com.example.demo.dto.ModifyRecordRequest requestDto) {
+        try {
+            // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
+            Credential cred = new Credential(secretId, secretKey);
+            
+            // 实例化一个http选项
+            HttpProfile httpProfile = new HttpProfile();
+            httpProfile.setEndpoint("dnspod.tencentcloudapi.com");
+            
+            // 实例化一个client选项
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            
+            // 实例化要请求产品的client对象
+            DnspodClient client = new DnspodClient(cred, region, clientProfile);
+            
+            // 实例化一个请求对象
+            ModifyRecordRequest req = new ModifyRecordRequest();
+            
+            // 设置必填参数
+            req.setDomain(requestDto.getDomain());
+            req.setRecordType(requestDto.getRecordType());
+            req.setRecordLine(requestDto.getRecordLine());
+            req.setValue(requestDto.getValue());
+            req.setRecordId(requestDto.getRecordId());
+            
+            // 设置可选参数
+            if (requestDto.getDomainId() != null) {
+                req.setDomainId(requestDto.getDomainId());
+            }
+            
+            if (requestDto.getSubDomain() != null && !requestDto.getSubDomain().isEmpty()) {
+                req.setSubDomain(requestDto.getSubDomain());
+            }
+            
+            if (requestDto.getRecordLineId() != null && !requestDto.getRecordLineId().isEmpty()) {
+                req.setRecordLineId(requestDto.getRecordLineId());
+            }
+            
+            if (requestDto.getMx() != null) {
+                req.setMX(requestDto.getMx().longValue());
+            }
+            
+            if (requestDto.getTtl() != null) {
+                req.setTTL(requestDto.getTtl().longValue());
+            }
+            
+            if (requestDto.getWeight() != null) {
+                req.setWeight(requestDto.getWeight().longValue());
+            }
+            
+            if (requestDto.getStatus() != null && !requestDto.getStatus().isEmpty()) {
+                req.setStatus(requestDto.getStatus());
+            }
+            
+            // 注意：腾讯云DNSPod SDK的ModifyRecordRequest可能不支持setRemark和setDnssecConflictMode方法
+            // 如果需要这些功能，请查阅最新的SDK文档
+            
+            // 返回的resp是一个ModifyRecordResponse的实例
+            return client.ModifyRecord(req);
+            
+        } catch (TencentCloudSDKException e) {
+            throw new RuntimeException("调用腾讯云DNSPod修改记录API失败: " + e.getMessage(), e);
         }
     }
 }

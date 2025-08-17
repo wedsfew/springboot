@@ -4,6 +4,7 @@ import com.example.demo.common.ApiResponse;
 import com.example.demo.common.BusinessException;
 import com.example.demo.common.ResourceNotFoundException;
 import com.example.demo.dto.DeleteRecordRequest;
+import com.example.demo.dto.ModifyRecordRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.DnspodService;
 import lombok.RequiredArgsConstructor;
@@ -169,6 +170,78 @@ public class ApiTestController {
         } catch (Exception e) {
             log.error("删除记录测试失败（预期错误）", e);
             return ApiResponse.error(500, "删除记录测试失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 测试DNSPod修改记录接口
+     * @return 修改记录响应
+     */
+    @PostMapping("/dnspod/modify-record")
+    public ApiResponse<Object> testDnspodModifyRecord() {
+        log.info("测试DNSPod修改记录接口");
+        try {
+            ModifyRecordRequest request = new ModifyRecordRequest();
+            request.setDomain("cblog.eu");
+            request.setRecordType("A");
+            request.setRecordLine("默认");
+            request.setValue("192.168.1.100");
+            request.setRecordId(2167176579L);
+            request.setSubDomain("test");
+            request.setTtl(600);
+            request.setRemark("测试修改记录");
+            
+            Object result = dnspodService.modifyRecord(request);
+            return ApiResponse.success("修改域名解析记录成功", result);
+        } catch (Exception e) {
+            log.error("修改记录测试失败", e);
+            return ApiResponse.error(500, "修改记录测试失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 测试DNSPod修改记录接口（简化版）
+     * @return 修改记录响应
+     */
+    @PostMapping("/dnspod/modify-record-simple")
+    public ApiResponse<Object> testDnspodModifyRecordSimple() {
+        log.info("测试DNSPod修改记录接口（简化版）");
+        try {
+            ModifyRecordRequest request = new ModifyRecordRequest();
+            request.setDomain("cblog.eu");
+            request.setRecordType("A");
+            request.setRecordLine("默认");
+            request.setValue("192.168.1.200");
+            request.setRecordId(2167176579L);
+            
+            Object result = dnspodService.modifyRecord(request);
+            return ApiResponse.success("修改域名解析记录成功", result);
+        } catch (Exception e) {
+            log.error("修改记录测试失败", e);
+            return ApiResponse.error(500, "修改记录测试失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 测试DNSPod修改记录接口（错误参数）
+     * @return 修改记录响应
+     */
+    @PostMapping("/dnspod/modify-record-error")
+    public ApiResponse<Object> testDnspodModifyRecordError() {
+        log.info("测试DNSPod修改记录接口（错误参数）");
+        try {
+            ModifyRecordRequest request = new ModifyRecordRequest();
+            request.setDomain("invalid-domain.com");
+            request.setRecordType("A");
+            request.setRecordLine("默认");
+            request.setValue("192.168.1.1");
+            request.setRecordId(999999L);
+            
+            Object result = dnspodService.modifyRecord(request);
+            return ApiResponse.success("修改域名解析记录成功", result);
+        } catch (Exception e) {
+            log.error("修改记录测试失败（预期错误）", e);
+            return ApiResponse.error(500, "修改记录测试失败: " + e.getMessage());
         }
     }
 }

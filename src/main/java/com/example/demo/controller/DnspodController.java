@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
 import com.example.demo.dto.DeleteRecordRequest;
+import com.example.demo.dto.ModifyRecordRequest;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -139,11 +141,28 @@ public class DnspodController {
     public ApiResponse<DeleteRecordResponse> deleteRecordSimple(
             @PathVariable String domain,
             @PathVariable Long recordId) {
+        
         try {
             DeleteRecordResponse response = dnspodService.deleteRecord(domain, recordId, null);
-            return ApiResponse.success("删除域名解析记录成功", response);
+            return ApiResponse.success(response);
         } catch (Exception e) {
-            return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
+            return ApiResponse.error(500, "删除记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param request 修改记录请求参数
+     * @return 修改记录响应
+     */
+    @PutMapping("/record")
+    public ApiResponse<ModifyRecordResponse> modifyRecord(@RequestBody ModifyRecordRequest request) {
+        try {
+            ModifyRecordResponse response = dnspodService.modifyRecord(request);
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "修改记录失败: " + e.getMessage());
         }
     }
 }

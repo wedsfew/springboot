@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
+import com.example.demo.dto.ModifyRecordRequest;
 
 /**
  * 文件名：DnspodService.java
@@ -56,4 +58,12 @@ public interface DnspodService {
      * @return 删除记录响应
      */
     DeleteRecordResponse deleteRecord(String domain, Long recordId, Long domainId);
+    
+    /**
+     * 修改域名解析记录
+     * 
+     * @param request 修改记录请求参数
+     * @return 修改记录响应
+     */
+    ModifyRecordResponse modifyRecord(ModifyRecordRequest request);
 }
