@@ -41,7 +41,6 @@ public interface DnspodService {
      * @param mx MX优先级（可选，MX记录时必填）
      * @param weight 权重（可选，0-100）
      * @param status 记录状态（可选，ENABLE或DISABLE）
-     * @param remark 备注（可选）
      * @return 创建记录响应
      */
     CreateRecordResponse createRecord(String domain, String recordType, String recordLine, 
@@ -72,6 +71,7 @@ public interface DnspodService {
      * @param mx MX优先级（可选，MX记录时必填）
      * @param weight 权重（可选，0-100）
      * @param status 记录状态（可选，ENABLE或DISABLE）
+     * @param remark 备注（可选）
      * @return 修改记录响应
      */
     ModifyRecordResponse modifyRecord(String domain, Long recordId, String recordType, 

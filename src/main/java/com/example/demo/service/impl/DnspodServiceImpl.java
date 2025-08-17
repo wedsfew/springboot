@@ -71,9 +71,7 @@ public class DnspodServiceImpl implements DnspodService {
             req.setDomain(domain);
             
             // 设置可选参数
-            if (remark != null && !remark.isEmpty()) {
-                req.setRemark(remark);
-            }
+            // 注意：ModifyRecordRequest不支持设置remark参数
             if (subDomain != null && !subDomain.isEmpty()) {
                 req.setSubDomain(subDomain);
             }

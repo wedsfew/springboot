@@ -159,12 +159,13 @@ public class DnspodController {
             @RequestParam(required = false) Long ttl,
             @RequestParam(required = false) Long mx,
             @RequestParam(required = false) Long weight,
-            @RequestParam(required = false) String status) {
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String remark) {
         
         try {
             ModifyRecordResponse response = dnspodService.modifyRecord(
                 domain, recordId, recordType, recordLine, value, subDomain,
-                domainId, ttl, mx, weight, status
+                domainId, ttl, mx, weight, status, remark
             );
             return ApiResponse.success(response);
         } catch (Exception e) {

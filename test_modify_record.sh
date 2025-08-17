@@ -26,7 +26,7 @@ domain="cblog.eu"
 recordId="2160417569"
 recordType="A"
 value="1.1.1.1"
-recordLine="%E9%BB%98%E8%AE%A4" # URL编码的"默认"
+recordLine="default"
 subDomain="test"
 
 echo -e "请求: GET $BASE_URL/api/test/dnspod/modify-record?domain=$domain&recordId=$recordId&recordType=$recordType&value=$value&recordLine=$recordLine&subDomain=$subDomain"
