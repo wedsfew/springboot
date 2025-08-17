@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+
 import com.example.demo.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * 文件名：WebSecurityConfig.java
- * 功能：Web安全配置类，配置HTTP安全规则
+ * 功能：Web安全配置类，配置HTTP安全规则（目前先不配置安全规则）
  * 作者：CodeBuddy
  * 创建时间：2025-08-11
  * 版本：v1.0.0
@@ -39,17 +40,8 @@ public class WebSecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // 使用无状态会话，不使用Session
             )
             .authorizeHttpRequests(authorize -> authorize
-                // 公开接口，无需认证
-                .requestMatchers("/api/auth/**").permitAll()  // 认证相关接口
-                .requestMatchers("/api/verification/**").permitAll()  // 验证码相关接口
-                .requestMatchers("/api/admin/register").permitAll()  // 管理员注册接口
-                .requestMatchers("/api/admin/login").permitAll()  // 管理员登录接口
-                .requestMatchers("/api/test/**").permitAll()  // 测试接口，允许不认证访问
-               // .requestMatchers("/api/users/**").permitAll() 
-                // 需要认证的接口
-                .requestMatchers("/api/users/**").authenticated()  // 用户相关接口需要认证
-                .requestMatchers("/api/admin/**").authenticated()  // 管理员相关接口需要认证
-                .anyRequest().authenticated()  // 其他所有请求都需要认证
+                // 所有接口都允许访问，无需认证
+                .anyRequest().permitAll()  // 放开所有接口的权限认证
             )
             // 设置自定义认证入口点
             .exceptionHandling(exceptions -> exceptions

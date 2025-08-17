@@ -39,7 +39,7 @@ Host: localhost:8080
 Content-Type: application/x-www-form-urlencoded
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
 
-domain=example.com&recordId=123456&recordType=A&value=192.168.1.1&recordLine=默认&subDomain=www
+domain=vvvv.host&recordId=2160398569&recordType=A&value=192.168.1.1&recordLine=默认&subDomain=www
 ```
 
 ## 三、响应参数

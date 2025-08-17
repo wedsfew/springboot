@@ -163,7 +163,7 @@ public class ApiTestController {
         try {
             ModifyRecordResponse response = dnspodService.modifyRecord(
                 domain, recordId, recordType, recordLine, value, subDomain,
-                domainId, null, null, null, null
+                domainId, null, null, null, null, null
             );
             log.info("DNSPod修改记录成功 - RequestId: {}", response.getRequestId());
             return ApiResponse.success("修改记录成功", response);

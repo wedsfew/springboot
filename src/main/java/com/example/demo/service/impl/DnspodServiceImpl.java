@@ -229,7 +229,7 @@ public class DnspodServiceImpl implements DnspodService {
     public ModifyRecordResponse modifyRecord(String domain, Long recordId, String recordType, 
                                            String recordLine, String value, String subDomain, 
                                            Long domainId, Long ttl, Long mx, Long weight, 
-                                           String status) {
+                                           String status, String remark) {
         try {
             // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
             Credential cred = new Credential(secretId, secretKey);
@@ -272,6 +272,10 @@ public class DnspodServiceImpl implements DnspodService {
             if (status != null && !status.isEmpty()) {
                 req.setStatus(status);
             }
+            // 注意：ModifyRecordRequest不支持设置remark参数，腾讯云API限制
+            // if (remark != null && !remark.isEmpty()) {
+            //     req.setRemark(remark);
+            // }
             
             // 返回的resp是一个ModifyRecordResponse的实例
             return client.ModifyRecord(req);

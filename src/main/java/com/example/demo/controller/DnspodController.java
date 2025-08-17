@@ -116,7 +116,7 @@ public class DnspodController {
      * @param domainId 域名ID（可选）
      * @return ApiResponse<DeleteRecordResponse> 统一响应格式
      */
-    @DeleteMapping("/records")
+    @PostMapping("/records/delete")
     public ApiResponse<DeleteRecordResponse> deleteRecord(
             @RequestParam String domain,
             @RequestParam Long recordId,

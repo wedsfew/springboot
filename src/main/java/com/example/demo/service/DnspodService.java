@@ -77,5 +77,5 @@ public interface DnspodService {
     ModifyRecordResponse modifyRecord(String domain, Long recordId, String recordType, 
                                      String recordLine, String value, String subDomain, 
                                      Long domainId, Long ttl, Long mx, Long weight, 
-                                     String status);
+                                     String status, String remark);
 }
