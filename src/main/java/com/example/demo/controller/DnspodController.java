@@ -96,6 +96,34 @@ public class DnspodController {
     }
 
     /**
+     * 获取域名的解析记录列表（JSON格式）
+     * 
+     * @param requestBody 包含查询参数的JSON对象
+     * @return 解析记录列表响应
+     */
+    @PostMapping(value = "/records/list", consumes = "application/json")
+    public ApiResponse<DescribeRecordListResponse> getRecordListJson(@RequestBody RecordRequest requestBody) {
+        try {
+            DescribeRecordListResponse response = dnspodService.getRecordList(
+                requestBody.getDomain(),
+                requestBody.getDomainId(),
+                requestBody.getSubdomain(),
+                requestBody.getRecordType(),
+                requestBody.getRecordLine(),
+                requestBody.getRecordLineId(),
+                requestBody.getGroupId(),
+                requestBody.getKeyword(),
+                requestBody.getSortField(),
+                requestBody.getSortType(),
+                requestBody.getOffset(),
+                requestBody.getLimit());
+            return ApiResponse.success("获取解析记录列表成功", response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取解析记录列表失败: " + e.getMessage());
+        }
+    }
+
+    /**
      * 获取域名的解析记录筛选列表
      * 
      * @param domain 域名，如 example.com
