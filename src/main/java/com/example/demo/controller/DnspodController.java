@@ -348,4 +348,73 @@ public class DnspodController {
             return ApiResponse.error(500, "修改域名解析记录失败: " + e.getMessage());
         }
     }
+    
+    /**
+     * 查询指定三级域名是否可用（未被注册）- GET方式
+     * 
+     * @param subDomain 三级域名前缀（如test，将查询test.cblog.eu）
+     * @param domain 主域名（如cblog.eu）
+     * @return ApiResponse 包含域名可用状态的响应
+     */
+    @GetMapping("/available-subdomain")
+    public ApiResponse<?> checkSubdomainAvailability(
+            @RequestParam String subDomain,
+            @RequestParam(defaultValue = "cblog.eu") String domain) {
+        
+        try {
+            // 构建完整的三级域名
+            String fullSubdomain = subDomain + "." + domain;
+            
+            // 查询该子域名是否存在解析记录
+            DescribeRecordFilterListResponse response = dnspodService.getRecordFilterList(
+                domain, null, subDomain, null, 10, 0);
+            
+            // 检查是否有记录
+            boolean isAvailable = response.getRecordCountInfo().getTotalCount() == 0;
+            
+            if (isAvailable) {
+                return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+            } else {
+                return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+            }
+        } catch (Exception e) {
+            return ApiResponse.error(500, "查询域名可用性失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 查询指定三级域名是否可用（未被注册）- JSON格式
+     * 
+     * @param requestBody 包含查询参数的JSON对象
+     * @return ApiResponse 包含域名可用状态的响应
+     */
+    @PostMapping(value = "/available-subdomain", consumes = "application/json")
+    public ApiResponse<?> checkSubdomainAvailabilityJson(@RequestBody RecordRequest requestBody) {
+        try {
+            String subDomain = requestBody.getSubDomain();
+            String domain = requestBody.getDomain() != null ? requestBody.getDomain() : "cblog.eu";
+            
+            if (subDomain == null || subDomain.isEmpty()) {
+                return ApiResponse.error(400, "子域名前缀不能为空");
+            }
+            
+            // 构建完整的三级域名
+            String fullSubdomain = subDomain + "." + domain;
+            
+            // 查询该子域名是否存在解析记录
+            DescribeRecordFilterListResponse response = dnspodService.getRecordFilterList(
+                domain, null, subDomain, null, 10, 0);
+            
+            // 检查是否有记录
+            boolean isAvailable = response.getRecordCountInfo().getTotalCount() == 0;
+            
+            if (isAvailable) {
+                return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+            } else {
+                return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+            }
+        } catch (Exception e) {
+            return ApiResponse.error(500, "查询域名可用性失败: " + e.getMessage());
+        }
+    }
 }

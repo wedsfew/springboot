@@ -24,17 +24,32 @@
 
 ## 三、API接口详情
 
-### 3.1 获取域名解析记录筛选列表
+### 3.1 获取域名解析记录筛选列表（JSON格式）
 
 #### 基本信息
 
-- **接口标识**：`DNSPOD_GET_RECORD_FILTER_LIST`
-- **请求路径**：`GET /api/dnspod/records`
-- **接口描述**：获取指定域名的解析记录筛选列表，支持多种筛选条件
+- **接口标识**：`DNSPOD_GET_RECORD_FILTER_LIST_JSON`
+- **请求路径**：`POST /api/dnspod/records/list`
+- **接口描述**：获取指定域名的解析记录筛选列表，支持多种筛选条件，使用JSON格式传输数据
 - **认证要求**：需要JWT认证
 - **适用业务单元**：域名管理模块
+- **Content-Type**：`application/json`
 
-#### 请求参数
+#### 请求参数（JSON格式）
+
+```json
+{
+  "domain": "example.com",
+  "remark": "测试记录",
+  "subDomain": "www",
+  "recordType": "A",
+  "limit": 50,
+  "offset": 0,
+  "keyword": "搜索关键字",
+  "sortField": "name",
+  "sortType": "ASC"
+}
+```
 
 | 参数名     | 是否必须 | 类型    | 默认值 | 描述                                           | 示例值        |
 | ---------- | -------- | ------- | ------ | ---------------------------------------------- | ------------- |
@@ -44,6 +59,9 @@
 | recordType | 否       | String  | -      | 记录类型，如A、CNAME、MX、TXT等                | A             |
 | limit      | 否       | Integer | 100    | 限制返回记录数量，最大3000                     | 50            |
 | offset     | 否       | Integer | 0      | 偏移量，用于分页                               | 0             |
+| keyword    | 否       | String  | -      | 关键字搜索，支持搜索主机头和记录值             | 搜索关键字    |
+| sortField  | 否       | String  | -      | 排序字段（name,type,value,ttl,updated_on）     | name          |
+| sortType   | 否       | String  | ASC    | 排序方式（ASC或DESC）                          | ASC           |
 
 #### 响应示例
 
@@ -113,19 +131,119 @@
 #### 调试说明
 
 - **测试用例 1（成功场景）**：
-  - 请求：`curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" "http://localhost:8080/api/dnspod/records?domain=example.com&limit=10"`
+  ```bash
+  curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d '{"domain": "example.com", "limit": 10}' \
+    "http://localhost:8080/api/dnspod/records/list"
+  ```
   - 预期响应：code=200，data包含解析记录列表
+
 - **测试用例 2（筛选场景）**：
-  - 请求：`curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" "http://localhost:8080/api/dnspod/records?domain=example.com&recordType=A&subDomain=www"`
+  ```bash
+  curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d '{"domain": "example.com", "recordType": "A", "subDomain": "www"}' \
+    "http://localhost:8080/api/dnspod/records/list"
+  ```
   - 预期响应：code=200，返回符合条件的A记录
 
-### 3.2 获取指定域名的所有解析记录（简化版）
+### 3.2 添加域名解析记录（JSON格式）
+
+#### 基本信息
+
+- **接口标识**：`DNSPOD_CREATE_RECORD_JSON`
+- **请求路径**：`POST /api/dnspod/records`
+- **接口描述**：添加新的域名解析记录，使用JSON格式传输数据
+- **认证要求**：需要JWT认证
+- **适用业务单元**：域名管理模块
+- **Content-Type**：`application/json`
+
+#### 请求参数（JSON格式）
+
+```json
+{
+  "domain": "example.com",
+  "recordType": "A",
+  "value": "192.168.1.1",
+  "subDomain": "www",
+  "recordLine": "默认",
+  "ttl": 600,
+  "remark": "测试记录"
+}
+```
+
+| 参数名     | 是否必须 | 类型    | 默认值 | 描述                                           | 示例值        |
+| ---------- | -------- | ------- | ------ | ---------------------------------------------- | ------------- |
+| domain     | 是       | String  | -      | 要添加记录的域名                               | example.com   |
+| recordType | 是       | String  | -      | 记录类型（A、CNAME、MX、TXT等）                | A             |
+| value      | 是       | String  | -      | 记录值（如IP地址、域名等）                     | 192.168.1.1   |
+| subDomain  | 否       | String  | @      | 主机记录（如www、mail等，@表示主域名）         | www           |
+| recordLine | 否       | String  | 默认   | 记录线路                                       | 默认          |
+| ttl        | 否       | Long    | 600    | TTL值（生存时间）                              | 600           |
+| mx         | 否       | Long    | -      | MX优先级（仅MX记录需要）                       | 10            |
+| weight     | 否       | Long    | -      | 权重（负载均衡）                               | 5             |
+| status     | 否       | String  | ENABLE | 记录状态（ENABLE或DISABLE）                    | ENABLE        |
+| remark     | 否       | String  | -      | 备注信息                                       | 测试记录      |
+
+### 3.3 修改域名解析记录（JSON格式）
+
+#### 基本信息
+
+- **接口标识**：`DNSPOD_MODIFY_RECORD_JSON`
+- **请求路径**：`POST /api/dnspod/records/modify`
+- **接口描述**：修改现有的域名解析记录，使用JSON格式传输数据
+- **认证要求**：需要JWT认证
+- **适用业务单元**：域名管理模块
+- **Content-Type**：`application/json`
+
+#### 请求参数（JSON格式）
+
+```json
+{
+  "domain": "example.com",
+  "recordId": 123456,
+  "recordType": "A",
+  "value": "192.168.1.2",
+  "subDomain": "www",
+  "recordLine": "默认",
+  "ttl": 300,
+  "remark": "修改后的记录"
+}
+```
+
+### 3.4 删除域名解析记录（JSON格式）
+
+#### 基本信息
+
+- **接口标识**：`DNSPOD_DELETE_RECORD_JSON`
+- **请求路径**：`POST /api/dnspod/records/delete`
+- **接口描述**：删除指定的域名解析记录，使用JSON格式传输数据
+- **认证要求**：需要JWT认证
+- **适用业务单元**：域名管理模块
+- **Content-Type**：`application/json`
+
+#### 请求参数（JSON格式）
+
+```json
+{
+  "domain": "example.com",
+  "recordId": 123456
+}
+```
+
+| 参数名   | 是否必须 | 类型   | 描述           | 示例值      |
+| -------- | -------- | ------ | -------------- | ----------- |
+| domain   | 是       | String | 域名           | example.com |
+| recordId | 是       | Long   | 要删除的记录ID | 123456      |
+
+### 3.5 获取指定域名的所有解析记录（简化版）
 
 #### 基本信息
 
 - **接口标识**：`DNSPOD_GET_RECORDS_BY_DOMAIN`
 - **请求路径**：`GET /api/dnspod/records/{domain}`
-- **接口描述**：获取指定域名的所有解析记录，使用默认参数
+- **接口描述**：获取指定域名的所有解析记录，使用默认参数（兼容性接口）
 - **认证要求**：需要JWT认证
 - **适用业务单元**：域名管理模块
 
@@ -238,19 +356,15 @@ set TENCENT_CLOUD_SECRET_KEY=your_actual_secret_key
 
 ## 六、接口测试方法
 
-### 6.1 使用curl命令测试
+### 6.1 使用curl命令测试（JSON格式）
 
 ```bash
 # 1. 先登录获取JWT令牌
 curl -X POST -H "Content-Type: application/json" \
-  -d '{"email":"your_email@example.com","password":"your_password"}' \
+  -d '{"email":"12345678@example.com","password":"12345678"}' \
   http://localhost:8080/api/auth/login
 
-# 2. 使用令牌测试DNSPod接口（GET方式，URL参数）
-curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  "http://localhost:8080/api/dnspod/records?domain=example.com&limit=10"
-
-# 3. 使用令牌测试DNSPod接口（POST方式，JSON格式）
+# 2. 获取解析记录列表（JSON格式）
 curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -260,18 +374,112 @@ curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   }' \
   "http://localhost:8080/api/dnspod/records/list"
 
-# 4. 测试简化版接口
+# 3. 添加解析记录（JSON格式）
+curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "example.com",
+    "recordType": "A",
+    "value": "192.168.1.1",
+    "subDomain": "www",
+    "ttl": 600,
+    "remark": "测试记录"
+  }' \
+  "http://localhost:8080/api/dnspod/records"
+
+# 4. 修改解析记录（JSON格式）
+curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "example.com",
+    "recordId": 123456,
+    "recordType": "A",
+    "value": "192.168.1.2",
+    "subDomain": "www",
+    "ttl": 300,
+    "remark": "修改后的记录"
+  }' \
+  "http://localhost:8080/api/dnspod/records/modify"
+
+# 5. 删除解析记录（JSON格式）
+curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "example.com",
+    "recordId": 123456
+  }' \
+  "http://localhost:8080/api/dnspod/records/delete"
+
+# 6. 获取域名列表
+curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  "http://localhost:8080/api/dnspod/domains"
+
+# 7. 获取指定域名的所有解析记录（简化版）
 curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   "http://localhost:8080/api/dnspod/records/example.com"
 ```
 
-### 6.2 使用Postman测试
+### 6.2 使用Postman测试（JSON格式）
 
-1. 创建新的GET请求
-2. 设置URL：`http://localhost:8080/api/dnspod/records`
-3. 在Headers中添加：`Authorization: Bearer YOUR_JWT_TOKEN`
-4. 在Params中添加查询参数：domain、limit等
+#### 6.2.1 获取解析记录列表
+1. 创建新的POST请求
+2. 设置URL：`http://localhost:8080/api/dnspod/records/list`
+3. 在Headers中添加：
+   - `Authorization: Bearer YOUR_JWT_TOKEN`
+   - `Content-Type: application/json`
+4. 在Body中选择raw，格式选择JSON，输入：
+   ```json
+   {
+     "domain": "example.com",
+     "recordType": "A",
+     "limit": 10
+   }
+   ```
 5. 发送请求查看响应结果
+
+#### 6.2.2 添加解析记录
+1. 创建新的POST请求
+2. 设置URL：`http://localhost:8080/api/dnspod/records`
+3. 在Headers中添加：
+   - `Authorization: Bearer YOUR_JWT_TOKEN`
+   - `Content-Type: application/json`
+4. 在Body中输入：
+   ```json
+   {
+     "domain": "example.com",
+     "recordType": "A",
+     "value": "192.168.1.1",
+     "subDomain": "www",
+     "ttl": 600,
+     "remark": "测试记录"
+   }
+   ```
+
+#### 6.2.3 修改解析记录
+1. 创建新的POST请求
+2. 设置URL：`http://localhost:8080/api/dnspod/records/modify`
+3. 在Body中输入：
+   ```json
+   {
+     "domain": "example.com",
+     "recordId": 123456,
+     "recordType": "A",
+     "value": "192.168.1.2",
+     "subDomain": "www",
+     "ttl": 300
+   }
+   ```
+
+#### 6.2.4 删除解析记录
+1. 创建新的POST请求
+2. 设置URL：`http://localhost:8080/api/dnspod/records/delete`
+3. 在Body中输入：
+   ```json
+   {
+     "domain": "example.com",
+     "recordId": 123456
+   }
+   ```
 
 ## 七、版本历史
 

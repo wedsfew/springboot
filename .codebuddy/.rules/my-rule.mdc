@@ -1,3 +1,8 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
 # my-rule
 
-这是一个规则文件，用于帮助 AI 理解您的代码库和遵循项目约定。
+禁止自己自动git 推送代码.
