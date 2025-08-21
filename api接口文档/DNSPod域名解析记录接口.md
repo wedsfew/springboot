@@ -246,11 +246,21 @@ curl -X POST -H "Content-Type: application/json" \
   -d '{"email":"your_email@example.com","password":"your_password"}' \
   http://localhost:8080/api/auth/login
 
-# 2. 使用令牌测试DNSPod接口
+# 2. 使用令牌测试DNSPod接口（GET方式，URL参数）
 curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   "http://localhost:8080/api/dnspod/records?domain=example.com&limit=10"
 
-# 3. 测试简化版接口
+# 3. 使用令牌测试DNSPod接口（POST方式，JSON格式）
+curl -X POST -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "example.com",
+    "limit": 10,
+    "recordType": "A"
+  }' \
+  "http://localhost:8080/api/dnspod/records/list"
+
+# 4. 测试简化版接口
 curl -X GET -H "Authorization: Bearer YOUR_JWT_TOKEN" \
   "http://localhost:8080/api/dnspod/records/example.com"
 ```

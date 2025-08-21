@@ -107,7 +107,7 @@ public class DnspodController {
             DescribeRecordListResponse response = dnspodService.getRecordList(
                 requestBody.getDomain(),
                 requestBody.getDomainId(),
-                requestBody.getSubdomain(),
+                requestBody.getSubDomain(),
                 requestBody.getRecordType(),
                 requestBody.getRecordLine(),
                 requestBody.getRecordLineId(),
@@ -269,7 +269,7 @@ public class DnspodController {
             DeleteRecordResponse response = dnspodService.deleteRecord(
                 requestBody.getDomain(), 
                 requestBody.getRecordId(), 
-                requestBody.getDomainId()
+                requestBody.getDomainId() != null ? requestBody.getDomainId().longValue() : null
             );
             return ApiResponse.success(response);
         } catch (Exception e) {
@@ -336,7 +336,7 @@ public class DnspodController {
                 requestBody.getRecordLine() != null ? requestBody.getRecordLine() : "默认",
                 requestBody.getValue(),
                 requestBody.getSubDomain(),
-                requestBody.getDomainId(),
+                requestBody.getDomainId() != null ? requestBody.getDomainId().longValue() : null,
                 requestBody.getTtl(),
                 requestBody.getMx(),
                 requestBody.getWeight(),

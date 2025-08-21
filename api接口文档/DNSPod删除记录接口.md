@@ -3,12 +3,26 @@
 ## 1. 接口描述
 
 - **接口标识**：`DNSPOD_DELETE_RECORD`
-- **请求路径**：`DELETE /api/dnspod/records`
+- **请求路径**：`POST /api/dnspod/records/delete`
+- **请求方法**：`POST`
+- **Content-Type**：`application/json`
 - **接口描述**：删除指定域名的DNS解析记录
 - **认证要求**：需要认证（管理员权限）
 - **适用业务单元**：域名管理模块
 
 ## 2. 请求参数
+
+### 2.1 请求体格式（JSON）
+
+```json
+{
+  "domain": "example.com",
+  "recordId": 162,
+  "domainId": 123456
+}
+```
+
+### 2.2 参数说明
 
 | 参数名称 | 必选 | 类型   | 描述                                                         |
 | -------- | ---- | ------ | ------------------------------------------------------------ |
@@ -119,12 +133,43 @@
   - 状态码：404
   - 响应体：记录不存在或已被删除
 
+#### 4.1.1 成功场景
+
+- **请求参数**：
+  ```json
+  {
+    "domain": "example.com",
+    "recordId": 162
+  }
+  ```
+- **预期响应**：
+  - 状态码：200
+  - 响应体：包含RequestId
+
+#### 4.1.2 失败场景 - 记录不存在
+
+- **请求参数**：
+  ```json
+  {
+    "domain": "example.com",
+    "recordId": 99999
+  }
+  ```
+- **预期响应**：
+  - 状态码：404
+  - 响应体：记录不存在或已被删除
+
 ### 4.2 CURL测试命令
 
 ```bash
-# 删除记录
-curl -X DELETE "http://localhost:8080/api/dnspod/records?domain=example.com&recordId=162" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+# 删除记录（JSON格式）
+curl -X POST "http://localhost:8080/api/dnspod/records/delete" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "example.com",
+    "recordId": 162
+  }'
 ```
 
 ## 5. 注意事项
@@ -133,3 +178,4 @@ curl -X DELETE "http://localhost:8080/api/dnspod/records?domain=example.com&reco
 2. 需要管理员权限才能执行删除操作
 3. 建议在删除前先通过查询接口确认记录ID的正确性
 4. 删除成功后，DNS生效可能需要一定时间（通常几分钟到几小时不等）
+5. **接口格式变更**：现在使用POST方法和JSON请求体，而非DELETE方法和URL参数

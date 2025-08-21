@@ -24,7 +24,6 @@ public class RecordRequest {
     private String recordLine;      // 记录线路（可选，默认"默认"）
     private String recordLineId;    // 线路ID（可选，优先级比recordLine高）
     private String subDomain;       // 主机记录（可选，如www）
-    private String subdomain;       // 解析记录的主机头（查询时使用，与subDomain同义）
     
     // 查询参数
     private Integer groupId;        // 分组ID（可选）
@@ -41,9 +40,4 @@ public class RecordRequest {
     private String status;          // 记录状态（可选，默认ENABLE）
     private String remark;          // 备注（可选）
     
-    // Getter方法用于兼容性处理
-    public String getSubdomain() {
-        // 如果subdomain为空但subDomain不为空，返回subDomain
-        return subdomain != null ? subdomain : subDomain;
-    }
 }

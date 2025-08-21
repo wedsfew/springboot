@@ -3,14 +3,16 @@
 ## 接口基本信息
 
 - **接口标识**：`DNSPOD_GET_DOMAIN_LIST`
-- **请求路径**：`GET /api/dnspod/domains`
+- **请求路径**：`GET /api/dnspod/domains` 或 `POST /api/dnspod/domains/list`
+- **请求方法**：`GET`（URL参数）或 `POST`（JSON格式）
+- **Content-Type**：`application/json`（POST方式）
 - **接口描述**：获取腾讯云DNSPod账户下的域名列表
 - **认证要求**：无需认证（公开接口）
 - **适用业务单元**：域名管理模块
 
 ## 请求参数
 
-### 查询参数（Query Parameters）
+### 方式一：GET请求（URL参数）
 
 | 参数名称 | 必选 | 类型    | 默认值 | 描述                                                         |
 | -------- | ---- | ------- | ------ | ------------------------------------------------------------ |
@@ -20,7 +22,21 @@
 | groupId  | 否   | Integer | -      | 分组ID，获取指定分组的域名                                   |
 | keyword  | 否   | String  | -      | 根据关键字搜索域名                                           |
 
+### 方式二：POST请求（JSON格式）
+
+```json
+{
+  "type": "ALL",
+  "offset": 0,
+  "limit": 20,
+  "groupId": 1,
+  "keyword": "example"
+}
+```
+
 ### 请求示例
+
+#### GET方式（URL参数）
 
 ```bash
 # 获取所有域名（默认参数）
@@ -34,6 +50,38 @@ curl -X GET "http://localhost:8080/api/dnspod/domains?keyword=example&limit=5"
 
 # 获取指定分组的域名
 curl -X GET "http://localhost:8080/api/dnspod/domains?groupId=1&limit=10"
+```
+
+#### POST方式（JSON格式）
+
+```bash
+# 获取所有域名（默认参数）
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+
+# 获取前10个域名
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "limit": 10
+  }'
+
+# 根据关键字搜索域名
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "keyword": "example",
+    "limit": 5
+  }'
+
+# 获取指定分组的域名
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "groupId": 1,
+    "limit": 10
+  }'
 ```
 
 ## 响应格式
@@ -173,7 +221,7 @@ curl -X GET "http://localhost:8080/api/dnspod/domains?groupId=1&limit=10"
 
 ## 测试用例
 
-### 测试用例1：获取所有域名（成功场景）
+### 测试用例1：获取所有域名（GET方式）
 
 **请求：**
 ```bash
@@ -185,11 +233,30 @@ curl -X GET "http://localhost:8080/api/dnspod/domains"
 - 响应code：200
 - data字段包含DomainCountInfo和DomainList
 
-### 测试用例2：分页获取域名
+### 测试用例2：获取所有域名（POST方式，JSON格式）
 
 **请求：**
 ```bash
-curl -X GET "http://localhost:8080/api/dnspod/domains?offset=0&limit=5"
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+**预期响应：**
+- HTTP状态码：200
+- 响应code：200
+- data字段包含DomainCountInfo和DomainList
+
+### 测试用例3：分页获取域名（JSON格式）
+
+**请求：**
+```bash
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "offset": 0,
+    "limit": 5
+  }'
 ```
 
 **预期响应：**
@@ -197,11 +264,16 @@ curl -X GET "http://localhost:8080/api/dnspod/domains?offset=0&limit=5"
 - 响应code：200
 - DomainList数组长度不超过5
 
-### 测试用例3：关键字搜索域名
+### 测试用例4：关键字搜索域名（JSON格式）
 
 **请求：**
 ```bash
-curl -X GET "http://localhost:8080/api/dnspod/domains?keyword=test&limit=10"
+curl -X POST "http://localhost:8080/api/dnspod/domains/list" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "keyword": "test",
+    "limit": 10
+  }'
 ```
 
 **预期响应：**
@@ -209,7 +281,7 @@ curl -X GET "http://localhost:8080/api/dnspod/domains?keyword=test&limit=10"
 - 响应code：200
 - 返回的域名名称包含"test"关键字
 
-### 测试用例4：认证失败场景
+### 测试用例5：认证失败场景
 
 **场景：** 腾讯云API密钥配置错误
 
@@ -217,6 +289,14 @@ curl -X GET "http://localhost:8080/api/dnspod/domains?keyword=test&limit=10"
 - HTTP状态码：200
 - 响应code：500
 - message包含认证错误信息
+
+## 接口格式变更说明
+
+**重要变更**：
+1. **双接口支持**：同时支持GET（URL参数）和POST（JSON格式）两种方式
+2. **Content-Type**：POST方式使用 `application/json`
+3. **向后兼容**：保持GET方式不变，新增POST方式
+4. **推荐使用**：新项目建议使用POST+JSON方式，提供更好的可读性和安全性
 
 ## 错误码说明
 

@@ -31,15 +31,38 @@
 | status     | 否   | String | 记录状态，取值范围为ENABLE和DISABLE，默认为ENABLE            |
 | remark     | 否   | String | 记录的备注信息                                               |
 
-### 2.2 请求示例
+### 2.2 请求格式（JSON）
 
-```http
-POST /api/dnspod/records/modify HTTP/1.1
-Host: localhost:8080
-Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
+```json
+{
+  "domain": "vvvv.host",
+  "recordId": 2160398569,
+  "recordType": "A",
+  "value": "192.168.1.1",
+  "recordLine": "默认",
+  "subDomain": "www",
+  "ttl": 600,
+  "mx": null,
+  "weight": null,
+  "status": "ENABLE",
+  "remark": "修改后的备注"
+}
+```
 
-domain=vvvv.host&recordId=2160398569&recordType=A&value=192.168.1.1&recordLine=默认&subDomain=www
+### 2.3 请求示例
+
+```bash
+curl -X POST "http://localhost:8080/api/dnspod/records/modify" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "vvvv.host",
+    "recordId": 2160398569,
+    "recordType": "A",
+    "value": "192.168.1.1",
+    "recordLine": "默认",
+    "subDomain": "www"
+  }'
 ```
 
 ## 三、响应参数
@@ -99,13 +122,15 @@ domain=vvvv.host&recordId=2160398569&recordType=A&value=192.168.1.1&recordLine=�
 
 ### 5.1 成功修改记录
 - **请求参数**：
-  ```
-  domain=example.com
-  recordId=123456
-  recordType=A
-  value=192.168.1.1
-  recordLine=默认
-  subDomain=www
+  ```json
+  {
+    "domain": "example.com",
+    "recordId": 123456,
+    "recordType": "A",
+    "value": "192.168.1.1",
+    "recordLine": "默认",
+    "subDomain": "www"
+  }
   ```
 - **预期结果**：
   - 状态码：200
@@ -113,11 +138,13 @@ domain=vvvv.host&recordId=2160398569&recordType=A&value=192.168.1.1&recordLine=�
 
 ### 5.2 记录ID不存在
 - **请求参数**：
-  ```
-  domain=example.com
-  recordId=999999
-  recordType=A
-  value=192.168.1.1
+  ```json
+  {
+    "domain": "example.com",
+    "recordId": 999999,
+    "recordType": "A",
+    "value": "192.168.1.1"
+  }
   ```
 - **预期结果**：
   - 状态码：500
@@ -136,3 +163,4 @@ domain=vvvv.host&recordId=2160398569&recordType=A&value=192.168.1.1&recordLine=�
 3. 修改MX记录时，必须提供mx参数（MX优先级）
 4. 权重参数weight的取值范围是0-100，0表示关闭权重
 5. 接口需要JWT认证，请确保在请求头中包含有效的Authorization信息
+6. **接口格式变更**：现在使用JSON请求体格式，Content-Type为application/json

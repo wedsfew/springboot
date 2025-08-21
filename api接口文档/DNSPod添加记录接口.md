@@ -34,6 +34,25 @@
 | status | String | 记录状态 | ENABLE | ENABLE/DISABLE |
 | remark | String | 备注信息 | null | 测试记录 |
 
+## 请求格式
+
+### JSON请求体格式
+
+```json
+{
+  "domain": "cblog.eu",
+  "recordType": "A",
+  "value": "8.8.8.8",
+  "recordLine": "默认",
+  "subDomain": "test",
+  "ttl": 600,
+  "mx": null,
+  "weight": null,
+  "status": "ENABLE",
+  "remark": "测试A记录"
+}
+```
+
 ## 请求示例
 
 ### 添加A记录
@@ -41,8 +60,15 @@
 ```bash
 curl -X POST "http://localhost:8080/api/dnspod/records" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "domain=cblog.eu&recordType=A&value=8.8.8.8&subDomain=test&ttl=600&remark=测试A记录"
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "cblog.eu",
+    "recordType": "A",
+    "value": "8.8.8.8",
+    "subDomain": "test",
+    "ttl": 600,
+    "remark": "测试A记录"
+  }'
 ```
 
 ### 添加CNAME记录
@@ -50,8 +76,14 @@ curl -X POST "http://localhost:8080/api/dnspod/records" \
 ```bash
 curl -X POST "http://localhost:8080/api/dnspod/records" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "domain=cblog.eu&recordType=CNAME&value=example.com&subDomain=www&ttl=600"
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "cblog.eu",
+    "recordType": "CNAME",
+    "value": "example.com",
+    "subDomain": "www",
+    "ttl": 600
+  }'
 ```
 
 ### 添加MX记录
@@ -59,8 +91,14 @@ curl -X POST "http://localhost:8080/api/dnspod/records" \
 ```bash
 curl -X POST "http://localhost:8080/api/dnspod/records" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "domain=cblog.eu&recordType=MX&value=mail.example.com&mx=10&ttl=600"
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "cblog.eu",
+    "recordType": "MX",
+    "value": "mail.example.com",
+    "mx": 10,
+    "ttl": 600
+  }'
 ```
 
 ## 响应格式
@@ -172,13 +210,15 @@ curl -X POST "http://localhost:8080/api/dnspod/records" \
 ### 测试用例1：成功添加A记录
 
 **请求参数**：
-```
-domain=cblog.eu
-recordType=A
-value=8.8.8.8
-subDomain=test
-ttl=600
-remark=测试记录
+```json
+{
+  "domain": "cblog.eu",
+  "recordType": "A",
+  "value": "8.8.8.8",
+  "subDomain": "test",
+  "ttl": 600,
+  "remark": "测试记录"
+}
 ```
 
 **预期响应**：
@@ -188,11 +228,13 @@ remark=测试记录
 ### 测试用例2：添加重复记录
 
 **请求参数**：
-```
-domain=cblog.eu
-recordType=A
-value=8.8.8.8
-subDomain=test
+```json
+{
+  "domain": "cblog.eu",
+  "recordType": "A",
+  "value": "8.8.8.8",
+  "subDomain": "test"
+}
 ```
 
 **预期响应**：
@@ -202,12 +244,21 @@ subDomain=test
 ### 测试用例3：无效域名
 
 **请求参数**：
-```
-domain=invalid-domain
-recordType=A
-value=8.8.8.8
+```json
+{
+  "domain": "invalid-domain",
+  "recordType": "A",
+  "value": "8.8.8.8"
+}
 ```
 
 **预期响应**：
 - code=500
 - message包含域名相关错误信息
+
+## 接口格式变更说明
+
+**重要变更**：
+1. **Content-Type**: 从 `application/x-www-form-urlencoded` 改为 `application/json`
+2. **请求体格式**: 从URL参数格式改为JSON格式
+3. **向后兼容**: 建议新项目使用JSON格式，提供更好的可读性和安全性
