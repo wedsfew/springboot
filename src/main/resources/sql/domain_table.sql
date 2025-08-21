@@ -1,51 +1,9 @@
----
-description: 
-globs:
-alwaysApply: true
----
-# 数据表结构
-## mysql 数据库demo 的表结构
-### user表
- 
-```sql
-CREATE TABLE `user` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'USER',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
-#### 测试数据
-- email: allnotice@qq.com
-- password: 12345678
-### admin表
+-- 文件名：domain_table.sql
+-- 功能：创建域名表，用于保存从DNSPod获取的域名信息
+-- 作者：CodeBuddy
+-- 创建时间：2025-08-21
+-- 版本：v1.0.0
 
-```sql
-CREATE TABLE `admin` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `role` varchar(20) NOT NULL DEFAULT 'ADMIN',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-```
-#### 测试数据
-- username: admin
-- password: admin
-
-### domain表
-
-```sql
 CREATE TABLE `domain` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `domain_id` bigint NOT NULL COMMENT 'DNSPod域名ID',
@@ -78,10 +36,3 @@ CREATE TABLE `domain` (
   KEY `idx_group_id` (`group_id`),
   KEY `idx_owner` (`owner`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='域名信息表';
-```
-
-#### 功能说明
-- 用于保存从DNSPod获取的域名列表信息
-- 支持域名信息的本地缓存和管理
-- 提供域名状态、分组、所有者等多维度查询
-- 自动同步DNSPod域名列表到本地数据库

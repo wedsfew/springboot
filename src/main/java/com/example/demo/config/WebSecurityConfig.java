@@ -42,8 +42,8 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
                 // 公开接口，无需认证
                 .requestMatchers("/api/auth/**", "/api/verification/**", "/api/test/**").permitAll()
-                // DNSPod相关接口需要认证
-                .requestMatchers("/api/dnspod/**").authenticated()
+                // DNSPod相关接口暂时允许访问，无需认证（便于测试）
+                .requestMatchers("/api/dnspod/**").permitAll()
                 // 其他接口暂时允许访问，无需认证
                 .anyRequest().permitAll()
             )

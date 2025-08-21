@@ -5,6 +5,7 @@ import com.example.demo.dto.RecordRequest;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DescribeDomainListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,33 @@ public class DnspodController {
 
     @Autowired
     private DnspodService dnspodService;
+
+    /**
+     * 获取域名列表
+     * 
+     * @param type 域名分组类型（可选，默认为ALL）
+     * @param offset 记录开始的偏移（可选，默认为0）
+     * @param limit 要获取的域名数量（可选，默认为20）
+     * @param groupId 分组ID（可选）
+     * @param keyword 根据关键字搜索域名（可选）
+     * @return 域名列表
+     */
+    @GetMapping("/domains")
+    public ApiResponse<DescribeDomainListResponse> getDomainList(
+            @RequestParam(required = false, defaultValue = "ALL") String type,
+            @RequestParam(required = false, defaultValue = "0") Integer offset,
+            @RequestParam(required = false, defaultValue = "20") Integer limit,
+            @RequestParam(required = false) Integer groupId,
+            @RequestParam(required = false) String keyword) {
+        
+        try {
+            DescribeDomainListResponse response = dnspodService.getDomainList(
+                type, offset, limit, groupId, keyword);
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
+        }
+    }
 
     /**
      * 获取域名的解析记录筛选列表

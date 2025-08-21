@@ -1,3 +1,4 @@
+nohup: ignoring input
 [[1;34mINFO[m] Scanning for projects...
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--------------------------< [0;36mcom.example:demo[0;1m >--------------------------[m
@@ -8,110 +9,42 @@
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mdemo[0;1m ---[m
 [[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
-[[1;34mINFO[m] Copying 4 resources from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 5 resources from src/main/resources to target/classes
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:compile[m [1m(default-compile)[m @ [36mdemo[0;1m ---[m
-[[1;34mINFO[m] Nothing to compile - all classes are up to date.
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mdemo[0;1m ---[m
-[[1;34mINFO[m] skip non existing resourceDirectory /root/springboot/springboot/src/test/resources
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:testCompile[m [1m(default-testCompile)[m @ [36mdemo[0;1m ---[m
-[[1;34mINFO[m] Nothing to compile - all classes are up to date.
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:3.5.4:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mdemo[0;1m <<<[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:3.5.4:run[m [1m(default-cli)[m @ [36mdemo[0;1m ---[m
-[[1;34mINFO[m] Attaching agents: []
-Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
-[32m :: Spring Boot :: [39m              [2m (v3.5.4)[0;39m
-
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - Starting DemoApplication using Java 17.0.16 with PID 1369046 (/root/springboot/springboot/target/classes started by root in /root/springboot/springboot)
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mcom.example.demo.DemoApplication[0;39m - Running with Spring Boot v3.5.4, Spring v6.2.9
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Identified candidate component class: file [/root/springboot/springboot/target/classes/com/example/demo/mapper/AdminMapper.class]
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Identified candidate component class: file [/root/springboot/springboot/target/classes/com/example/demo/mapper/UserMapper.class]
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Creating MapperFactoryBean with name 'adminMapper' and 'com.example.demo.mapper.AdminMapper' mapperInterface
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Enabling autowire by type for MapperFactoryBean with name 'adminMapper'.
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Creating MapperFactoryBean with name 'userMapper' and 'com.example.demo.mapper.UserMapper' mapperInterface
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.s.mapper.ClassPathMapperScanner[0;39m - Enabling autowire by type for MapperFactoryBean with name 'userMapper'.
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat initialized with port 8080 (http)
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.catalina.core.StandardService[0;39m - Starting service [Tomcat]
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.catalina.core.StandardEngine[0;39m - Starting Servlet engine: [Apache Tomcat/10.1.43]
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring embedded WebApplicationContext
-[2m2025-08-17 14:50:54[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m - Root WebApplicationContext: initialization completed in 552 ms
-Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
-[2m2025-08-17 14:50:55[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mo.m.spring.SqlSessionFactoryBean[0;39m - Property 'mapperLocations' was not specified.
-[2m2025-08-17 14:50:55[0;39m [35m[main][0;39m [32mDEBUG[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - Filter 'jwtAuthenticationFilter' configured for use
-[2m2025-08-17 14:50:55[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-[2m2025-08-17 14:50:55[0;39m [35m[main][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.TomcatWebServer[0;39m - Tomcat started on port 8080 (http) with context path '/'
-[2m2025-08-17 14:50:55[0;39m [35m[main][0;39m [32mINFO [0;39m [36mcom.example.demo.DemoApplication[0;39m - Started DemoApplication in 1.255 seconds (process running for 1.396)
-[2m2025-08-17 14:53:53[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.a.c.c.C.[Tomcat].[localhost].[/][0;39m - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[2m2025-08-17 14:53:53[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Initializing Servlet 'dispatcherServlet'
-[2m2025-08-17 14:53:53[0;39m [35m[http-nio-8080-exec-1][0;39m [32mINFO [0;39m [36mo.s.web.servlet.DispatcherServlet[0;39m - Completed initialization in 1 ms
-[2m2025-08-17 14:53:53[0;39m [35m[http-nio-8080-exec-1][0;39m [31mERROR[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析失败: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-[2m2025-08-17 14:55:54[0;39m [35m[http-nio-8080-exec-2][0;39m [31mERROR[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析失败: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-[2m2025-08-17 14:55:57[0;39m [35m[http-nio-8080-exec-4][0;39m [31mERROR[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析失败: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-[2m2025-08-17 14:55:59[0;39m [35m[http-nio-8080-exec-5][0;39m [31mERROR[0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析失败: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mc.e.demo.controller.AdminController[0;39m - 接收到管理员登录请求: admin
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.AdminServiceImpl[0;39m - 管理员登录: admin
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4767983a] was not registered for synchronization because synchronization is not active
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Starting...
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.pool.HikariPool[0;39m - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c168f44
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Start completed.
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@139468688 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c168f44] will not be managed by Spring
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36mc.e.d.m.AdminMapper.findByUsername[0;39m - ==>  Preparing: SELECT * FROM admin WHERE username = ?
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36mc.e.d.m.AdminMapper.findByUsername[0;39m - ==> Parameters: admin(String)
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36mc.e.d.m.AdminMapper.findByUsername[0;39m - <==      Total: 1
-[2m2025-08-17 14:58:03[0;39m [35m[http-nio-8080-exec-7][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4767983a]
-[2m2025-08-17 14:58:04[0;39m [35m[http-nio-8080-exec-7][0;39m [32mINFO [0;39m [36mc.e.d.service.impl.AdminServiceImpl[0;39m - 管理员登录成功: admin
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 7, 角色 ADMIN
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@420af112] was not registered for synchronization because synchronization is not active
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@62091602 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c168f44] will not be managed by Spring
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 7(Long)
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@420af112]
-[2m2025-08-17 14:58:22[0;39m [35m[http-nio-8080-exec-9][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 7 认证成功
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 7, 角色 ADMIN
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35d3851b] was not registered for synchronization because synchronization is not active
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@258288085 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c168f44] will not be managed by Spring
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 7(Long)
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35d3851b]
-[2m2025-08-17 14:58:26[0;39m [35m[http-nio-8080-exec-10][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 7 认证成功
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 7, 角色 ADMIN
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@832a954] was not registered for synchronization because synchronization is not active
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@2131124758 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c168f44] will not be managed by Spring
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 7(Long)
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@832a954]
-[2m2025-08-17 14:58:28[0;39m [35m[http-nio-8080-exec-2][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 7 认证成功
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - JWT令牌解析成功: 用户ID 7, 角色 ADMIN
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Creating a new SqlSession
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29035101] was not registered for synchronization because synchronization is not active
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mo.m.s.t.SpringManagedTransaction[0;39m - JDBC Connection [HikariProxyConnection@1672096530 wrapping com.mysql.cj.jdbc.ConnectionImpl@3c168f44] will not be managed by Spring
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==>  Preparing: SELECT * FROM user WHERE id = ?
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - ==> Parameters: 7(Long)
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36mc.e.demo.mapper.UserMapper.findById[0;39m - <==      Total: 1
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mDEBUG[0;39m [36morg.mybatis.spring.SqlSessionUtils[0;39m - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29035101]
-[2m2025-08-17 14:58:58[0;39m [35m[http-nio-8080-exec-4][0;39m [32mINFO [0;39m [36mc.e.d.filter.JwtAuthenticationFilter[0;39m - 用户ID 7 认证成功
-[2m2025-08-17 15:09:02[0;39m [35m[SpringApplicationShutdownHook][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.GracefulShutdown[0;39m - Commencing graceful shutdown. Waiting for active requests to complete
-[2m2025-08-17 15:09:02[0;39m [35m[tomcat-shutdown][0;39m [32mINFO [0;39m [36mo.s.b.w.e.tomcat.GracefulShutdown[0;39m - Graceful shutdown complete
-[2m2025-08-17 15:09:02[0;39m [35m[SpringApplicationShutdownHook][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown initiated...
-[2m2025-08-17 15:09:02[0;39m [35m[SpringApplicationShutdownHook][0;39m [32mINFO [0;39m [36mcom.zaxxer.hikari.HikariDataSource[0;39m - HikariPool-1 - Shutdown completed.
+[[1;34mINFO[m] Recompiling the module because of [1madded or removed source files[m.
+[[1;34mINFO[m] Compiling 52 source files with javac [debug parameters release 17] to target/classes
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;31mERROR[m] COMPILATION ERROR : 
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;31mERROR[m] /root/springboot/springboot/src/main/java/com/example/demo/controller/DomainController.java:[237,31] no suitable method found for success(int,java.lang.String)
+    method com.example.demo.common.ApiResponse.<T>success(T) is not applicable
+      (cannot infer type-variable(s) T
+        (actual and formal argument lists differ in length))
+    method com.example.demo.common.ApiResponse.<T>success(java.lang.String,T) is not applicable
+      (cannot infer type-variable(s) T
+        (argument mismatch; int cannot be converted to java.lang.String))
+[[1;34mINFO[m] 1 error
+[[1;34mINFO[m] -------------------------------------------------------------
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  2.305 s
+[[1;34mINFO[m] Finished at: 2025-08-21T08:12:52Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-compiler-plugin:3.14.0:compile[m [1m(default-compile)[m on project [36mdemo[m: [1;31mCompilation failure[m
+[[1;31mERROR[m] [1;31m/root/springboot/springboot/src/main/java/com/example/demo/controller/DomainController.java:[237,31] no suitable method found for success(int,java.lang.String)[m
+[[1;31mERROR[m] [1;31m    method com.example.demo.common.ApiResponse.<T>success(T) is not applicable[m
+[[1;31mERROR[m] [1;31m      (cannot infer type-variable(s) T[m
+[[1;31mERROR[m] [1;31m        (actual and formal argument lists differ in length))[m
+[[1;31mERROR[m] [1;31m    method com.example.demo.common.ApiResponse.<T>success(java.lang.String,T) is not applicable[m
+[[1;31mERROR[m] [1;31m      (cannot infer type-variable(s) T[m
+[[1;31mERROR[m] [1;31m        (argument mismatch; int cannot be converted to java.lang.String))[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

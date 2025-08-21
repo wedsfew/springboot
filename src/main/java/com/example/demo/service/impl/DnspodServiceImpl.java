@@ -10,6 +10,8 @@ import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DescribeDomainListRequest;
+import com.tencentcloudapi.dnspod.v20210323.models.DescribeDomainListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListRequest;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordRequest;
@@ -35,6 +37,68 @@ public class DnspodServiceImpl implements DnspodService {
 
     @Value("${tencent.cloud.region}")
     private String region;
+
+    /**
+     * 获取域名列表
+     * 
+     * @param type 域名分组类型（可选，默认为ALL）
+     * @param offset 记录开始的偏移（可选，默认为0）
+     * @param limit 要获取的域名数量（可选，默认为20）
+     * @param groupId 分组ID（可选）
+     * @param keyword 根据关键字搜索域名（可选）
+     * @return 域名列表响应
+     */
+    @Override
+    public DescribeDomainListResponse getDomainList(String type, Integer offset, Integer limit, 
+                                                   Integer groupId, String keyword) {
+        try {
+            // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey
+            Credential cred = new Credential(secretId, secretKey);
+            
+            // 实例化一个http选项
+            HttpProfile httpProfile = new HttpProfile();
+            httpProfile.setEndpoint("dnspod.tencentcloudapi.com");
+            
+            // 实例化一个client选项
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            
+            // 实例化要请求产品的client对象
+            DnspodClient client = new DnspodClient(cred, region, clientProfile);
+            
+            // 实例化一个请求对象
+            DescribeDomainListRequest req = new DescribeDomainListRequest();
+            
+            // 设置可选参数
+            if (type != null && !type.isEmpty()) {
+                req.setType(type);
+            } else {
+                req.setType("ALL"); // 默认获取所有域名
+            }
+            if (offset != null) {
+                req.setOffset(offset.longValue());
+            } else {
+                req.setOffset(0L); // 默认从第一条记录开始
+            }
+            if (limit != null) {
+                req.setLimit(limit.longValue());
+            } else {
+                req.setLimit(20L); // 默认获取20个域名
+            }
+            if (groupId != null) {
+                req.setGroupId(groupId.longValue());
+            }
+            if (keyword != null && !keyword.isEmpty()) {
+                req.setKeyword(keyword);
+            }
+            
+            // 返回的resp是一个DescribeDomainListResponse的实例
+            return client.DescribeDomainList(req);
+            
+        } catch (TencentCloudSDKException e) {
+            throw new RuntimeException("调用腾讯云DNSPod获取域名列表API失败: " + e.getMessage(), e);
+        }
+    }
 
     /**
      * 获取域名的解析记录筛选列表

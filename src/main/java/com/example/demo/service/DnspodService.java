@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DescribeDomainListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 
@@ -10,9 +11,23 @@ import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
  * 功能：腾讯云DNSPod服务接口，提供域名解析记录查询和管理功能
  * 作者：CodeBuddy
  * 创建时间：2025-08-16
- * 版本：v1.0.0
+ * 版本：v1.1.0
+ * 备注：新增域名列表查询功能
  */
 public interface DnspodService {
+    
+    /**
+     * 获取域名列表
+     * 
+     * @param type 域名分组类型（可选，默认为ALL）
+     * @param offset 记录开始的偏移（可选，默认为0）
+     * @param limit 要获取的域名数量（可选，默认为20）
+     * @param groupId 分组ID（可选）
+     * @param keyword 根据关键字搜索域名（可选）
+     * @return 域名列表响应
+     */
+    DescribeDomainListResponse getDomainList(String type, Integer offset, Integer limit, 
+                                           Integer groupId, String keyword);
     
     /**
      * 获取域名的解析记录筛选列表
