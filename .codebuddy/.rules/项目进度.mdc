@@ -39,9 +39,32 @@ alwaysApply: true
 #### DNSPod域名解析接口【✅】
   - 查询域名解析记录 GET /api/dnspod/records【✅】
   - 添加域名解析记录 POST /api/dnspod/records【✅】
+  - 获取域名列表 GET /api/dnspod/domains【✅】
   - 腾讯云API集成配置【✅】
   - 环境变量配置【✅】
   - 接口测试验证【✅】
+
+#### 域名同步功能【✅】
+  - 创建Domain实体类【✅】
+  - 创建DomainMapper数据访问层【✅】
+  - 创建DomainService业务逻辑层【✅】
+  - 创建DomainController控制器【✅】
+  - 创建domain表结构【✅】
+  - 域名同步接口 POST /api/domains/sync【✅】
+  - 获取所有域名 GET /api/domains【✅】
+  - 根据DNSPod域名ID获取域名 GET /api/domains/dnspod/{domainId}【✅】
+  - 根据域名名称获取域名 GET /api/domains/name/{name}【✅】
+  - 根据状态获取域名列表 GET /api/domains/status/{status}【✅】
+  - 根据分组ID获取域名列表 GET /api/domains/group/{groupId}【✅】
+  - 关键字搜索域名 GET /api/domains/search【✅】
+  - 分页获取域名列表 GET /api/domains/page【✅】
+  - 统计域名总数 GET /api/domains/count【✅】
+  - 根据状态统计域名数量 GET /api/domains/count/status/{status}【✅】
+  - 保存域名信息 POST /api/domains【✅】
+  - 更新域名信息 POST /api/domains/update【✅】
+  - 删除域名信息 POST /api/domains/delete/{domainId}【✅】
+  - 成功同步5个真实域名到本地数据库【✅】
+  - 完整的接口文档和测试报告【✅】
 
 ### 全局类【✅】
 - 实现全局统一响应类src/main/java/com/example/demo/common/ApiResponse.java【✅】

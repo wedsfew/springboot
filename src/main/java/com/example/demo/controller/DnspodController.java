@@ -7,6 +7,7 @@ import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeDomainListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordFilterListResponse;
+import com.tencentcloudapi.dnspod.v20210323.models.DescribeRecordListResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,31 +54,73 @@ public class DnspodController {
     }
 
     /**
+     * 获取域名的解析记录列表（完整版）
+     * 
+     * @param domain 域名，如 example.com
+     * @param domainId 域名ID（可选，优先级比domain高）
+     * @param subdomain 解析记录的主机头（可选）
+     * @param recordType 记录类型（可选，如A、CNAME、NS等）
+     * @param recordLine 线路名称（可选）
+     * @param recordLineId 线路ID（可选，优先级比recordLine高）
+     * @param groupId 分组ID（可选）
+     * @param keyword 关键字搜索（可选，支持搜索主机头和记录值）
+     * @param sortField 排序字段（可选，支持name,line,type,value,weight,mx,ttl,updated_on）
+     * @param sortType 排序方式（可选，ASC或DESC，默认ASC）
+     * @param offset 偏移量（可选，默认0）
+     * @param limit 限制数量（可选，默认100，最大3000）
+     * @return 解析记录列表响应
+     */
+    @GetMapping("/records/list")
+    public ApiResponse<DescribeRecordListResponse> getRecordList(
+            @RequestParam String domain,
+            @RequestParam(required = false) Integer domainId,
+            @RequestParam(required = false) String subdomain,
+            @RequestParam(required = false) String recordType,
+            @RequestParam(required = false) String recordLine,
+            @RequestParam(required = false) String recordLineId,
+            @RequestParam(required = false) Integer groupId,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String sortField,
+            @RequestParam(required = false) String sortType,
+            @RequestParam(required = false) Integer offset,
+            @RequestParam(required = false) Integer limit) {
+        
+        try {
+            DescribeRecordListResponse response = dnspodService.getRecordList(
+                domain, domainId, subdomain, recordType, recordLine, recordLineId,
+                groupId, keyword, sortField, sortType, offset, limit);
+            return ApiResponse.success("获取解析记录列表成功", response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取解析记录列表失败: " + e.getMessage());
+        }
+    }
+
+    /**
      * 获取域名的解析记录筛选列表
      * 
-     * @param domain 域名（必填）
+     * @param domain 域名，如 example.com
      * @param remark 备注信息（可选）
      * @param subDomain 子域名（可选）
      * @param recordType 记录类型（可选）
-     * @param limit 限制数量（可选，默认100）
-     * @param offset 偏移量（可选，默认0）
-     * @return 解析记录列表
+     * @param limit 限制数量（可选）
+     * @param offset 偏移量（可选）
+     * @return 解析记录列表响应
      */
     @GetMapping("/records")
-    public ApiResponse<DescribeRecordFilterListResponse> getRecordFilterList(
+    public ApiResponse<DescribeRecordFilterListResponse> getRecords(
             @RequestParam String domain,
             @RequestParam(required = false) String remark,
             @RequestParam(required = false) String subDomain,
             @RequestParam(required = false) String recordType,
-            @RequestParam(required = false, defaultValue = "100") Integer limit,
-            @RequestParam(required = false, defaultValue = "0") Integer offset) {
+            @RequestParam(required = false) Integer limit,
+            @RequestParam(required = false) Integer offset) {
         
         try {
             DescribeRecordFilterListResponse response = dnspodService.getRecordFilterList(
                 domain, remark, subDomain, recordType, limit, offset);
-            return ApiResponse.success(response);
+            return ApiResponse.success("获取解析记录列表成功", response);
         } catch (Exception e) {
-            return ApiResponse.error(500, "获取域名解析记录失败: " + e.getMessage());
+            return ApiResponse.error(500, "获取解析记录列表失败: " + e.getMessage());
         }
     }
 
