@@ -40,6 +40,15 @@ public class JwtUtil {
     }
     
     /**
+     * 从令牌中获取用户邮箱
+     * @param token JWT令牌
+     * @return 用户邮箱
+     */
+    public String getEmailFromToken(String token) {
+        return getClaimFromToken(token, claims -> claims.get("email", String.class));
+    }
+    
+    /**
      * 从令牌中获取用户角色
      * @param token JWT令牌
      * @return 用户角色
@@ -92,25 +101,29 @@ public class JwtUtil {
     }
     
     /**
-     * 为指定用户生成令牌
+     * 为指定用户生成令牌，包含完整用户信息
+     * 这是唯一的令牌生成方法，确保所有令牌都包含完整的用户信息
      * @param userId 用户ID
-     * @return JWT令牌
-     */
-    public String generateToken(Long userId) {
-        Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userId.toString());
-    }
-    
-    /**
-     * 为指定用户生成令牌，包含角色信息
-     * @param userId 用户ID（字符串形式）
+     * @param email 用户邮箱
      * @param role 用户角色
      * @return JWT令牌
      */
-    public String generateToken(String userId, String role) {
+    public String generateToken(Long userId, String email, String role) {
+        // 验证必要参数
+        if (userId == null) {
+            throw new IllegalArgumentException("用户ID不能为空");
+        }
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("用户邮箱不能为空");
+        }
+        if (role == null || role.trim().isEmpty()) {
+            throw new IllegalArgumentException("用户角色不能为空");
+        }
+        
         Map<String, Object> claims = new HashMap<>();
+        claims.put("email", email);
         claims.put("role", role);
-        return doGenerateToken(claims, userId);
+        return doGenerateToken(claims, userId.toString());
     }
     
     /**
@@ -138,5 +151,14 @@ public class JwtUtil {
     public Boolean validateToken(String token, Long userId) {
         final Long tokenUserId = getUserIdFromToken(token);
         return (tokenUserId.equals(userId) && !isTokenExpired(token));
+    }
+
+    /**
+     * 验证令牌是否有效（仅检查过期时间）
+     * @param token JWT令牌
+     * @return 是否有效
+     */
+    public Boolean validateToken(String token) {
+        return !isTokenExpired(token);
     }
 }

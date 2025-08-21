@@ -12,11 +12,17 @@ JWT（JSON Web Token）认证过滤器用于验证请求中的令牌，确保只
 
 ```java
 public class JwtUtil {
-    // 生成令牌
-    public String generateToken(Long userId) { ... }
+    // 生成令牌（包含完整用户信息）
+    public String generateToken(Long userId, String email, String role) { ... }
     
     // 从令牌中获取用户ID
     public Long getUserIdFromToken(String token) { ... }
+    
+    // 从令牌中获取用户邮箱
+    public String getEmailFromToken(String token) { ... }
+    
+    // 从令牌中获取用户角色
+    public String getRoleFromToken(String token) { ... }
     
     // 验证令牌
     public Boolean validateToken(String token, Long userId) { ... }
@@ -103,18 +109,20 @@ public class WebSecurityConfig {
 
 ## 认证流程
 
-1. 用户通过登录接口获取JWT令牌（令牌中包含用户ID）
+1. 用户通过登录接口获取JWT令牌（令牌中包含用户ID、邮箱和角色信息）
 2. 用户在后续请求中，在Authorization头中携带JWT令牌（格式：Bearer {token}）
-3. JWT认证过滤器拦截请求，从令牌中提取用户ID
+3. JWT认证过滤器拦截请求，从令牌中提取用户ID、邮箱和角色信息
 4. 如果令牌有效，设置认证信息，允许访问受保护的API端点
 5. 如果令牌无效或不存在，返回401错误
 
-## 使用用户ID的优势
+## JWT令牌结构优势
 
-1. **唯一性**：用户ID是数据库中的主键，具有唯一性，避免了用户名可能重复的问题
-2. **稳定性**：即使用户更改用户名，JWT令牌仍然有效，因为用户ID不会改变
-3. **安全性**：减少了在令牌中存储可能被猜测的信息（如用户名）
-4. **性能**：通过用户ID直接查询数据库，避免了额外的查询步骤
+1. **完整性**：令牌包含用户ID、邮箱和角色信息，减少数据库查询
+2. **唯一性**：用户ID是数据库中的主键，具有唯一性
+3. **稳定性**：即使用户更改用户名，JWT令牌仍然有效，因为用户ID不会改变
+4. **权限控制**：令牌中包含角色信息，便于进行权限验证
+5. **用户识别**：令牌中包含邮箱信息，便于用户身份识别
+6. **性能优化**：通过用户ID直接查询数据库，避免了额外的查询步骤
 
 ## API端点保护
 
@@ -151,9 +159,22 @@ Content-Type: application/json
   "data": {
     "token": "eyJhbGciOiJIUzI1NiJ9...",
     "username": "user",
-    "email": "user@example.com"
+    "email": "user@example.com",
+    "role": "USER"
   },
-  "timestamp": "2025-08-11T10:30:00Z"
+  "timestamp": "2025-01-09T10:30:00Z"
+}
+```
+
+**JWT令牌解码后的payload示例：**
+
+```json
+{
+  "sub": "1",
+  "email": "user@example.com",
+  "role": "USER",
+  "iat": 1641902400,
+  "exp": 1641988800
 }
 ```
 

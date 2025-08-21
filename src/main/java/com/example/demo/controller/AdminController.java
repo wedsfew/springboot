@@ -96,14 +96,15 @@ public class AdminController {
             // 登录验证
             Admin admin = adminService.login(request.getUsername(), request.getPassword());
             
-            // 生成JWT令牌
-            String token = jwtUtil.generateToken(admin.getId().toString(), admin.getRole());
+            // 生成JWT令牌，包含管理员ID、邮箱和角色信息
+            String token = jwtUtil.generateToken(admin.getId(), admin.getEmail(), admin.getRole());
             
             // 构建响应对象
             com.example.demo.dto.AdminLoginResponse response = new com.example.demo.dto.AdminLoginResponse();
             response.setAdmin(admin);
             response.setToken(token);
             
+            log.info("管理员登录成功: {} (ID: {}, 角色: {})", admin.getUsername(), admin.getId(), admin.getRole());
             return ApiResponse.success(response);
         } catch (Exception e) {
             log.error("管理员登录失败: {}", e.getMessage());

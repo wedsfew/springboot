@@ -128,13 +128,13 @@ public class AuthController {
         User user = userService.login(request.getEmail(), request.getPassword());
         
         if (user != null) {
-            // 生成JWT令牌
-            String token = jwtUtil.generateToken(user.getId());
+            // 生成JWT令牌，包含用户ID、邮箱和角色信息
+            String token = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getRole());
             
             // 创建登录响应
             UserLoginResponse response = new UserLoginResponse(user, token);
             
-            log.info("用户登录成功: {}", user.getUsername());
+            log.info("用户登录成功: {} (ID: {}, 角色: {})", user.getUsername(), user.getId(), user.getRole());
             return ApiResponse.success("登录成功", response);
         } else {
             log.warn("用户登录失败: {}", request.getEmail());
@@ -180,6 +180,42 @@ public class AuthController {
         } catch (Exception e) {
             log.error("登出过程中发生错误", e);
             return ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "登出失败");
+        }
+    }
+
+    /**
+     * 验证JWT令牌是否有效
+     * @param authHeader 请求头中的Authorization值，包含JWT令牌
+     * @return 统一响应格式，指示令牌是否有效
+     */
+    @GetMapping("/validate-token")
+    public ApiResponse<String> validateToken(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        log.info("收到验证令牌请求");
+
+        // 检查Authorization头是否存在
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "未提供有效的Bearer令牌");
+        }
+
+        // 提取JWT令牌
+        String token = authHeader.substring(7);
+
+        try {
+            // 验证令牌有效性
+            if (jwtUtil.validateToken(token)) {
+                // 检查令牌是否在黑名单中
+                if (tokenBlacklistService.isBlacklisted(token)) {
+                    return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "令牌已失效（已登出）");
+                }
+                log.info("令牌有效");
+                return ApiResponse.success("令牌有效", "OK");
+            } else {
+                log.warn("令牌无效或已过期");
+                return ApiResponse.error(HttpStatus.UNAUTHORIZED.value(), "令牌无效或已过期");
+            }
+        } catch (Exception e) {
+            log.error("验证令牌过程中发生错误", e);
+            return ApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "验证令牌失败: " + e.getMessage());
         }
     }
 }

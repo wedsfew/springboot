@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
+import com.example.demo.dto.RecordRequest;
 import com.example.demo.service.DnspodService;
 import com.tencentcloudapi.dnspod.v20210323.models.CreateRecordResponse;
 import com.tencentcloudapi.dnspod.v20210323.models.DeleteRecordResponse;
@@ -84,7 +85,7 @@ public class DnspodController {
      * @param remark 备注（可选）
      * @return ApiResponse<CreateRecordResponse> 统一响应格式
      */
-    @PostMapping("/records")
+    @PostMapping(value = "/records", consumes = "application/x-www-form-urlencoded")
     public ApiResponse<CreateRecordResponse> createRecord(
             @RequestParam String domain,
             @RequestParam String recordType,
@@ -109,6 +110,33 @@ public class DnspodController {
     }
     
     /**
+     * 添加域名解析记录（JSON格式）
+     * 
+     * @param requestBody 包含所有参数的JSON对象
+     * @return ApiResponse<CreateRecordResponse> 统一响应格式
+     */
+    @PostMapping(value = "/records", consumes = "application/json")
+    public ApiResponse<CreateRecordResponse> createRecordJson(@RequestBody RecordRequest requestBody) {
+        try {
+            CreateRecordResponse response = dnspodService.createRecord(
+                requestBody.getDomain(), 
+                requestBody.getRecordType(), 
+                requestBody.getRecordLine() != null ? requestBody.getRecordLine() : "默认", 
+                requestBody.getValue(), 
+                requestBody.getSubDomain(), 
+                requestBody.getTtl(), 
+                requestBody.getMx(), 
+                requestBody.getWeight(), 
+                requestBody.getStatus(), 
+                requestBody.getRemark()
+            );
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "创建域名解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
      * 删除域名解析记录
      * 
      * @param domain 域名（必填）
@@ -116,7 +144,7 @@ public class DnspodController {
      * @param domainId 域名ID（可选）
      * @return ApiResponse<DeleteRecordResponse> 统一响应格式
      */
-    @PostMapping("/records/delete")
+    @PostMapping(value = "/records/delete", consumes = "application/x-www-form-urlencoded")
     public ApiResponse<DeleteRecordResponse> deleteRecord(
             @RequestParam String domain,
             @RequestParam Long recordId,
@@ -124,6 +152,26 @@ public class DnspodController {
         
         try {
             DeleteRecordResponse response = dnspodService.deleteRecord(domain, recordId, domainId);
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 删除域名解析记录（JSON格式）
+     * 
+     * @param requestBody 包含所有参数的JSON对象
+     * @return ApiResponse<DeleteRecordResponse> 统一响应格式
+     */
+    @PostMapping(value = "/records/delete", consumes = "application/json")
+    public ApiResponse<DeleteRecordResponse> deleteRecordJson(@RequestBody RecordRequest requestBody) {
+        try {
+            DeleteRecordResponse response = dnspodService.deleteRecord(
+                requestBody.getDomain(), 
+                requestBody.getRecordId(), 
+                requestBody.getDomainId()
+            );
             return ApiResponse.success(response);
         } catch (Exception e) {
             return ApiResponse.error(500, "删除域名解析记录失败: " + e.getMessage());
@@ -147,7 +195,7 @@ public class DnspodController {
      * @param remark 备注（可选）
      * @return ApiResponse<ModifyRecordResponse> 统一响应格式
      */
-    @PostMapping("/records/modify")
+    @PostMapping(value = "/records/modify", consumes = "application/x-www-form-urlencoded")
     public ApiResponse<ModifyRecordResponse> modifyRecord(
             @RequestParam String domain,
             @RequestParam Long recordId,
@@ -166,6 +214,35 @@ public class DnspodController {
             ModifyRecordResponse response = dnspodService.modifyRecord(
                 domain, recordId, recordType, recordLine, value, subDomain,
                 domainId, ttl, mx, weight, status, remark
+            );
+            return ApiResponse.success(response);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "修改域名解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 修改域名解析记录（JSON格式）
+     * 
+     * @param requestBody 包含所有参数的JSON对象
+     * @return ApiResponse<ModifyRecordResponse> 统一响应格式
+     */
+    @PostMapping(value = "/records/modify", consumes = "application/json")
+    public ApiResponse<ModifyRecordResponse> modifyRecordJson(@RequestBody RecordRequest requestBody) {
+        try {
+            ModifyRecordResponse response = dnspodService.modifyRecord(
+                requestBody.getDomain(),
+                requestBody.getRecordId(),
+                requestBody.getRecordType(),
+                requestBody.getRecordLine() != null ? requestBody.getRecordLine() : "默认",
+                requestBody.getValue(),
+                requestBody.getSubDomain(),
+                requestBody.getDomainId(),
+                requestBody.getTtl(),
+                requestBody.getMx(),
+                requestBody.getWeight(),
+                requestBody.getStatus(),
+                requestBody.getRemark()
             );
             return ApiResponse.success(response);
         } catch (Exception e) {

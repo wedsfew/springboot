@@ -40,8 +40,12 @@ public class WebSecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // 使用无状态会话，不使用Session
             )
             .authorizeHttpRequests(authorize -> authorize
-                // 所有接口都允许访问，无需认证
-                .anyRequest().permitAll()  // 放开所有接口的权限认证
+                // 公开接口，无需认证
+                .requestMatchers("/api/auth/**", "/api/verification/**", "/api/test/**").permitAll()
+                // DNSPod相关接口需要认证
+                .requestMatchers("/api/dnspod/**").authenticated()
+                // 其他接口暂时允许访问，无需认证
+                .anyRequest().permitAll()
             )
             // 设置自定义认证入口点
             .exceptionHandling(exceptions -> exceptions

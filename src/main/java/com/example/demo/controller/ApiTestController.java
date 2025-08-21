@@ -10,6 +10,7 @@ import com.tencentcloudapi.dnspod.v20210323.models.ModifyRecordResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -109,6 +110,15 @@ public class ApiTestController {
         throw new RuntimeException("服务器内部错误测试");
     }
     
+    /**
+     * 健康检查接口
+     * @return 包含健康状态的ApiResponse
+     */
+    @GetMapping("/health")
+    public ApiResponse<String> healthCheck() {
+        return ApiResponse.success("服务运行正常", "OK");
+    }
+
     /**
      * 测试DNSPod删除记录接口
      * 
