@@ -365,17 +365,26 @@ public class DnspodController {
             // 构建完整的三级域名
             String fullSubdomain = subDomain + "." + domain;
             
-            // 查询该子域名是否存在解析记录
-            DescribeRecordFilterListResponse response = dnspodService.getRecordFilterList(
-                domain, null, subDomain, null, 10, 0);
-            
-            // 检查是否有记录
-            boolean isAvailable = response.getRecordCountInfo().getTotalCount() == 0;
-            
-            if (isAvailable) {
-                return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
-            } else {
-                return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+            // 使用精确匹配查询该子域名是否存在解析记录
+            try {
+                DescribeRecordListResponse response = dnspodService.getRecordList(
+                    domain, null, subDomain, null, null, null,
+                    null, null, null, null, 0, 10);
+                
+                // 检查是否有记录
+                boolean isAvailable = response.getRecordList() == null || response.getRecordList().length == 0;
+                
+                if (isAvailable) {
+                    return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+                } else {
+                    return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+                }
+            } catch (Exception e) {
+                // 如果异常消息包含"记录列表为空"，则认为域名可用
+                if (e.getMessage() != null && e.getMessage().contains("记录列表为空")) {
+                    return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+                }
+                throw e;
             }
         } catch (Exception e) {
             return ApiResponse.error(500, "查询域名可用性失败: " + e.getMessage());
@@ -401,17 +410,26 @@ public class DnspodController {
             // 构建完整的三级域名
             String fullSubdomain = subDomain + "." + domain;
             
-            // 查询该子域名是否存在解析记录
-            DescribeRecordFilterListResponse response = dnspodService.getRecordFilterList(
-                domain, null, subDomain, null, 10, 0);
-            
-            // 检查是否有记录
-            boolean isAvailable = response.getRecordCountInfo().getTotalCount() == 0;
-            
-            if (isAvailable) {
-                return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
-            } else {
-                return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+            // 使用精确匹配查询该子域名是否存在解析记录
+            try {
+                DescribeRecordListResponse response = dnspodService.getRecordList(
+                    domain, null, subDomain, null, null, null,
+                    null, null, null, null, 0, 10);
+                
+                // 检查是否有记录
+                boolean isAvailable = response.getRecordList() == null || response.getRecordList().length == 0;
+                
+                if (isAvailable) {
+                    return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+                } else {
+                    return ApiResponse.error(409, "域名 " + fullSubdomain + " 已被注册");
+                }
+            } catch (Exception e) {
+                // 如果异常消息包含"记录列表为空"，则认为域名可用
+                if (e.getMessage() != null && e.getMessage().contains("记录列表为空")) {
+                    return ApiResponse.success("域名 " + fullSubdomain + " 可用，未被注册");
+                }
+                throw e;
             }
         } catch (Exception e) {
             return ApiResponse.error(500, "查询域名可用性失败: " + e.getMessage());

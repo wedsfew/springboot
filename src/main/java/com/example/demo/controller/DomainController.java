@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
 import com.example.demo.mapper.DomainMapper;
+import com.example.demo.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,9 @@ public class DomainController {
     @Autowired
     private DomainMapper domainMapper;
     
+    @Autowired
+    private DomainService domainService;
+    
     /**
      * 获取可用的域名后缀列表
      * 
@@ -34,6 +38,21 @@ public class DomainController {
             return ApiResponse.success("获取域名后缀成功", suffixes);
         } catch (Exception e) {
             return ApiResponse.error(500, "系统繁忙，请稍后重试");
+        }
+    }
+    
+    /**
+     * 从DNSPod获取域名列表并同步到本地数据库
+     * 
+     * @return 统一响应格式，包含同步结果
+     */
+    @PostMapping("/sync")
+    public ApiResponse<?> syncDomains() {
+        try {
+            int count = domainService.syncDomainsFromDnspod();
+            return ApiResponse.success("操作成功", "成功同步 " + count + " 个域名");
+        } catch (Exception e) {
+            return ApiResponse.error(500, "同步域名列表失败: " + e.getMessage());
         }
     }
 }

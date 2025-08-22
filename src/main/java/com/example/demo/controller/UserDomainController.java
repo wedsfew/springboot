@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.common.ApiResponse;
 import com.example.demo.dto.SubdomainRegisterRequest;
 import com.example.demo.entity.UserSubdomain;
+import com.example.demo.mapper.DomainMapper;
 import com.example.demo.service.DnspodService;
 import com.example.demo.service.UserService;
 import com.example.demo.service.UserSubdomainService;
@@ -39,6 +40,9 @@ public class UserDomainController {
     
     @Autowired
     private UserSubdomainService userSubdomainService;
+    
+    @Autowired
+    private DomainMapper domainMapper;
     
     /**
      * 用户注册三级域名
@@ -82,6 +86,12 @@ public class UserDomainController {
             // 设置默认值
             String domain = request.getDomain() != null ? request.getDomain() : "cblog.eu";
             Long ttl = request.getTtl() != null ? request.getTtl() : 600L;
+            
+            // 2.1 验证域名后缀是否有效
+            List<String> availableDomains = domainMapper.findAvailableDomainSuffixes();
+            if (!availableDomains.contains(domain)) {
+                return ApiResponse.error(400, "无效的域名后缀：" + domain + "，请使用/api/domains/suffixes接口获取可用的域名后缀");
+            }
             
             // 3. 检查三级域名是否可用
             DescribeRecordFilterListResponse checkResponse = dnspodService.getRecordFilterList(
