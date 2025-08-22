@@ -1,7 +1,0 @@
-# my-bakc
-
-## mysql数据库配置连接
-- host: localhost
-- port: 3306
-- username: root
-- password: 22222hua

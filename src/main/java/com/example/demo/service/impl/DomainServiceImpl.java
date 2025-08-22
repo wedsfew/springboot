@@ -36,18 +36,12 @@ public class DomainServiceImpl implements DomainService {
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     
     @Override
+    public List<String> getAvailableDomainSuffixes() {
+        return domainMapper.findAvailableDomainSuffixes();
+    }
+    
+    @Override
     public Domain saveDomain(Domain domain) {
-        if (domain.getDomainId() != null) {
-            // 检查是否已存在
-            Domain existingDomain = domainMapper.findByDomainId(domain.getDomainId());
-            if (existingDomain != null) {
-                // 更新现有记录
-                domain.setId(existingDomain.getId());
-                domainMapper.updateByDomainId(domain);
-                return domain;
-            }
-        }
-        // 插入新记录
         domainMapper.insert(domain);
         return domain;
     }

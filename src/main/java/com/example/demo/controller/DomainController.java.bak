@@ -75,20 +75,16 @@ public class DomainController {
         }
     }
 
+    
     /**
-     * 根据状态获取域名列表
+     * 获取可用的域名后缀列表
      * 
-     * @param status 域名状态
-     * @return 域名列表
+     * @return 域名名称列表
      */
-    @GetMapping("/status/{status}")
-    public ApiResponse<List<Domain>> getDomainsByStatus(@PathVariable String status) {
-        try {
-            List<Domain> domains = domainService.getDomainsByStatus(status);
-            return ApiResponse.success(domains);
-        } catch (Exception e) {
-            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
-        }
+    @GetMapping("/suffixes")
+    public ApiResponse<List<String>> getAvailableDomainSuffixes() {
+        List<String> suffixes = domainService.getAvailableDomainSuffixes();
+        return ApiResponse.success(suffixes);
     }
 
     /**
