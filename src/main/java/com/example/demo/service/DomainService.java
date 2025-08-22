@@ -131,4 +131,11 @@ public interface DomainService {
      * @return 同步成功的域名数量
      */
     int syncDomainsFromDnspod();
+    
+    /**
+     * 获取可用的域名后缀列表
+     * 
+     * @return 域名名称列表
+     */
+    List<String> getAvailableDomainSuffixes();
 }

@@ -168,4 +168,12 @@ public interface DomainMapper {
             "remark=VALUES(remark), vip_start_at=VALUES(vip_start_at), vip_end_at=VALUES(vip_end_at), " +
             "vip_auto_renew=VALUES(vip_auto_renew), updated_on=VALUES(updated_on)")
     int insertOrUpdate(Domain domain);
+    
+    /**
+     * 获取可用的域名后缀（从域名名称中提取）
+     * 
+     * @return 域名后缀列表
+     */
+    @Select("SELECT DISTINCT name FROM domain WHERE status = 'ENABLE' ORDER BY name ASC")
+    List<String> findAvailableDomainSuffixes();
 }
