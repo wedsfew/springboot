@@ -1,3 +1,8 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
 # my-rule
 运行springboot项目前,请杀掉8080端口的进程
 ## 数据库表 [数据库表](../../rule/数据库表.md)
