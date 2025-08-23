@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
+import com.example.demo.entity.Domain;
 import com.example.demo.mapper.DomainMapper;
 import com.example.demo.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,209 @@ public class DomainController {
             return ApiResponse.success("操作成功", "成功同步 " + count + " 个域名");
         } catch (Exception e) {
             return ApiResponse.error(500, "同步域名列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 获取所有域名
+     * 
+     * @return 统一响应格式，包含域名列表
+     */
+    @GetMapping
+    public ApiResponse<List<Domain>> getAllDomains() {
+        try {
+            List<Domain> domains = domainService.getAllDomains();
+            return ApiResponse.success("操作成功", domains);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 根据DNSPod域名ID获取域名
+     * 
+     * @param domainId DNSPod域名ID
+     * @return 统一响应格式，包含域名信息
+     */
+    @GetMapping("/dnspod/{domainId}")
+    public ApiResponse<Domain> getDomainByDomainId(@PathVariable Long domainId) {
+        try {
+            Domain domain = domainService.getDomainByDomainId(domainId);
+            if (domain == null) {
+                return ApiResponse.error(404, "域名不存在");
+            }
+            return ApiResponse.success("操作成功", domain);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名信息失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 根据域名名称获取域名
+     * 
+     * @param name 域名名称
+     * @return 统一响应格式，包含域名信息
+     */
+    @GetMapping("/name/{name}")
+    public ApiResponse<Domain> getDomainByName(@PathVariable String name) {
+        try {
+            Domain domain = domainService.getDomainByName(name);
+            if (domain == null) {
+                return ApiResponse.error(404, "域名不存在");
+            }
+            return ApiResponse.success("操作成功", domain);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名信息失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 根据状态获取域名列表
+     * 
+     * @param status 域名状态
+     * @return 统一响应格式，包含域名列表
+     */
+    @GetMapping("/status/{status}")
+    public ApiResponse<List<Domain>> getDomainsByStatus(@PathVariable String status) {
+        try {
+            List<Domain> domains = domainService.getDomainsByStatus(status);
+            return ApiResponse.success("操作成功", domains);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 根据分组ID获取域名列表
+     * 
+     * @param groupId 分组ID
+     * @return 统一响应格式，包含域名列表
+     */
+    @GetMapping("/group/{groupId}")
+    public ApiResponse<List<Domain>> getDomainsByGroupId(@PathVariable Integer groupId) {
+        try {
+            List<Domain> domains = domainService.getDomainsByGroupId(groupId);
+            return ApiResponse.success("操作成功", domains);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 搜索域名
+     * 
+     * @param keyword 搜索关键字
+     * @return 统一响应格式，包含域名列表
+     */
+    @GetMapping("/search")
+    public ApiResponse<List<Domain>> searchDomains(@RequestParam String keyword) {
+        try {
+            List<Domain> domains = domainService.searchDomains(keyword);
+            return ApiResponse.success("操作成功", domains);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "搜索域名失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 分页获取域名列表
+     * 
+     * @param offset 偏移量
+     * @param limit 限制数量
+     * @return 统一响应格式，包含域名列表
+     */
+    @GetMapping("/page")
+    public ApiResponse<List<Domain>> getDomainsWithPagination(
+            @RequestParam(defaultValue = "0") Integer offset,
+            @RequestParam(defaultValue = "20") Integer limit) {
+        try {
+            List<Domain> domains = domainService.getDomainsWithPagination(offset, limit);
+            return ApiResponse.success("操作成功", domains);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "获取域名列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 统计域名总数
+     * 
+     * @return 统一响应格式，包含域名总数
+     */
+    @GetMapping("/count")
+    public ApiResponse<Integer> countAllDomains() {
+        try {
+            int count = domainService.countAllDomains();
+            return ApiResponse.success("操作成功", count);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "统计域名数量失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 根据状态统计域名数量
+     * 
+     * @param status 域名状态
+     * @return 统一响应格式，包含域名数量
+     */
+    @GetMapping("/count/status/{status}")
+    public ApiResponse<Integer> countDomainsByStatus(@PathVariable String status) {
+        try {
+            int count = domainService.countDomainsByStatus(status);
+            return ApiResponse.success("操作成功", count);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "统计域名数量失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 保存域名信息
+     * 
+     * @param domain 域名信息
+     * @return 统一响应格式，包含保存结果
+     */
+    @PostMapping
+    public ApiResponse<Domain> saveDomain(@RequestBody Domain domain) {
+        try {
+            Domain savedDomain = domainService.saveDomain(domain);
+            return ApiResponse.success("操作成功", savedDomain);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "保存域名信息失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 更新域名信息
+     * 
+     * @param domain 域名信息
+     * @return 统一响应格式，包含更新结果
+     */
+    @PostMapping("/update")
+    public ApiResponse<Domain> updateDomain(@RequestBody Domain domain) {
+        try {
+            Domain updatedDomain = domainService.updateDomain(domain);
+            return ApiResponse.success("操作成功", updatedDomain);
+        } catch (Exception e) {
+            return ApiResponse.error(500, "更新域名信息失败: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * 删除域名信息
+     * 
+     * @param domainId DNSPod域名ID
+     * @return 统一响应格式，包含删除结果
+     */
+    @PostMapping("/delete/{domainId}")
+    public ApiResponse<Boolean> deleteDomain(@PathVariable Long domainId) {
+        try {
+            boolean result = domainService.deleteDomainByDomainId(domainId);
+            if (result) {
+                return ApiResponse.success("操作成功", true);
+            } else {
+                return ApiResponse.error(404, "域名不存在或删除失败");
+            }
+        } catch (Exception e) {
+            return ApiResponse.error(500, "删除域名信息失败: " + e.getMessage());
         }
     }
 }
