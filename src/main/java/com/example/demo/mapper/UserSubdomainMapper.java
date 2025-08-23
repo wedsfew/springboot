@@ -75,12 +75,12 @@ public interface UserSubdomainMapper {
     int updateIpAddress(@Param("id") Long id, @Param("ipAddress") String ipAddress);
     
     /**
-     * 删除用户三级域名记录（逻辑删除）
+     * 删除用户三级域名记录（物理删除）
      * 
      * @param id 记录ID
      * @return 影响行数
      */
-    @Update("UPDATE user_subdomain SET status = 'DELETED' WHERE id = #{id}")
+    @Delete("DELETE FROM user_subdomain WHERE id = #{id}")
     int delete(Long id);
     
     /**

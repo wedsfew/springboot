@@ -65,7 +65,7 @@ public interface UserSubdomainService {
     UserSubdomain updateIpAddress(Long id, String ipAddress);
     
     /**
-     * 删除用户三级域名记录（逻辑删除）
+     * 删除用户三级域名记录（物理删除）
      * 
      * @param id 记录ID
      * @return 是否删除成功

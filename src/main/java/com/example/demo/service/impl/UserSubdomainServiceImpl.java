@@ -69,7 +69,7 @@ public class UserSubdomainServiceImpl implements UserSubdomainService {
     @Override
     @Transactional
     public boolean deleteUserSubdomain(Long id) {
-        log.debug("删除用户三级域名记录: {}", id);
+        log.debug("物理删除用户三级域名记录: {}", id);
         return userSubdomainMapper.delete(id) > 0;
     }
     
