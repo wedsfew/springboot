@@ -468,12 +468,17 @@ public class UserDnsRecordController {
             @PathVariable Long id,
             @RequestHeader("Authorization") String authHeader) {
         try {
+            // 步骤1：用户身份验证(JWT)
             // 从Authorization头中提取token
             String token = authHeader.replace("Bearer ", "");
             
             // 从token中获取用户ID
             Long userId = jwtUtil.getUserIdFromToken(token);
+            String email = jwtUtil.getEmailFromToken(token);
             
+            log.info("用户 {} ({}) 请求删除DNS解析记录: {}", userId, email, id);
+            
+            // 步骤2和3：检查记录是否存在且属于当前用户
             UserDnsRecord record = userDnsRecordService.getRecordById(id);
             if (record == null) {
                 return ApiResponse.error(404, "DNS解析记录不存在");
@@ -483,7 +488,7 @@ public class UserDnsRecordController {
                 return ApiResponse.error(403, "无权限删除该DNS解析记录");
             }
             
-            // 如果记录已同步到DNSPod，需要先从DNSPod删除
+            // 步骤4：如果记录已同步到DNSPod，需要先从DNSPod删除
             if ("SUCCESS".equals(record.getSyncStatus()) && record.getRecordId() != null) {
                 try {
                     UserSubdomain userSubdomain = userSubdomainService.getById(record.getSubdomainId());
@@ -496,14 +501,16 @@ public class UserDnsRecordController {
                         }
                     }
                 } catch (Exception e) {
+                    // 异常处理：记录警告日志，但继续执行本地删除
                     log.warn("从DNSPod删除记录失败，但继续删除本地记录: {}", e.getMessage());
                 }
             }
             
-            // 删除本地记录
+            // 步骤5：删除本地记录
             boolean deleted = userDnsRecordService.deleteRecord(id);
             if (deleted) {
                 log.info("用户 {} 删除DNS解析记录成功: recordId={}", userId, id);
+                // 步骤6：返回操作结果
                 return ApiResponse.success(true);
             } else {
                 return ApiResponse.error(500, "删除DNS解析记录失败");
