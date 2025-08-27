@@ -1,5 +1,11 @@
+---
+description: 
+globs:
+alwaysApply: true
+---
 # my-rule
-运行springboot项目前,请杀掉8080端口的进程
+## 启动springboot项目请使用这个脚本[start-springboot](../../start-springboot.sh) 
+
 ## 数据库表 [数据库表](../../rule/数据库表.md)
 开发api接口时,请查看该文档,了解表结构
 

@@ -70,28 +70,28 @@ public class UserDnsRecordServiceImpl implements UserDnsRecordService {
     }
     
     @Override
-    public void updateSyncStatus(Long id, String syncStatus, String syncError) {
-        userDnsRecordMapper.updateSyncStatus(id, syncStatus, syncError);
+    public boolean updateSyncStatus(Long id, String syncStatus, String syncError) {
+        return userDnsRecordMapper.updateSyncStatus(id, syncStatus, syncError) > 0;
     }
     
     @Override
-    public void updateRecordId(Long id, Long recordId) {
-        userDnsRecordMapper.updateRecordId(id, recordId);
+    public boolean updateRecordId(Long id, Long recordId) {
+        return userDnsRecordMapper.updateRecordId(id, recordId) > 0;
     }
     
     @Override
-    public void deleteRecord(Long id) {
-        userDnsRecordMapper.deleteById(id);
+    public boolean deleteRecord(Long id) {
+        return userDnsRecordMapper.deleteById(id) > 0;
     }
     
     @Override
-    public void deleteRecordsByUserId(Long userId) {
-        userDnsRecordMapper.deleteByUserId(userId);
+    public int deleteRecordsByUserId(Long userId) {
+        return userDnsRecordMapper.deleteByUserId(userId);
     }
     
     @Override
-    public void deleteRecordsBySubdomainId(Long subdomainId) {
-        userDnsRecordMapper.deleteBySubdomainId(subdomainId);
+    public int deleteRecordsBySubdomainId(Long subdomainId) {
+        return userDnsRecordMapper.deleteBySubdomainId(subdomainId);
     }
     
     @Override
@@ -105,7 +105,30 @@ public class UserDnsRecordServiceImpl implements UserDnsRecordService {
     }
     
     @Override
-    public boolean recordExists(Long userId, Long subdomainId, String name, String type) {
+    public boolean existsRecord(Long userId, Long subdomainId, String name, String type) {
         return userDnsRecordMapper.existsByUserIdAndSubdomainIdAndNameAndType(userId, subdomainId, name, type) > 0;
+    }
+    
+    @Override
+    public boolean syncRecordToDnsPod(Long recordId) {
+        // TODO: 实现同步到DNSPod的逻辑
+        // 这里可以调用DNSPod API进行同步
+        return false;
+    }
+    
+    @Override
+    public int batchSyncPendingRecords() {
+        // TODO: 实现批量同步待同步记录的逻辑
+        // 获取所有PENDING状态的记录，逐个同步到DNSPod
+        List<UserDnsRecord> pendingRecords = getRecordsBySyncStatus("PENDING");
+        int successCount = 0;
+        
+        for (UserDnsRecord record : pendingRecords) {
+            if (syncRecordToDnsPod(record.getId())) {
+                successCount++;
+            }
+        }
+        
+        return successCount;
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
  * @since 2025-08-24
  */
 @RestController
-@RequestMapping("/api/user/subdomain")
+@RequestMapping("/api/user/subdomains")
 @Slf4j
 public class UserSubdomainController {
     

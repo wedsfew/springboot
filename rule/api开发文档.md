@@ -1,8 +1,4 @@
----
-description: 
-globs:
-alwaysApply: true
----
+
 # api开发规则
 接口只使用get请求或post请求,不使用delete、put、patch请求。
 api接口开发严格遵循以下要求。
