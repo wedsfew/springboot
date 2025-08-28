@@ -11,8 +11,9 @@
 ## 请求参数
 
 ```typescript
+// 请求体参数
 interface DeleteDnsRecordRequest {
-  recordId: number;  // 要删除的DNS解析记录ID
+  id: number;  // 要删除的DNS解析记录ID
 }
 ```
 
@@ -20,7 +21,7 @@ interface DeleteDnsRecordRequest {
 
 ```json
 {
-  "recordId": {
+  "id": {
     "required": true,
     "type": "number",
     "min": 1,
@@ -114,25 +115,29 @@ Content-Type: application/json
 
 ### 测试用例1（成功场景）
 
-- **请求体**：`{"recordId": 123}`
+- **请求路径**：`POST /api/user/dns-records/delete`
+- **请求体**：`{"id": 123}`
 - **请求头**：`Authorization: Bearer {有效的JWT令牌}`
 - **预期响应**：code=200，data=true
 
 ### 测试用例2（记录不存在）
 
-- **请求体**：`{"recordId": 999999}`
+- **请求路径**：`POST /api/user/dns-records/delete`
+- **请求体**：`{"id": 999999}`
 - **请求头**：`Authorization: Bearer {有效的JWT令牌}`
 - **预期响应**：code=404，message="DNS解析记录不存在"
 
 ### 测试用例3（无权限）
 
-- **请求体**：`{"recordId": 456}`（属于其他用户的记录）
+- **请求路径**：`POST /api/user/dns-records/delete`
+- **请求体**：`{"id": 456}`（属于其他用户的记录）
 - **请求头**：`Authorization: Bearer {有效的JWT令牌}`
 - **预期响应**：code=403，message="无权限删除该DNS解析记录"
 
 ### 测试用例4（未授权）
 
-- **请求体**：`{"recordId": 123}`
+- **请求路径**：`POST /api/user/dns-records/delete`
+- **请求体**：`{"id": 123}`
 - **请求头**：`Authorization: Bearer {无效的JWT令牌}`
 - **预期响应**：code=401，message="未授权，请先登录"
 
@@ -143,22 +148,29 @@ Content-Type: application/json
 curl -X POST http://localhost:8080/api/user/dns-records/delete \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer {jwt_token}" \
-  -d '{"recordId": 123}'
+  -d '{"id": 123}'
 
 # 记录不存在
 curl -X POST http://localhost:8080/api/user/dns-records/delete \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer {jwt_token}" \
-  -d '{"recordId": 999999}'
+  -d '{"id": 999999}'
 
 # 无权限删除
 curl -X POST http://localhost:8080/api/user/dns-records/delete \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer {jwt_token}" \
-  -d '{"recordId": 456}'
+  -d '{"id": 456}'
 
 # 未授权（无效token）
 curl -X POST http://localhost:8080/api/user/dns-records/delete \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer invalid_token" \
-  -d '{"recordId": 123}'
+  -d '{"id": 123}'
+```
+
+## 实际实现与文档差异说明
+
+1. **遵循项目规则**：根据项目API开发文档规则，接口只使用GET和POST请求，不使用DELETE、PUT、PATCH请求，因此删除接口使用POST方法和请求体参数
+2. **错误处理**：实现了完整的错误处理机制，包括JWT验证、权限检查、记录存在性验证等
+3. **DNSPod同步**：即使从DNSPod删除记录失败，也会继续删除本地记录，确保用户可以管理自己的记录

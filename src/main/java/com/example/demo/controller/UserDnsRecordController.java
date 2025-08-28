@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
+import com.example.demo.dto.DeleteDnsRecordRequest;
+import com.example.demo.dto.GetDnsRecordsRequest;
+import com.example.demo.dto.DnsRecordResponse;
+import com.example.demo.dto.PageResponse;
 import com.example.demo.dto.UserDnsRecordRequest;
 import com.example.demo.dto.UserDnsRecordUpdateRequest;
 import com.example.demo.entity.UserDnsRecord;
@@ -458,14 +462,14 @@ public class UserDnsRecordController {
     /**
      * 删除DNS解析记录
      * 
-     * @param id 记录ID
+     * @param request 删除请求，包含记录ID
      * @param authHeader Authorization头信息
      * @return 删除结果
      */
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete")
     @Transactional
     public ApiResponse<Boolean> deleteDnsRecord(
-            @PathVariable Long id,
+            @RequestBody DeleteDnsRecordRequest request,
             @RequestHeader("Authorization") String authHeader) {
         try {
             // 步骤1：用户身份验证(JWT)
@@ -476,6 +480,8 @@ public class UserDnsRecordController {
             Long userId = jwtUtil.getUserIdFromToken(token);
             String email = jwtUtil.getEmailFromToken(token);
             
+            // 获取要删除的记录ID
+            Long id = request.getId();
             log.info("用户 {} ({}) 请求删除DNS解析记录: {}", userId, email, id);
             
             // 步骤2和3：检查记录是否存在且属于当前用户
@@ -523,6 +529,85 @@ public class UserDnsRecordController {
     }
     
     /**
+     * 获取指定3级域名的所有解析记录
+     * 
+     * @param request 获取DNS解析记录请求
+     * @param authHeader Authorization头信息
+     * @return DNS解析记录分页列表
+     */
+    @PostMapping("/query")
+    public ApiResponse<PageResponse<DnsRecordResponse>> getDnsRecordsByDomain(
+            @Valid @RequestBody GetDnsRecordsRequest request,
+            @RequestHeader("Authorization") String authHeader) {
+        try {
+            // 从Authorization头中提取token
+            String token = authHeader.replace("Bearer ", "");
+            
+            // 从token中获取用户ID
+            Long userId = jwtUtil.getUserIdFromToken(token);
+            String email = jwtUtil.getEmailFromToken(token);
+            
+            log.info("用户 {} ({}) 请求获取域名 {} 的DNS解析记录", userId, email, request.getFullDomain());
+            
+            // 1. 验证用户是否拥有该3级域名
+            UserSubdomain userSubdomain = userSubdomainService.getByFullDomain(request.getFullDomain());
+            if (userSubdomain == null) {
+                return ApiResponse.error(404, "3级域名不存在");
+            }
+            
+            if (!userSubdomain.getUserId().equals(userId)) {
+                return ApiResponse.error(403, "无权限访问该3级域名的解析记录");
+            }
+            
+            if (!"ACTIVE".equals(userSubdomain.getStatus())) {
+                return ApiResponse.error(400, "3级域名状态异常，无法查询解析记录");
+            }
+            
+            // 2. 构建查询条件
+            List<UserDnsRecord> allRecords = userDnsRecordService.getRecordsByUserIdAndSubdomainId(
+                userId, userSubdomain.getId());
+            
+            // 3. 根据条件过滤记录
+            List<UserDnsRecord> filteredRecords = allRecords.stream()
+                .filter(record -> request.getType() == null || request.getType().equals(record.getType()))
+                .filter(record -> request.getStatus() == null || request.getStatus().equals(record.getStatus()))
+                .collect(java.util.stream.Collectors.toList());
+            
+            // 4. 分页处理
+            int page = request.getPage();
+            int size = request.getSize();
+            int total = filteredRecords.size();
+            int startIndex = (page - 1) * size;
+            int endIndex = Math.min(startIndex + size, total);
+            
+            List<UserDnsRecord> pagedRecords;
+            if (startIndex >= total) {
+                pagedRecords = new java.util.ArrayList<>();
+            } else {
+                pagedRecords = filteredRecords.subList(startIndex, endIndex);
+            }
+            
+            // 5. 转换为响应DTO
+            List<DnsRecordResponse> responseRecords = pagedRecords.stream()
+                .map(this::convertToResponse)
+                .collect(java.util.stream.Collectors.toList());
+            
+            // 6. 构建分页响应
+            PageResponse<DnsRecordResponse> pageResponse = new PageResponse<>(
+                responseRecords, (long) total, page, size);
+            
+            log.info("用户 {} 查询域名 {} 的DNS解析记录成功，共 {} 条，返回第 {} 页 {} 条", 
+                userId, request.getFullDomain(), total, page, responseRecords.size());
+            
+            return ApiResponse.success(pageResponse);
+            
+        } catch (Exception e) {
+            log.error("获取3级域名DNS解析记录失败", e);
+            return ApiResponse.error(500, "获取DNS解析记录失败: " + e.getMessage());
+        }
+    }
+    
+    /**
      * 获取用户DNS解析记录统计信息
      * 
      * @param authHeader Authorization头信息
@@ -565,6 +650,34 @@ public class UserDnsRecordController {
             log.error("获取DNS解析记录统计信息失败", e);
             return ApiResponse.error(500, "获取统计信息失败: " + e.getMessage());
         }
+    }
+    
+    /**
+    /**
+     * 将UserDnsRecord转换为DnsRecordResponse
+     * 
+     * @param record 用户DNS记录实体
+     * @return DNS记录响应DTO
+     */
+    private DnsRecordResponse convertToResponse(UserDnsRecord record) {
+        DnsRecordResponse response = new DnsRecordResponse();
+        response.setId(record.getId());
+        response.setRecordId(record.getRecordId());
+        response.setName(record.getName());
+        response.setType(record.getType());
+        response.setValue(record.getValue());
+        response.setLine(record.getLine());
+        response.setTtl(record.getTtl());
+        response.setMx(record.getMx());
+        response.setWeight(record.getWeight());
+        response.setStatus(record.getStatus());
+        response.setRemark(record.getRemark());
+        response.setMonitorStatus(record.getMonitorStatus());
+        response.setSyncStatus(record.getSyncStatus());
+        response.setUpdatedOn(record.getUpdatedOn());
+        response.setCreateTime(record.getCreateTime());
+        response.setUpdateTime(record.getUpdateTime());
+        return response;
     }
     
     /**
